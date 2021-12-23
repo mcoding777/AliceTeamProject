@@ -26,14 +26,12 @@ body::before {
 
     transform: scale(1.02);
 
-    /* backdrop-filter도 나중에 써보기 => 이미지 크기 조절이 어려워서 실패 */
-    -webkit-filter: blur(5px); 
-    -moz-filter: blur(5px); 
-    -o-filter: blur(5px); 
-    -ms-filter: blur(5px); 
-    filter: blur(5px);
-
     z-index: -1; 
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 /* 메인 페이지 스크롤바 효과를 위한 구역 나누기 */
