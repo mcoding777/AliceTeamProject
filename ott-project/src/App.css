@@ -37,14 +37,14 @@ main {
 
 .button {
     width: 250px;
-    height: 50px;
+    height: 40px;
 
     border-radius: 60px;
     box-shadow: inset 0 2px 5px 3px rgba(0, 0, 0, 0.5);
     border: solid 1px #000;
     background-color: #981217;
 
-    margin: 70px auto 0;
+    margin: 90px auto 0;
     padding: 15px 10px;
 
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -154,6 +154,10 @@ main .how_to_use1 header .covid_table {
     background-color: blue;
 }
 
+main .how_to_use1 footer .arrow {
+    margin-top: 400px;
+}
+
 /* How To Use2 페이지*/
 main .how_to_use2 header .world_map {
     width: 1000px;
@@ -168,15 +172,12 @@ main .how_to_use2 header .world_map {
     background-repeat: no-repeat;
 }
 
-main .how_to_use1 footer .arrow {
-    margin-top: 400px;
-}
-
 main .how_to_use2 footer .arrow {
     margin-top: 430px;
 }
 
 main .how_to_use2 footer .arrow::before {
     transform: rotate(-45deg);
+
     animation: upArrow 1.5s ease-out infinite;
 }
