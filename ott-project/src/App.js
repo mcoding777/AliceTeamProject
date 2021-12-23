@@ -14,6 +14,7 @@ function App() {
           </header>
           <footer>
             <Button text="시작하기" />
+            <div className='arrow' />
           </footer>
         </article>
         <article className='how_to_use1'>
