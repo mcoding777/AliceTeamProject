@@ -3,14 +3,13 @@
     padding: 0;
 }
 
-html {
-}
-
 body {
     text-align: center;
+
+    color: white;
 }
 
-body::after {
+body::before {
     content: "";
     
     position: fixed;
@@ -25,7 +24,7 @@ body::after {
 
     transform: scale(1.02);
 
-    /* backdrop-filter도 나중에 써보기 */
+    /* backdrop-filter도 나중에 써보기 => 이미지 크기 조절이 어려워서 실패 */
     -webkit-filter: blur(5px); 
     -moz-filter: blur(5px); 
     -o-filter: blur(5px); 
@@ -33,4 +32,21 @@ body::after {
     filter: blur(5px);
 
     z-index: -1; 
+}
+
+main .main header .netflix_logo {
+    width: 150px;
+    height: 40px;
+
+    margin: 10% auto 50px;
+
+    background-image: url("netflix-log.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main .main h1 {
+    font-size: 70px;
+    font-weight: 500;
+    line-height: 90px;
 }
