@@ -1,3 +1,4 @@
+/* 공통 부분 (상속)*/
 * {
     margin: 0;
     padding: 0;
@@ -34,29 +35,6 @@ main {
     backdrop-filter: blur(5px);
 }
 
-/* 메인 페이지 스크롤바 효과를 위한 구역 나누기 */
-main article {
-    height: 100vh; /* 이걸 추가했더니 블러가 보인다... 젠장 */
-}
-
-main .main header .netflix_logo {
-    width: 235px;
-    height: 60px;
-
-    margin: 10% auto 20px;
-
-    background-image: url("netflix-log.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-main .main h1 {
-    font-size: 70px;
-    font-weight: 500;
-
-    line-height: 90px;
-}
-
 .button {
     width: 250px;
     height: 50px;
@@ -84,7 +62,6 @@ main .main h1 {
     margin-top: 70px;
 }
 
-/* 화살표를 둥그렇게 만들 순 없을까? */
 .arrow::before {
     content: "";
 
@@ -113,4 +90,64 @@ main .main h1 {
         opacity: 0;
         margin-top: 10px;
     }
+}
+
+/* Main 페이지 구역 나누기 (상속)*/
+main article {
+    height: 100vh;
+}
+
+/* Main 페이지*/
+main .main header .netflix_logo {
+    width: 235px;
+    height: 60px;
+
+    margin: 10% auto 20px;
+
+    background-image: url("netflix-logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main .main h1 {
+    font-size: 70px;
+    font-weight: 500;
+
+    line-height: 90px;
+}
+
+/* How To Use 페이지*/
+main .how_to_use1,.how_to_use2 {
+    position: relative;
+}
+main .how_to_use1,.how_to_use2 p {
+    padding: 100px 0 0 100px;
+
+    font-size: 30px;
+    font-weight: 500;
+    text-align: start;
+}
+
+main .how_to_use1 .covid_table {
+    width: 500px;
+    height: 300px;
+
+    position: absolute;
+    top: 30%;
+    right: 10%;
+
+    background-color: blue;
+}
+
+main .how_to_use2 .world_map {
+    width: 1000px;
+    height: 500px;
+
+    position: absolute;
+    top: 30%;
+    right: 10%;
+
+    background-image: url("./world-map-movie.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
