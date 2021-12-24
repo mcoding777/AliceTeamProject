@@ -13,7 +13,7 @@ function App() {
             <h1>영화 제작사와 투자자 여러분<br />환영합니다</h1>
           </header>
           <footer>
-            <Link to="/page1">
+            <Link to="/page">
               <Button text="시작하기" />
             </Link>
             <div className='arrow' />

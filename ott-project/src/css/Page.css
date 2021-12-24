@@ -1,5 +1,5 @@
 
-main .page1 .grid_container {
+main .page .grid_container {
     width: 90vw;
     height: 90vh;
 
@@ -10,7 +10,7 @@ main .page1 .grid_container {
     background-color: yellow; /* 구역 보려고 색깔 칠해둔거 */
 }
 
-main .page1 .grid_container .menubox {
+main .page .grid_container .menubox {
     width: 368px;
     height: 100%;
 
@@ -23,14 +23,14 @@ main .page1 .grid_container .menubox {
     box-sizing: border-box;
 }
 
-main .page1 .grid_container .menubox p {
+main .page .grid_container .menubox p {
     text-align: left;
 
     font-size: 30px;
     font-weight: bold;
 }
 
-main .page1 .grid_container .menubox p + div {
+main .page .grid_container .menubox p + div {
     width: 100%;
     height: 10%;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Page1 from './Page1';
+import Page from './Page';
 import './css/App.css';
 import { BrowserRouter,
 Routes,
@@ -12,7 +12,7 @@ ReactDOM.render(
      <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/page1" element={<Page1 />} />
+        <Route path="/page" element={<Page />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
