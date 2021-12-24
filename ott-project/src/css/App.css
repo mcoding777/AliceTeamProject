@@ -23,7 +23,7 @@ body::before {
     right: 0;
     bottom: 0;
 
-    background-image: url("./background-image.jpg");
+    background-image: url("../image/background-image.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -106,10 +106,12 @@ main {
     }
 }
 
+
 /* Main 페이지 구역 나누기 (상속)*/
 main article {
     height: 100vh;
 }
+
 
 /* Main 페이지*/
 main .main header .netflix_logo {
@@ -118,7 +120,7 @@ main .main header .netflix_logo {
 
     margin: 10% auto 20px;
 
-    background-image: url("netflix-logo.png");
+    background-image: url("../image/netflix-logo.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -129,6 +131,7 @@ main .main h1 {
 
     line-height: 90px;
 }
+
 
 /* How To Use 페이지 (상속)*/
 main .how_to_use1,.how_to_use2 {
@@ -141,6 +144,7 @@ main .how_to_use1,.how_to_use2 header p {
     font-weight: 500;
     text-align: start;
 }
+
 
 /* How To Use1 페이지*/
 main .how_to_use1 header .covid_table {
@@ -158,6 +162,7 @@ main .how_to_use1 footer .arrow {
     margin-top: 400px;
 }
 
+
 /* How To Use2 페이지*/
 main .how_to_use2 header .world_map {
     width: 1000px;
@@ -167,7 +172,7 @@ main .how_to_use2 header .world_map {
     top: 25%;
     right: 10%;
 
-    background-image: url("./world-map-movie.png");
+    background-image: url("../image/world-map-movie.png");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -181,3 +186,6 @@ main .how_to_use2 footer .arrow::before {
 
     animation: upArrow 1.5s ease-out infinite;
 }
+
+
+/* Page1 페이지 */
