@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Button from './Button';
-import './css/App.css';
+import './css/Main.css';
 
 // 첫 메인화면 컴포넌트
 function Main() {
