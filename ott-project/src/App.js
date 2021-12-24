@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import './netflix-logo.png';
+import { Link } from 'react-router-dom';
 
 function App() {
 
@@ -14,7 +15,9 @@ function App() {
             <h1>영화 제작사와 투자자 여러분<br />환영합니다</h1>
           </header>
           <footer>
-            <Button text="시작하기" />
+            <Link to="/page1">
+              <Button text="시작하기" />
+            </Link>
             <div className='arrow' />
           </footer>
         </article>
