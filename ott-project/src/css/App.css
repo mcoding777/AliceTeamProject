@@ -114,7 +114,7 @@ main article {
 
 
 /* Main 페이지*/
-main .main header .netflix_logo {
+/* main .main header .netflix_logo {
     width: 235px;
     height: 60px;
 
@@ -123,7 +123,7 @@ main .main header .netflix_logo {
     background-image: url("../image/netflix-logo.png");
     background-size: cover;
     background-repeat: no-repeat;
-}
+} */
 
 main .main h1 {
     font-size: 70px;
@@ -164,7 +164,7 @@ main .how_to_use1 footer .arrow {
 
 
 /* How To Use2 페이지*/
-main .how_to_use2 header .world_map {
+/* main .how_to_use2 header .world_map {
     width: 1000px;
     height: 500px;
 
@@ -175,7 +175,7 @@ main .how_to_use2 header .world_map {
     background-image: url("../image/world-map-movie.png");
     background-size: 100%;
     background-repeat: no-repeat;
-}
+} */
 
 main .how_to_use2 footer .arrow {
     margin-top: 430px;
