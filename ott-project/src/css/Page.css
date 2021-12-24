@@ -1,0 +1,40 @@
+
+main .page1 .grid_container {
+    width: 90vw;
+    height: 90vh;
+
+    margin: 5vh auto 0;
+
+    grid: 1fr 3fr;
+
+    background-color: yellow; /* 구역 보려고 색깔 칠해둔거 */
+}
+
+main .page1 .grid_container .menubox {
+    width: 368px;
+    height: 100%;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+    background-color: #981217;
+
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+main .page1 .grid_container .menubox p {
+    text-align: left;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+main .page1 .grid_container .menubox p + div {
+    width: 100%;
+    height: 10%;
+
+    color: black;
+
+    background-color: white;
+}
