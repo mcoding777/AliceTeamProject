@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './netflix-logo.png';
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
         </article>
         <article className='how_to_use2'>
           <header>
-            <p>우리 서비스는<img src="./netflix-log.png" alt="(넷플릭스 로고)" />한국 컨텐츠를 기준으로 분석합니다.<br />
+            <p>우리 서비스는<img src="./netflix-logo.png" alt="(넷플릭스 로고)" />한국 컨텐츠를 기준으로 분석합니다.<br />
               각 나라에서 흥행하는 한국 컨텐츠를 바탕으로<br />
               효율적인 벤치마킹을 경험해보십시오.
             </p>
