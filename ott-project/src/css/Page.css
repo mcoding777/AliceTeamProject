@@ -31,7 +31,7 @@ main .page .grid_container .menubox p {
 }
 
 main .page .grid_container .menubox p + div {
-    width: 100%;
+    width: 90%;
     height: 10%;
 
     color: black;
@@ -50,4 +50,13 @@ main .page .grid_container .menubox label {
 
 main .page .grid_container .menubox p:nth-child(3) {
     margin-top: 30px;
+}
+
+main .page .grid_container .menubox .tip {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+
+    margin-top: 10%;
 }
