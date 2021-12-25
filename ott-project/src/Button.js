@@ -1,3 +1,5 @@
+import './css/Button.css';
+
 // 빨간 버튼 컴포넌트
 function Button(props) {
     return (
