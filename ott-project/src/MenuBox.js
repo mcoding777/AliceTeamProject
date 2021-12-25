@@ -1,17 +1,17 @@
 import './css/MenuBox.css';
 
-function MenuBox() {
+function MenuBox(props) {
     return (
         <div className='menubox'>
             <p>CATEGORY</p>
             <div>
-                <label><input type="checkbox" /> Movie</label>
-                <label><input type="checkbox" /> TV Series</label>
+                <label><input type="radio" name="category" /> Movie</label>
+                <label><input type="radio" name="category" /> TV Series</label>
             </div> 
             <p>REVIEW</p>
             <div>
-                <label><input type="checkbox" /> Market</label>
-                <label><input type="checkbox" /> K-Contents</label>
+                <label><input type="radio" name="review" /> Market</label>
+                <label><input type="radio" name="review" /> K-Contents</label>
             </div>
             <p className='tip'>
                 CATEGORY는 넷플릭스 컨텐츠를<br />
