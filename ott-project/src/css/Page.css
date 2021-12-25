@@ -1,6 +1,6 @@
 
 main .page .grid_container {
-    width: 90vw;
+    width: 100vw;
     height: 90vh;
 
     margin: 5vh auto 0;
@@ -11,7 +11,7 @@ main .page .grid_container {
 }
 
 main .page .grid_container .menubox {
-    width: 368px;
+    width: 20%;
     height: 100%;
 
     grid-row-start: 1;
@@ -35,6 +35,19 @@ main .page .grid_container .menubox p + div {
     height: 10%;
 
     color: black;
+    line-height: 30px;
 
     background-color: white;
+
+    padding: 10px 0 10px 15px;
+}
+
+main .page .grid_container .menubox label {
+    display: block;
+
+    text-align: left;
+}
+
+main .page .grid_container .menubox p:nth-child(3) {
+    margin-top: 30px;
 }

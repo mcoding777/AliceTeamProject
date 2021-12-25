@@ -7,14 +7,16 @@ function Page() {
             <article className='page'>
                 <div className='grid_container'>
                     <div className='menubox'>
-                        <p>카테고리별</p>
+                        <p>CATEGORY</p>
                         <div>
-                            <label><input type="checkbox" />영화</label>
-                            <label><input type="checkbox" />TV쇼</label>
+                            <label><input type="checkbox" /> Movie</label>
+                            <label><input type="checkbox" /> TV Series</label>
                         </div> 
-                    </div>
-                    <div>
-
+                        <p>REVIEW</p>
+                        <div>
+                            <label><input type="checkbox" /> Market</label>
+                            <label><input type="checkbox" /> K-Contents</label>
+                        </div> 
                     </div>
                 </div>
             </article>
