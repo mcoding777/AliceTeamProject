@@ -2,7 +2,7 @@
 .page {
     overflow: hidden;
 }
-.page .grid_container {
+.page .container {
     width: 100vw;
     height: 90vh;
 
@@ -11,7 +11,7 @@
     display: flex;
 }
 
-.page .grid_container > p {
+.page .container > p {
     font-size: 60px;
     font-weight: bold;
 

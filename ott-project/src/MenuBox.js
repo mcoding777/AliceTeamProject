@@ -1,17 +1,12 @@
 import './css/MenuBox.css';
-import { useState } from 'react';
 
 function MenuBox(props) {
-    const [category, setCategory] = useState("");
-    const [review, setReview] = useState("");
 
     function getCategoryValue(event) {
-        setCategory(event.target.value);
         props.category(event.target.value);
     }
 
     function getReviewValue(event) {
-        setReview(event.target.value);
         props.review(event.target.value);
     }
 
