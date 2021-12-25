@@ -29,6 +29,7 @@ function Page() {
                             Market : 넷플릭스 시장 현황<br />
                             K-Contents : 한국 컨텐츠 분석
                         </p>
+                        <button>처음으로</button>
                     </div>
                 </div>
             </article>
