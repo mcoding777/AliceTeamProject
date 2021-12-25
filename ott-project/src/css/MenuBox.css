@@ -2,9 +2,6 @@
     width: 20%;
     height: 100%;
 
-    grid-row-start: 1;
-    grid-row-end: 2;
-
     background-color: #981217;
 
     padding: 30px;
@@ -60,4 +57,6 @@
 
     font-size: 1.3em;
     font-weight: bold;
+
+    cursor: pointer;
 }
