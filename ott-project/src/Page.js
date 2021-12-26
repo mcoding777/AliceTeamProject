@@ -50,10 +50,12 @@ function Page() {
     console.log(renderCheck);
 
     return (
+        <>
+        <MenuBox category={getCategory} review={getReview} />
         <main>
-            <MenuBox category={getCategory} review={getReview} />
             {renderCheck}
         </main>
+        </>
     )
 }
 

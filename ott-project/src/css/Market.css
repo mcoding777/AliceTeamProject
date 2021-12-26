@@ -21,11 +21,11 @@
 }
 
 .market2 > p {
-    font-size: 60px;
+    font-size: 30px;
     font-weight: bold;
 
     position: absolute;
 
-    left: 40vw;
+    left: 25vw;
     bottom: 50vh;
 }
