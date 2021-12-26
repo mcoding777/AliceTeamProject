@@ -2,6 +2,7 @@ nav {
     width: 20vw;
     height: 90vh;
 
+    /* fixed가 먹히지 않는다... */
     position: fixed;
     top: 5vh;
 }
