@@ -1,17 +1,6 @@
-/* class명이 page일 때 (아무것도 선택되지 않았을 때) 스크롤바 숨기기 */
-.page {
-    overflow: hidden;
-}
-.page .container {
-    width: 100vw;
-    height: 90vh;
 
-    margin: 5vh auto 0;
-
-    display: flex;
-}
-
-.page .container > p {
+.page > p {
+    display: inline-block;
     font-size: 60px;
     font-weight: bold;
 

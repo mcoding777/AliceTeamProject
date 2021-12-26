@@ -33,7 +33,11 @@ function Page() {
 
     function renderChecked() {
         if (Object.keys(category) == false || Object.keys(review) == false) {
-            return <p>원하는 분류를 선택하세요.</p>}
+            return (
+                <article className='page'>
+                    <p>원하는 분류를 선택하세요.</p>
+                </article>
+                )}
         else if (review.market) {
             return <Market />}
         else if (review.kcontents) {
@@ -47,12 +51,8 @@ function Page() {
 
     return (
         <main>
-            <article className='page'>
-                <div className='container'>
-                    <MenuBox category={getCategory} review={getReview} />
-                    {renderCheck}
-                </div>
-            </article>
+            <MenuBox category={getCategory} review={getReview} />
+            {renderCheck}
         </main>
     )
 }
