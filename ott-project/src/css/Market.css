@@ -1,14 +1,18 @@
-.market1 > p {
+.market1, .market2 {
+    position: relative;
+}
+
+.market1 > p, .market2 > p {
     font-size: 30px;
     font-weight: bold;
 
     position: absolute;
 
     left: 25%;
-    top: 5%;
+    top: 10%;
 }
 
-.market1 > div {
+.market1 > div, .market2 > div {
     background-color: blue;
 
     width: 700px;
@@ -17,15 +21,5 @@
     position: absolute;
 
     left: 35%;
-    top: 10%;
-}
-
-.market2 > p {
-    font-size: 30px;
-    font-weight: bold;
-
-    position: absolute;
-
-    left: 25vw;
-    bottom: 50vh;
+    top: 20%;
 }
