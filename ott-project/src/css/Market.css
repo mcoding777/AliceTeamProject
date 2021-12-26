@@ -1,0 +1,31 @@
+.market1 > p {
+    font-size: 30px;
+    font-weight: bold;
+
+    position: absolute;
+
+    left: 25%;
+    top: 5%;
+}
+
+.market1 > div {
+    background-color: blue;
+
+    width: 700px;
+    height: 500px;
+
+    position: absolute;
+
+    left: 35%;
+    top: 10%;
+}
+
+.market2 > p {
+    font-size: 60px;
+    font-weight: bold;
+
+    position: absolute;
+
+    left: 40vw;
+    bottom: 50vh;
+}
