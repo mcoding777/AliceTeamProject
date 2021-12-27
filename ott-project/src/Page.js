@@ -1,6 +1,7 @@
 import './css/Page.css';
 import MenuBox from './MenuBox';
 import Market from './Market';
+import Kcontents from './Kcontents';
 import { useState } from 'react';
 
 function Page() {
@@ -41,7 +42,7 @@ function Page() {
         else if (review.market) {
             return <Market />}
         else if (review.kcontents) {
-            return ;}
+            return <Kcontents />}
     }
 
     // 선택한 분류 확인해보기

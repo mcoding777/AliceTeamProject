@@ -1,0 +1,25 @@
+.kcontents1, .kcontents2 {
+    position: relative;
+}
+
+.kcontents1 > p, .kcontents2 > p {
+    font-size: 30px;
+    font-weight: bold;
+
+    position: absolute;
+
+    left: 25%;
+    top: 10%;
+}
+
+.kcontents1 > div, .kcontents2 > div {
+    background-color: blue;
+
+    width: 700px;
+    height: 500px;
+
+    position: absolute;
+
+    left: 35%;
+    top: 20%;
+}
