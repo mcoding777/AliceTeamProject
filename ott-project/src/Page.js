@@ -4,6 +4,16 @@ import Kcontents from './Kcontents';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+const PageP = styled.p`
+    font-size: 60px;
+    font-weight: bold;
+
+    position: absolute;
+
+    left: 40%;
+    bottom: 50%;
+`;
+
 function Page() {
 
     const [category, setCategory] = useState({});
@@ -34,15 +44,7 @@ function Page() {
 
     function renderChecked() {
         if (Object.keys(category) == false || Object.keys(review) == false) {
-            const PageP = styled.p`
-                font-size: 60px;
-                font-weight: bold;
-            
-                position: absolute;
-            
-                left: 40%;
-                bottom: 50%;
-            `;
+            // PageP를 여기에 넣으면 오류가 생긴다!! 예상보다 적은 후크가 뭐지??
             return (
                 <article className='page'>
                     <PageP>원하는 분류를 선택하세요.</PageP>
