@@ -1,4 +1,3 @@
-import './css/Page.css';
 import MenuBox from './MenuBox';
 import Market from './Market';
 import Kcontents from './Kcontents';
