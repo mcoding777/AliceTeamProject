@@ -1,8 +1,7 @@
-
 import styled from "styled-components";
 
-// 빨간 버튼 컴포넌트
 function Button(props) {
+
     const RedButton = styled.button`
         width: 250px;
         height: 70px;
@@ -25,7 +24,7 @@ function Button(props) {
     `;
 
     return (
-        <RedButton type="button" className='button'>{props.text}</RedButton>
+        <RedButton>{props.text}</RedButton>
     )
 }
 
