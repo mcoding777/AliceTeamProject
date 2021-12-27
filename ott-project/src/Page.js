@@ -2,6 +2,7 @@ import './css/Page.css';
 import MenuBox from './MenuBox';
 import Market from './Market';
 import Kcontents from './Kcontents';
+import styled from 'styled-components';
 import { useState } from 'react';
 
 function Page() {
@@ -34,9 +35,18 @@ function Page() {
 
     function renderChecked() {
         if (Object.keys(category) == false || Object.keys(review) == false) {
+            const PageP = styled.p`
+                font-size: 60px;
+                font-weight: bold;
+            
+                position: absolute;
+            
+                left: 40%;
+                bottom: 50%;
+            `;
             return (
                 <article className='page'>
-                    <p>원하는 분류를 선택하세요.</p>
+                    <PageP>원하는 분류를 선택하세요.</PageP>
                 </article>
                 )}
         else if (review.market) {
