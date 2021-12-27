@@ -38,7 +38,7 @@
     background-color: blue;
 }
 
-.how_to_use1 .arrow {
+.how_to_use1 #arrow {
     margin-top: 400px;
 }
 
@@ -62,11 +62,11 @@
     right: 10%;
 }
 
-.how_to_use2 .arrow {
+.how_to_use2 #arrow {
     margin-top: 430px;
 }
 
-.how_to_use2 .arrow::before {
+.how_to_use2 #arrow::before {
     transform: rotate(-45deg);
 
     animation: upArrow 1.5s ease-out infinite;

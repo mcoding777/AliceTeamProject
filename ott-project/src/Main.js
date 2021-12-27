@@ -12,7 +12,7 @@ function Main() {
                 <Link to="/page">
                     <Button text="시작하기" />
                 </Link>
-                <div className='arrow' />
+                <div id='arrow' />
             </article>
             <article className='how_to_use1'>
                 <p>COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
@@ -20,7 +20,7 @@ function Main() {
                     한국 컨텐츠의 영향력을 분석해드립니다.
                 </p>
                 <div className='covid_table'>표 들어갈 곳</div>
-                <div className='arrow' />
+                <div id='arrow' />
             </article>
             <article className='how_to_use2'>
                 <p>우리 서비스는
@@ -30,7 +30,7 @@ function Main() {
                     효율적인 벤치마킹을 경험해보십시오.
                 </p>
                 <img src="./image/world-map-movie.png" alt="세계지도" className='world_map' />
-                <div className='arrow' />
+                <div id='arrow' />
             </article>
         </main>
     )

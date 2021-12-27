@@ -1,25 +1,45 @@
-.market1, .market2 {
+.marketContainer {
     position: relative;
 }
 
-.market1 > p, .market2 > p {
+.marketContainer .divContainer {
+    position: absolute;
+    top: 5vh;
+    left: 300px;
+
+    width: 1200px;
+    height: 670px;
+}
+
+.marketContainer .divContainer p {
     font-size: 30px;
     font-weight: bold;
 
-    position: absolute;
+    text-align: left;
 
-    left: 25%;
-    top: 10%;
+    margin: 50px 0 0 50px;
 }
 
-.market1 > div, .market2 > div {
+.marketContainer .divContainer .ex {
     background-color: blue;
 
     width: 700px;
-    height: 500px;
+    height: 400px;
 
-    position: absolute;
+    margin: 50px auto;
+}
 
-    left: 35%;
-    top: 20%;
+.marketContainer .divContainer #arrow {
+    left: -100px;
+    top: -30px;
+}
+
+.marketContainer .divContainer #arrow.uparrow {
+    margin-top: 100px;
+}
+
+.marketContainer .divContainer #arrow.uparrow::before {
+    transform: rotate(-45deg);
+
+    animation: upArrow 1.5s ease-out infinite;
 }
