@@ -16,10 +16,15 @@
     background-color: blue;
 
     width: 700px;
-    height: 500px;
+    height: 200px;
 
     position: absolute;
 
     left: 35%;
     top: 20%;
+}
+
+.kcontents1 div img, .kcontents2 div img {
+    width: 20%;
+    height: 100%;
 }
