@@ -1,4 +1,5 @@
 import './css/MenuBox.css';
+import { Link } from 'react-router-dom';
 
 function MenuBox(props) {
 
@@ -43,7 +44,9 @@ function MenuBox(props) {
                     Market : 넷플릭스 시장 현황<br />
                     K-Contents : 한국 컨텐츠 분석
                 </p>
-                <button>처음으로</button>
+                <Link to="/" style={{color: "white"}}>
+                    <button>처음으로</button>
+                </Link>
             </div>
         </nav>
     )
