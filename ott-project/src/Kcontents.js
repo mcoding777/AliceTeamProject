@@ -22,6 +22,7 @@ function Kcontents() {
                         </div>
                         <div className='chartContainer' />
                     </div>
+                    <div id='arrow' />
                 </div>
             </article>
         </>
