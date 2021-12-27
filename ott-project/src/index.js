@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Page from './Page';
+import './css/reset.css';
 import { BrowserRouter,
 Routes,
 Route } from 'react-router-dom';
