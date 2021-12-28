@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-function Button(props) {
-
-    const RedButton = styled.button`
+const RedButton = styled.button`
         width: 250px;
         height: 70px;
     
@@ -23,6 +21,8 @@ function Button(props) {
         cursor: pointer;
     `;
 
+
+function Button(props) {
     return (
         <RedButton>{props.text}</RedButton>
     )
