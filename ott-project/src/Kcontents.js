@@ -16,9 +16,9 @@ function Kcontents() {
                     <div className='scoreContainer'>
                         <div className='starContainer'>
                             <p>SCORE <span>★★★★★</span></p>
-                            <p>AWORD <span>★★★★★</span></p>
+                            <p>AWARD <span>★★★★★</span></p>
                             <p>GLOBAL <span>★★★★★</span></p>
-                            <p>TOPIC <span>★★★★★</span></p>
+                            <p>POPULARITY <span>★★★★★</span></p>
                         </div>
                         <div className='chartContainer' />
                     </div>

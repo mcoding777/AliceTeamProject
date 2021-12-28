@@ -28,18 +28,21 @@
 
 /* How To Use1 페이지*/
 .how_to_use1 .covid_table {
-    width: 500px;
-    height: 300px;
+    width: 700px;
+    height: 400px;
 
     position: absolute;
-    top: 30%;
-    right: 10%;
+    top: 250px;
+    left: 400px;
 
-    background-color: blue;
+    background-color: white;
+
+    padding: 50px;
+    box-sizing: border-box;
 }
 
 .how_to_use1 #arrow {
-    margin-top: 400px;
+    margin-top: 450px;
 }
 
 
