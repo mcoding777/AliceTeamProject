@@ -1,14 +1,5 @@
-.marketContainer {
-    position: relative;
-}
-
 .marketContainer .divContainer {
-    position: absolute;
-    top: 5vh;
-    left: 300px;
-
-    width: 1200px;
-    height: 670px;
+    margin-left: 300px;
 }
 
 .marketContainer .divContainer p {
@@ -17,7 +8,7 @@
 
     text-align: left;
 
-    margin: 50px 0 0 50px;
+    margin: 70px 0 0 50px;
 }
 
 .marketContainer .divContainer .releaseContainer {
@@ -25,21 +16,6 @@
 
     width: 700px;
 
-    margin: 50px auto;
+    margin: 50px auto 0;
     padding: 50px;
-}
-
-.marketContainer .divContainer #arrow {
-    left: -100px;
-    top: -30px;
-}
-
-.marketContainer .divContainer #arrow.uparrow {
-    margin-top: 100px;
-}
-
-.marketContainer .divContainer #arrow.uparrow::before {
-    transform: rotate(-45deg);
-
-    animation: upArrow 1.5s ease-out infinite;
 }

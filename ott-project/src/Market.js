@@ -1,4 +1,5 @@
 import './css/Market.css';
+import Arrow from './Arrow';
 import 'chart.js/auto'
 import { Chart } from 'react-chartjs-2'
 
@@ -11,6 +12,7 @@ function Market() {
                     <ReleaseChart />
                     <div id='arrow' />
                 </div>
+                <Arrow direction="down" />
             </article>
             <article className='marketContainer'>
                 <div className='divContainer'>
