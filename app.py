@@ -1,15 +1,15 @@
 from flask import Flask
+from flask_restx import Resource, Api
 
 app = Flask(__name__)
+api = Api(app)
 
 
-@app.route("/")
-def hello():
-    return "안녕하세요!"
+@api.route('/hello')
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
-
-# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:devpass@127.0.0.1:3306/board"
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
