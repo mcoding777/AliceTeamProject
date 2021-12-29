@@ -1,5 +1,7 @@
 .marketContainer .divContainer {
+
     margin-left: 300px;
+    padding: 70px 0 0 0;
 }
 
 .marketContainer .divContainer p {
@@ -8,7 +10,7 @@
 
     text-align: left;
 
-    margin: 70px 0 0 50px;
+    margin: 0 0 0 50px;
 }
 
 .marketContainer .divContainer .releaseContainer {
@@ -18,4 +20,14 @@
 
     margin: 50px auto 0;
     padding: 50px;
+}
+
+.marketContainer .divContainer .genreContainer {
+    width: 600px;
+    height: 400px;
+  
+    margin: 50px auto 50px;
+    padding: 30px;
+  
+    background-color: white;
 }

@@ -9,7 +9,7 @@ function Arrow({direction}) {
 
 export default Arrow;
 
-
+// styled-components
 const Uparrow = keyframes`
     0% {
     opacity: 0;

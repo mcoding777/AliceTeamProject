@@ -4,16 +4,6 @@ import Kcontents from './Kcontents';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-const PageP = styled.p`
-    font-size: 60px;
-    font-weight: bold;
-
-    position: absolute;
-
-    left: 40%;
-    bottom: 50%;
-`;
-
 function Page() {
 
     const [category, setCategory] = useState({});
@@ -72,3 +62,14 @@ function Page() {
 }
 
 export default Page;
+
+// styled-components
+const PageP = styled.p`
+    font-size: 60px;
+    font-weight: bold;
+
+    position: absolute;
+
+    left: 40%;
+    bottom: 50%;
+`;
