@@ -12,7 +12,9 @@ function Kcontents() {
                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5401%2F2020%2F04%2F24%2F0000203788_001_20200424173638369.jpg&type=sc960_832" alt="연애의참견" />
                         <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F382%2F2021%2F11%2F26%2F0000947350_001_20211126091001891.jpg&type=sc960_832" alt="고요의바다" />
                     </div>
-                    <p className='pContainer'>Action 컨텐츠는 모든 점수가 우수합니다!</p>
+                    <p className='pContainer'>
+                        A class 는 종합평점 4점이상으로 전체 컨텐츠중 1% 비중으로 7개의 컨텐츠가 있습니다.
+                    </p>
                     <div className='scoreContainer'>
                         <div className='starContainer'>
                             <p>SCORE <span>★★★★★</span></p>

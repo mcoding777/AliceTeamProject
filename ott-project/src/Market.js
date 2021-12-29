@@ -1,6 +1,15 @@
 import './css/Market.css';
 import Arrow from './Arrow';
-import { Chart } from 'chart.js'
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -30,6 +39,17 @@ function Market() {
 export default Market;
 
 // styled-components
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
 function ReleaseChart() {
 
     const data = {
@@ -55,7 +75,7 @@ function ReleaseChart() {
 
 function GenreChart() {
 
-    Chart.register(ChartDataLabels);
+    // Chart.register(ChartDataLabels); 글로벌 플러그인
 
     const data = {
         labels: ['Action', 'Drama', 'Comedy', 'Crime', 'etc'],
@@ -64,7 +84,13 @@ function GenreChart() {
             label: "장르 분포도",
             borderColor: 'white',
             borderWidth: 1,
-            backgroundColor: ["red", "orange", "yellow", "green", "blue"],
+            backgroundColor: [
+                "#fd536d",
+                "#ff8957",
+                "#eed054",
+                "#cbd84a",
+                "#00c182",
+            ],
             data: [25, 20, 25, 15, 15],
         },
         ],
@@ -93,6 +119,7 @@ function GenreChart() {
                     font: {
                         size: 20,
                     },
+                    color: "white",
                 },
             },
         },
@@ -100,7 +127,11 @@ function GenreChart() {
 
 return (
     <div className='genreContainer'>
-        <Pie data={data} options={options} />
+        <Pie 
+            data={data} 
+            options={options} 
+            plugins={[ChartDataLabels]} 
+        />
     </div>
 )
 }
