@@ -3,3 +3,5 @@
 .gitlab/merge_request_templates
 .vscode
 .DS_Store
+.ipynb_checkpoints
+.gitlab
