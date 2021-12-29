@@ -55,6 +55,8 @@ function ReleaseChart() {
 
 function GenreChart() {
 
+    Chart.register(ChartDataLabels);
+
     const data = {
         labels: ['Action', 'Drama', 'Comedy', 'Crime', 'etc'],
         datasets: [
