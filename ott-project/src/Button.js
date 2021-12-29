@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+function Button(props) {
+    return (
+        <RedButton>{props.text}</RedButton>
+    )
+}
+
+export default Button;
+
+// styled-components
 const RedButton = styled.button`
         width: 250px;
         height: 70px;
@@ -20,12 +29,3 @@ const RedButton = styled.button`
     
         cursor: pointer;
     `;
-
-
-function Button(props) {
-    return (
-        <RedButton>{props.text}</RedButton>
-    )
-}
-
-export default Button;
