@@ -1,9 +1,46 @@
 import styled, { keyframes } from 'styled-components';
 
+function Arrow({direction}) {
+    return (
+        <ScrollArrow direction={direction} />
+    )
+}
+
+
+export default Arrow;
+
+
+const Uparrow = keyframes`
+    0% {
+    opacity: 0;
+    }
+    50% {
+    opacity: 1;
+    }
+    100% {
+    opacity: 0;
+    margin-top: -10px;
+    }
+`;
+
+const Downarrow = keyframes`
+    0% {
+    opacity: 0;
+    }
+    50% {
+    opacity: 1;
+    }
+    100% {
+    opacity: 0;
+    margin-top: 10px;
+    }
+`;
+
 const ScrollArrow = styled.div`
     position: relative;
 
-    margin-top: 70px;
+    height: 50px;
+    margin-top: 30px;
 
     &::before {
         content: "";
@@ -17,43 +54,8 @@ const ScrollArrow = styled.div`
         border-top: 5px solid white;
         border-right: 5px solid white;
 
-        transform: rotate(135deg);
+        transform: rotate(${props => props.direction === "up" ? "-45deg" : "135deg"});
 
-        animation: ${props => props.direction} 1.5s ease-out infinite;
+        animation: ${props => props.direction === "up" ? Uparrow: Downarrow} 1.5s ease-out infinite;
     }
 `;
-
-const downarrow = keyframes`
-    0% {
-    opacity: 0;
-    }
-    50% {
-    opacity: 1;
-    }
-    100% {
-    opacity: 0;
-    margin-top: 10px;
-    }
-`;
-
-const uparrow = keyframes`
-    0% {
-    opacity: 0;
-    }
-    50% {
-    opacity: 1;
-    }
-    100% {
-    opacity: 0;
-    margin-top: -10px;
-    }
-`;
-
-function Arrow(props) {
-
-    return (
-        <ScrollArrow direction={props.direction} />
-    )
-}
-
-export default Arrow;

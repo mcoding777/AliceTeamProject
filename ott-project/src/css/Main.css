@@ -1,3 +1,4 @@
+/* Main 페이지 */
 .main .logo {
     width: 235px;
     height: 60px;
@@ -12,41 +13,26 @@
     line-height: 90px;
 }
 
-
-/* How To Use 페이지 (상속)*/
-.how_to_use1, .how_to_use2 {
-    position: relative;
-}
+/* How To Use 페이지 */
 .how_to_use1 p, .how_to_use2 p {
     padding: 100px 0 0 100px;
+    margin-bottom: 30px;
 
     font-size: 30px;
     font-weight: 500;
     text-align: start;
 }
 
-
-/* How To Use1 페이지*/
 .how_to_use1 .covid_table {
     width: 700px;
-    height: 400px;
-
-    position: absolute;
-    top: 250px;
-    left: 400px;
 
     background-color: white;
 
     padding: 50px;
+    margin: auto;
     box-sizing: border-box;
 }
 
-.how_to_use1 #arrow {
-    margin-top: 450px;
-}
-
-
-/* How To Use2 페이지*/
 .how_to_use2 .logo {
     display: inline-block;
 
@@ -57,20 +43,6 @@
 }
 
 .how_to_use2 .world_map {
-    width: 1000px;
-    height: 500px;
-
-    position: absolute;
-    top: 25%;
-    right: 10%;
-}
-
-.how_to_use2 #arrow {
-    margin-top: 430px;
-}
-
-.how_to_use2 #arrow::before {
-    transform: rotate(-45deg);
-
-    animation: upArrow 1.5s ease-out infinite;
+    width: 900px;
+    height: 400px;
 }
