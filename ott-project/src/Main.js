@@ -49,7 +49,7 @@ function CovidChart() {
         datasets: [
           {
             type: 'line',
-            label: '영화관 관객수',
+            label: '영화관 매출액',
             borderColor: 'rgb(54, 162, 235)',
             borderWidth: 2,
             data: [219876227, 216385269, 226678777, 59524093, 59540088],
@@ -58,7 +58,7 @@ function CovidChart() {
           },
           {
             type: 'line',
-            label: 'OTT 구독자수',
+            label: '넷플릭스 매출액',
             borderColor: 'rgb(255, 99, 132)',
             borderWidth: 2,
             data: [11692.71, 15794.34, 20156.45, 24996.06, 21988.53],
