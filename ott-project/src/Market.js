@@ -90,6 +90,9 @@ function GenreChart() {
                 labels: {
                     padding: 30, // 범례 사이 간격 : 상하는 조절할 수 없다!
                     usePointStyle: true,
+                    font: {
+                        size: 20,
+                    },
                 },
             },
         },
