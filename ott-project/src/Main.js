@@ -7,6 +7,13 @@ import { Chart } from 'react-chartjs-2'
 
 // 첫 메인화면 컴포넌트
 function Main() {
+
+    const getCorona = async () => {
+        const corona = await fetch(`http://13.58.124.132/corona`);
+        const corona_json = await corona.json();
+        console.log(corona_json[0]);
+    }
+
     return (
         <main>
             <article className='main'>
