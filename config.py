@@ -8,4 +8,4 @@ aws_db = {
 }
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://sebas:sebaschan@sebas-db.cwtjdyjp19qi.us-east-2.rds.amazonaws.com/Sebas?charset=utf8"
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://sebas:sebaschan@sebas-db.cwtjdyjp19qi.us-east-2.rds.amazonaws.com:3306/Sebas?charset=utf8"

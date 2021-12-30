@@ -1,5 +1,7 @@
 from flask import Flask
-from db_connect import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 
 class Corona(db.Model):
