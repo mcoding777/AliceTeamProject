@@ -64,9 +64,9 @@ function TotalChart() {
       datasets: [
         {
           label: '종합지표',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          borderColor: '#8E0505',
           borderWidth: 2,
-          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          backgroundColor: 'rgba(142, 5, 5, 0.2)',
           data: [5, 4, 3, 5],
         },
       ],

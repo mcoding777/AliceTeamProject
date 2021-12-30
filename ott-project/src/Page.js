@@ -1,6 +1,6 @@
 import MenuBox from './MenuBox';
 import Market from './Market';
-import Kcontents from './Kcontents';
+import KCard from './KCard';
 import styled from 'styled-components';
 import { useState } from 'react';
 
@@ -58,7 +58,7 @@ function Page() {
         else if (renderMarketFlag) {
                 return <Market />}
         else if (renderKcontentsFlag) {
-                return <Kcontents />}
+                return <KCard />}
     }
 
     // 선택한 분류 확인해보기

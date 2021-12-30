@@ -50,7 +50,7 @@ function CovidChart() {
           {
             type: 'line',
             label: '영화관 매출액',
-            borderColor: 'rgb(54, 162, 235)',
+            borderColor: '#F05454',
             borderWidth: 2,
             data: [219876227, 216385269, 226678777, 59524093, 59540088],
             tension: 0.5,
@@ -59,7 +59,7 @@ function CovidChart() {
           {
             type: 'line',
             label: '넷플릭스 매출액',
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: '#30475E',
             borderWidth: 2,
             data: [11692.71, 15794.34, 20156.45, 24996.06, 21988.53],
             tension: 0.5,
