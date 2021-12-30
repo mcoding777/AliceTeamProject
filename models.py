@@ -2,9 +2,9 @@ from flask import Flask
 from db_connect import db
 
 
-class HowtoUse(db.Model):
-    __table__name = 'HowtoUse'
-    year = db.Column(db.Integer, primary_key=True, nullable=False)
+class Corona(db.Model):
+    __table__name = 'Corona'
+    years = db.Column(db.Integer, primary_key=True, nullable=False)
     movie_cost = db.Column(db.Integer, nullable=False)
     ott_cost = db.Column(db.BigInteger, nullable=False)
 

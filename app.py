@@ -1,9 +1,10 @@
-from models import HowtoUse
+
 import pymysql
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
 from db_connect import db
-from models import HowtoUse
+from models import Corona
 import config
 
 app = Flask(__name__)
@@ -14,9 +15,11 @@ app.config.from_object(config)
 
 
 @api.route('/corona')
-class corona(Resource):
+class Coronahandler(Resource):
     def get(self):
-        data = HowtoUse.query.order_by(HowtoUse.year.desc()).all()
+        data = db.session.query(Corona).all()
+        print("오빠 사랑해요~")
+        print(data)
         return {'corona_list': data}
 
 
