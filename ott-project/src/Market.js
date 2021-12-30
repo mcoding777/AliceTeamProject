@@ -100,7 +100,7 @@ function GenreChart() {
         maintainAspectRatio: false, // 가로 세로 비율 고정을 어떻게 할 것인가?
         plugins: {
             datalabels: {
-                backgroundColor: "black",
+                backgroundColor: "#2D0000",
                 borderRadius: 5,
                 padding: 10,
                 color: 'white',

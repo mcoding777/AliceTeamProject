@@ -8,7 +8,9 @@ function Page() {
 
     const [category, setCategory] = useState({});
     const [review, setReview] = useState({});
-    const renderCheck = renderChecked();
+    const [renderMarketFlag, setRenderMarketFlag] = useState(false);
+    const [renderKcontentsFlag, setRenderKcontentsFlag] = useState(false);
+    const renderResult = renderResults();
 
     function getCategory(value) {
         setCategory(() => {
@@ -32,30 +34,42 @@ function Page() {
         })
     }
 
-    function renderChecked() {
+    function getResult() {
         if (Object.keys(category) == false || Object.keys(review) == false) {
-            // PageP를 여기에 넣으면 오류가 생긴다!! 예상보다 적은 후크가 뭐지??
+            alert("선택하지않은 항목이 있습니다.");
+        }
+        else if (review.market) {
+            setRenderKcontentsFlag(false);
+            setRenderMarketFlag(true);
+        }
+        else if (review.kcontents) {
+            setRenderKcontentsFlag(true);
+            setRenderMarketFlag(false);
+        }
+    }
+
+    function renderResults() {
+        if (renderMarketFlag === false && renderKcontentsFlag === false) {
             return (
                 <article className='page'>
                     <PageP>원하는 분류를 선택하세요.</PageP>
                 </article>
                 )}
-        else if (review.market) {
-            return <Market />}
-        else if (review.kcontents) {
-            return <Kcontents />}
+        else if (renderMarketFlag) {
+                return <Market />}
+        else if (renderKcontentsFlag) {
+                return <Kcontents />}
     }
 
     // 선택한 분류 확인해보기
     console.log(`카테고리는 ${category.movie ? "movie" : "tv"}를 선택했습니다`);
     console.log(`리뷰는 ${review.market ? "market" : "kcontents"}를 선택했습니다`);
-    console.log(renderCheck);
 
     return (
         <>
-        <MenuBox category={getCategory} review={getReview} />
+        <MenuBox category={getCategory} review={getReview} result={getResult} />
         <main>
-            {renderCheck}
+            {renderResult}
         </main>
         </>
     )

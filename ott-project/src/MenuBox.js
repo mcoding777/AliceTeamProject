@@ -11,25 +11,49 @@ function MenuBox(props) {
         props.review(event.target.value);
     }
 
+    function getHandleResult() {
+        props.result();
+    }
+
     return (
         <nav>
             <div className='menubox'>
                 <p>CATEGORY</p>
                 <div>
                     <label>
-                        <input type="radio" name="category" value="movie" onClick={getCategoryValue} /> Movie
+                        <input 
+                            type="radio" 
+                            name="category" 
+                            value="movie" 
+                            onClick={getCategoryValue} 
+                        /> Movie
                     </label>
                     <label>
-                        <input type="radio" name="category" value="tv" onClick={getCategoryValue} /> TV Series
+                        <input 
+                            type="radio" 
+                            name="category" 
+                            value="tv" 
+                            onClick={getCategoryValue} 
+                        /> TV Series
                     </label>
                 </div> 
                 <p>REVIEW</p>
                 <div>
                     <label>
-                        <input type="radio" name="review" value="market" onClick={getReviewValue} /> Market
+                        <input 
+                            type="radio" 
+                            name="review" 
+                            value="market" 
+                            onClick={getReviewValue} 
+                        /> Market
                     </label>
                     <label>
-                        <input type="radio" name="review" value="kcontents" onClick={getReviewValue} /> K-Contents
+                        <input 
+                            type="radio" 
+                            name="review" 
+                            value="kcontents" 
+                            onClick={getReviewValue} 
+                        /> K-Contents
                     </label>
                 </div>
                 <p className='tip'>
@@ -44,6 +68,10 @@ function MenuBox(props) {
                     Market : 넷플릭스 시장 현황<br />
                     K-Contents : 한국 컨텐츠 분석
                 </p>
+                <button 
+                    style={{marginRight:"10px"}}
+                    onClick={getHandleResult} 
+                >결과보기</button>
                 <Link to="/" style={{color: "white"}}>
                     <button>처음으로</button>
                 </Link>
