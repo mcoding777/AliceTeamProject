@@ -10,10 +10,8 @@ class Corona(db.Model):
     movie_cost = db.Column(db.Integer, nullable=False)
     ott_cost = db.Column(db.BigInteger, nullable=False)
 
-    def __init__(self, year, movie_cost, ott_cost):
-        self.year = year
-        self.movie_cost = movie_cost
-        self.ott_cost = ott_cost
+    def serialize(self):
+        return {"years": self.years, "movie_cost": self.movie_cost, "ott_cost": self.ott_cost}
 
 
 class Contents(db.Model):

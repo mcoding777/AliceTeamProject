@@ -20,10 +20,8 @@ def create_app():
     class Coronahandler(Resource):
         def get(self):
             data = Corona.query.all()
-            result = [_data.serialize() for _data in data]
-            print(data[0])
-            print(result)
-            return jsonify(result=result)
+            result = [r.serialize() for r in data]
+            return make_response(jsonify(result), 200)
 
     return app
 
