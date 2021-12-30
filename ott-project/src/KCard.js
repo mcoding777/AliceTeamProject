@@ -1,14 +1,20 @@
 import styled, { keyframes } from 'styled-components';
 
 function KCard() {
+
+    function getTitle(event) {
+        const title = event.target.title;
+        console.log(title);
+    }
+
     return (
         <>
             <Article>
                 <ClassDiv>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div title="A" onClick={getTitle}></div>
+                    <div title="B"></div>
+                    <div title="C"></div>
+                    <div title="D"></div>
                 </ClassDiv>
             </Article>
         </>
@@ -54,6 +60,8 @@ const ClassDiv = styled.div`
         background-color: #DFD3C3;
 
         border-radius: 30px;
+
+        cursor: pointer;
 
         animation: ${FadeIn} 0.5s ease-in;
     }
