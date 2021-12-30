@@ -4,10 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
 from models import Corona, db
 import config
+app = Flask(__name__)
 
 
 def create_app():
-    app = Flask(__name__)
     api = Api(app)
     app.secret_key = "secret!key"
     # Config 설정
