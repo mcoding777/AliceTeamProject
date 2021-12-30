@@ -1,5 +1,4 @@
 import './css/Kcontents.css';
-import MenuBox from './MenuBox';
 import Arrow from './Arrow';
 import {
     Chart as ChartJS,
@@ -49,7 +48,6 @@ function Kcontents() {
 export default Kcontents;
 
 // 차트
-
 ChartJS.register(
     CategoryScale,
     LinearScale,

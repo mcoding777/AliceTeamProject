@@ -1,6 +1,7 @@
 import MenuBox from './MenuBox';
 import Market from './Market';
 import KCard from './KCard';
+import Kcontents from './Kcontents';
 import styled from 'styled-components';
 import { useState } from 'react';
 
