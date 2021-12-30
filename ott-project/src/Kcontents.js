@@ -1,4 +1,15 @@
 import './css/Kcontents.css';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+import { Radar } from 'react-chartjs-2'
 
 function Kcontents() {
     return (
@@ -22,7 +33,7 @@ function Kcontents() {
                             <p>GLOBAL <span>★★★★★</span></p>
                             <p>POPULARITY <span>★★★★★</span></p>
                         </div>
-                        <div className='chartContainer' />
+                        <TotalChart />
                     </div>
                     <div id='arrow' />
                 </div>
@@ -32,3 +43,52 @@ function Kcontents() {
 }
 
 export default Kcontents;
+
+// 차트
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
+function TotalChart() {
+
+    const data = {
+      labels: ['SCORE', 'AWARD', 'GLOBAL', 'POPULARITY'],
+      datasets: [
+        {
+          label: '종합지표',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2,
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          data: [5, 4, 3, 5],
+        },
+      ],
+    };
+
+    const options = {
+        maintainAspectRatio: false, // 가로 세로 비율 고정을 어떻게 할 것인가?
+        scales: {
+            r: { // 좌표값
+              beginAtZero: true, // 0부터 시작할까?
+              max: 5,
+            }
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+        },
+    }
+  
+    return (
+        <div className='totalContainer'>
+            <Radar data={data} options={options} />
+        </div>
+    )
+  }

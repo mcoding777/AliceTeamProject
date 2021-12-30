@@ -71,10 +71,13 @@
     vertical-align: 10%;
 }
 
-.kcontents .chartContainer {
-    background-color: yellow;
-
-    width: 50%;
+.kcontents .totalContainer {
+    width: 470px;
+    height: 250px;
+  
+    padding: 10px;
+  
+    background-color: white;
 }
 
 .kcontents .divContainer #arrow {

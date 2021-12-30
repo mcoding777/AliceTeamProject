@@ -38,7 +38,7 @@ function Market() {
 
 export default Market;
 
-// styled-components
+// 차트
 
 ChartJS.register(
     CategoryScale,
