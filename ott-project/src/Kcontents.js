@@ -43,6 +43,7 @@ function Kcontents() {
                 </article>
                 <article className='wordcloudContainer'>
                     <div>
+                        <p>A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!</p>
                         <img src={word_cloud} alt="워드클라우드" />
                     </div>
                 </article>
