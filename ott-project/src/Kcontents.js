@@ -11,6 +11,7 @@ import {
     Legend,
   } from 'chart.js';
 import { Radar } from 'react-chartjs-2'
+import word_cloud from './image/word_cloud.jpg';
 
 function Kcontents() {
     return (
@@ -39,6 +40,11 @@ function Kcontents() {
                         </div>
                     </div>
                     <Arrow />
+                </article>
+                <article className='wordcloudContainer'>
+                    <div>
+                        <img src={word_cloud} alt="워드클라우드" />
+                    </div>
                 </article>
             </main>
         </>
