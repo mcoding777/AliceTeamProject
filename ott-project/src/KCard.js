@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 function KCard() {
     return (
@@ -19,6 +19,15 @@ export default KCard;
 
 
 /* styled-components */
+const FadeIn = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
+
 const Article = styled.article`
     padding: 5vh 70px 6vh 300px;
 
@@ -45,6 +54,8 @@ const ClassDiv = styled.div`
         background-color: #DFD3C3;
 
         border-radius: 30px;
+
+        animation: ${FadeIn} 0.5s ease-in;
     }
 `;
 
