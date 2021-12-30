@@ -1,15 +1,8 @@
-.kcontents {
-    position: relative;
-}
-
 .kcontents .divContainer {
-    position: absolute;
-
-    top: 5vh;
-    left: 300px;
-
     width: 1200px;
-    height: 670px;
+    height: 570px;
+
+    margin-left: 300px;
 }
 
 .kcontents .posterContainer {
@@ -19,14 +12,14 @@
     display: flex;
     justify-content: space-between;
 
-    margin: 30px auto;
+    margin: 50px auto;
 }
 
 .kcontents .pContainer {
     font-size: 25px;
     font-weight: bold;
 
-    margin: 30px auto;
+    margin: 50px auto;
 }
 
 .kcontents .scoreContainer {
@@ -51,7 +44,7 @@
     width: 90%;
     height: 60px;
 
-    padding: 5px 30px 0 30px;
+    padding: 7px 30px 0 30px;
 
     box-sizing: border-box;
     text-align: left;
@@ -67,8 +60,6 @@
 
 .kcontents .scoreContainer .starContainer p span {
     color: yellow;
-
-    vertical-align: 10%;
 }
 
 .kcontents .totalContainer {
@@ -78,9 +69,4 @@
     padding: 10px;
   
     background-color: white;
-}
-
-.kcontents .divContainer #arrow {
-    left: -50px;
-    top: -50px;
 }

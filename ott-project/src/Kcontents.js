@@ -1,4 +1,5 @@
 import './css/Kcontents.css';
+import Arrow from './Arrow';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -35,8 +36,8 @@ function Kcontents() {
                         </div>
                         <TotalChart />
                     </div>
-                    <div id='arrow' />
                 </div>
+                <Arrow />
             </article>
         </>
     )
