@@ -1,7 +1,6 @@
 import MenuBox from './MenuBox';
 import Market from './Market';
-import KCard from './KCard';
-import Kcontents from './Kcontents';
+import ClassCard from './ClassCard';
 import styled from 'styled-components';
 import { useState } from 'react';
 
@@ -28,7 +27,7 @@ function Page() {
             return <Market category={result.category} />
         }
         else if (result.review === "kcontents") {
-            return <KCard category={result.category} />}
+            return <ClassCard category={result.category} />}
         
         return (
             <article className='page'>

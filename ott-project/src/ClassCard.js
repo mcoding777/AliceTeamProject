@@ -1,22 +1,52 @@
+import { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Kcontents from './Kcontents';
 
-function KCard() {
+function ClassCard() {
+
+    const [getClass, setGetClass] = useState("");
+    const renderResult = renderResults();
+
+    function handleGetClass(event) {
+        setGetClass(event.target.title);
+    }
+
+    // 선택한 항목에 따라 페이지를 렌더링해주는 함수
+    function renderResults() {
+        if (getClass === "") {
+            return (
+                <Article>
+                    <ClassDivContainer>
+                        <ClassDiv title="A" onClick={handleGetClass}>
+                            <span>A Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="B" onClick={handleGetClass}>
+                            <span>B Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="C" onClick={handleGetClass}>
+                            <span>C Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="D" onClick={handleGetClass}>
+                            <span>D Class</span>
+                        </ClassDiv>
+                    </ClassDivContainer>
+                </Article>
+            )
+        }
+        else {
+            return <Kcontents />}
+    }
+
+    console.log(`카드는 ${getClass} 클래스를 선택하셨습니다`);
 
     return (
         <>
-            <Article>
-                <ClassDivContainer>
-                    <ClassDiv title="A"><span>A Class</span></ClassDiv>
-                    <ClassDiv title="B"><span>B Class</span></ClassDiv>
-                    <ClassDiv title="C"><span>C Class</span></ClassDiv>
-                    <ClassDiv title="D"><span>D Class</span></ClassDiv>
-                </ClassDivContainer>
-            </Article>
+            {renderResult}
         </>
     )
 }
 
-export default KCard;
+export default ClassCard;
 
 
 /* styled-components */
