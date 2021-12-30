@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, make_response
+from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
 from models import Corona, db
@@ -11,6 +12,7 @@ def create_app():
     app.secret_key = "secret!key"
     # Config 설정
     app.config.from_object(config)
+    CORS(app)
     db.init_app(app)
 
     # with app.app_context():
