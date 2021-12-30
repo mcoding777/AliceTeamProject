@@ -2,20 +2,20 @@ import styled, { keyframes } from 'styled-components';
 
 function KCard() {
 
-    function getTitle(event) {
-        const title = event.target.title;
-        console.log(title);
-    }
+    const img1 = "";
+    const img2 = "";
+    const img3 = "";
+    const img4 = "";
 
     return (
         <>
             <Article>
-                <ClassDiv>
-                    <div title="A" onClick={getTitle}></div>
-                    <div title="B"></div>
-                    <div title="C"></div>
-                    <div title="D"></div>
-                </ClassDiv>
+                <ClassDivContainer>
+                    <ClassDiv title="A">A Class</ClassDiv>
+                    <ClassDiv title="B">B Class</ClassDiv>
+                    <ClassDiv title="C">C Class</ClassDiv>
+                    <ClassDiv title="D">D Class</ClassDiv>
+                </ClassDivContainer>
             </Article>
         </>
     )
@@ -40,7 +40,7 @@ const Article = styled.article`
     box-sizing: border-box;
 `;
 
-const ClassDiv = styled.div`
+const ClassDivContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -52,19 +52,24 @@ const ClassDiv = styled.div`
 
     padding: 30px;
     box-sizing: border-box;
+`;
 
-    & div {
-        width: 500px;
-        height: 290px;
+const ClassDiv = styled.div`
+    width: 500px;
+    height: 290px;
 
-        background-color: #DFD3C3;
+    background-color: #DFD3C3;
 
-        border-radius: 30px;
+    border-radius: 30px;
 
-        cursor: pointer;
+    cursor: pointer;
 
-        animation: ${FadeIn} 0.5s ease-in;
-    }
+    animation: ${FadeIn} 0.5s ease-in;
+
+    font-size: 50px;
+    color: black;
+    text-align: center;
+    line-height: 290px; // 부모 요소 높이와 동일하게 하면 가운데 위치됨
 `;
 
 

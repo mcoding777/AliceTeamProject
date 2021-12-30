@@ -1,18 +1,28 @@
 import './css/MenuBox.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function MenuBox(props) {
 
+    const [category, setCategory] = useState("");
+    const [review, setReview] = useState("");
+
     function getCategoryValue(event) {
-        props.category(event.target.value);
+        setCategory(event.target.value);
     }
 
     function getReviewValue(event) {
-        props.review(event.target.value);
+        setReview(event.target.value);
     }
 
     function getHandleResult() {
-        props.result();
+        if (category === "" || review === "") {
+            alert("선택하지 않은 항목이 있습니다.");
+            props.result("", "");
+        }
+        else {
+            props.result(category, review);
+        }
     }
 
     return (
