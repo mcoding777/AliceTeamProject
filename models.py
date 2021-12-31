@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+# app = Flask(__name__)
 db = SQLAlchemy()
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sebas:sebaschan@sebas-db.cwtjdyjp19qi.us-east-2.rds.amazonaws.com:3306/Sebas?charset=utf8"
 
 
 class Corona(db.Model):
@@ -16,8 +18,9 @@ class Corona(db.Model):
 
 class Contents(db.Model):
     __table__name = 'Contents'
-    id = db.Column(db.Integer, nullable=False, autoincrement=True)
-    name = db.Column(db.String(60), primary_key=True, nullable=False)
+    id = db.Column(db.Integer, nullable=False,
+                   autoincrement=True, primary_key=True,)
+    name = db.Column(db.String(60), nullable=False)
     group_name = db.Column(db.String(10), nullable=False)
     category = db.Column(db.String(10), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
@@ -38,3 +41,8 @@ class Contents(db.Model):
                 "genre": self.genre, "genre2": self.genre2, "actors": self.actors, "summary": self.summary, "year": self.year,
                 "score": self.score, "award": self.award, "global": self._score, "popularity": self.popularity, "total_score": self.total_score,
                 "imdb_url": self.imdb_url, "poster_url": self.poster_url}
+
+
+# db.create_all()
+# if __name__ == "__main__":
+#     app.run(debug=True)
