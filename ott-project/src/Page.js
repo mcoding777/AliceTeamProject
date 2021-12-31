@@ -2,14 +2,16 @@ import MenuBox from './MenuBox';
 import Market from './Market';
 import ClassCard from './ClassCard';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Page() {
     const [result, setResult] = useState({
         category: "",
         review: ""
     });
-    const renderResult = renderResults();
+    const navigate = useNavigate();
+
 
     // MenuBox에서 선택한 항목 가져오는 함수
     function getResult(c, r) {
@@ -21,30 +23,29 @@ function Page() {
         });
     }
 
-    // 선택한 항목에 따라 페이지를 렌더링해주는 함수
+    // 선택한 항목에 따라 페이지를 바꿔주는 함수
     function renderResults() {
         if (result.review === "market") {
-            return <Market category={result.category} />
+            navigate("/market", {state: result});
+            // return <Market category={result.category} />
         }
         else if (result.review === "kcontents") {
-            return <ClassCard category={result.category} />}
-        
-        return (
-            <article className='page'>
-                <PageP>원하는 분류를 선택하세요.</PageP>
-            </article>
-            )
+            navigate("/kcontents");
+            // return <ClassCard category={result.category} />
         }
+    };
 
-    // 선택한 분류 확인해보기
-    console.log(`카테고리는 ${result.category ? "movie" : "tv"}를 선택했습니다`);
-    console.log(`리뷰는 ${result.review ? "market" : "kcontents"}를 선택했습니다`);
+    useEffect(() => {
+        renderResults();
+    }, [result]);
 
     return (
         <>
             <MenuBox result={getResult} />
             <main>
-                {renderResult}
+                <article className='page'>
+                    <PageP>원하는 분류를 선택하세요.</PageP>
+                </article>
             </main>
         </>
     )

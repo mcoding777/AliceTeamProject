@@ -8,6 +8,11 @@ import { useEffect, useState } from 'react';
 
 // 첫 메인화면 컴포넌트
 function Main() {
+
+    useEffect(() => {
+        sessionStorage.clear();
+    }, [])
+
     const [coronas, setCoronas] = useState([]);
 
     const getCorona = async () => {
@@ -106,10 +111,10 @@ function Main() {
                 const { ctx, chartArea : {top, bottom, left, right, width, height} } = chart;
                 ctx.save();
 
-                console.log(left, top, bottom, right, width, height);
+                // console.log(left, top, bottom, right, width, height);
 
                 ctx.fillStyle = 'rgba(142, 5, 5, 0.1)';
-                const leftMid = (width / 2) + left // x축 중간 지점
+                // const leftMid = (width / 2) + left // x축 중간 지점
                 ctx.fillRect(bottom+(width/4)+(left/2), top, width/4, height);
             }
         };
@@ -120,10 +125,6 @@ function Main() {
             </div>
         )
     }
-
-    useEffect(() => {
-        sessionStorage.clear();
-    }, [])
 
     return (
         <main>

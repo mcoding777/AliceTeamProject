@@ -1,5 +1,8 @@
 import './css/Market.css';
+import MenuBox from './MenuBox'
 import Arrow from './Arrow';
+import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -14,24 +17,61 @@ import { Bar, Pie } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 function Market() {
+
+    const [result, setResult] = useState({
+        category: "",
+        review: ""
+    });
+    const navigate = useNavigate();
+
+
+    // MenuBox에서 선택한 항목 가져오는 함수
+    function getResult(c, r) {
+        setResult(current => {
+            const newCurrent = {...current};
+            newCurrent.category = c;
+            newCurrent.review = r;
+            return newCurrent;
+        });
+    }
+
+    // 선택한 항목에 따라 페이지를 바꿔주는 함수
+    function renderResults() {
+        if (result.review === "market") {
+            navigate("/market", {state: result});
+            // return <Market category={result.category} />
+        }
+        else if (result.review === "kcontents") {
+            navigate("/kcontents");
+            // return <ClassCard category={result.category} />
+        }
+    };
+
+    useEffect(() => {
+        renderResults();
+    }, [result]);
+
     return (
         <>
-            <article className='marketContainer'>
-                <div className='divContainer'>
-                    <p>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</p>
-                    <ReleaseChart />
-                    <div id='arrow' />
-                </div>
-                <Arrow direction="down" />
-            </article>
-            <article className='marketContainer'>
-                <div className='divContainer'>
-                    <p>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</p>
-                    <GenreChart />
-                    <div id='arrow' className='uparrow' />
-                </div>
-                <Arrow direction="up" />
-            </article>
+            <MenuBox result={getResult} />
+            <main>
+                <article className='marketContainer'>
+                    <div className='divContainer'>
+                        <p>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</p>
+                        <ReleaseChart />
+                        <div id='arrow' />
+                    </div>
+                    <Arrow direction="down" />
+                </article>
+                <article className='marketContainer'>
+                    <div className='divContainer'>
+                        <p>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</p>
+                        <GenreChart />
+                        <div id='arrow' className='uparrow' />
+                    </div>
+                    <Arrow direction="up" />
+                </article>
+            </main>
         </>
     )
 }
