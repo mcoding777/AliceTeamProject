@@ -16,7 +16,7 @@ class Corona(db.Model):
 
 class Contents(db.Model):
     __table__name = 'Contents'
-    id = db.Column(db.Integer, nullable=False, auto_incrent=True)
+    id = db.Column(db.Integer, nullable=False, autoincrement=True)
     name = db.Column(db.String(60), primary_key=True, nullable=False)
     group_name = db.Column(db.String(10), nullable=False)
     category = db.Column(db.String(10), nullable=False)
