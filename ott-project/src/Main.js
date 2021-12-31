@@ -121,6 +121,10 @@ function Main() {
         )
     }
 
+    useEffect(() => {
+        sessionStorage.clear();
+    }, [])
+
     return (
         <main>
             <article className='main'>

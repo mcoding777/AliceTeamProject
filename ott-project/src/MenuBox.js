@@ -4,14 +4,16 @@ import { useState } from 'react';
 
 function MenuBox(props) {
 
-    const [category, setCategory] = useState("");
-    const [review, setReview] = useState("");
+    const [category, setCategory] = useState(sessionStorage.getItem('category') || "");
+    const [review, setReview] = useState(sessionStorage.getItem('review') || "");
 
     function getCategoryValue(event) {
+        sessionStorage.setItem("category", event.target.value);
         setCategory(event.target.value);
     }
 
     function getReviewValue(event) {
+        sessionStorage.setItem("review", event.target.value);
         setReview(event.target.value);
     }
 
@@ -36,6 +38,7 @@ function MenuBox(props) {
                             name="category" 
                             value="movie" 
                             onClick={getCategoryValue} 
+                            defaultChecked={category === "movie"}
                         /> Movie
                     </label>
                     <label>
@@ -44,6 +47,7 @@ function MenuBox(props) {
                             name="category" 
                             value="tv" 
                             onClick={getCategoryValue} 
+                            defaultChecked={category === "tv"}
                         /> TV Series
                     </label>
                 </div> 
@@ -55,6 +59,7 @@ function MenuBox(props) {
                             name="review" 
                             value="market" 
                             onClick={getReviewValue} 
+                            defaultChecked={review === "market"}
                         /> Market
                     </label>
                     <label>
@@ -63,6 +68,7 @@ function MenuBox(props) {
                             name="review" 
                             value="kcontents" 
                             onClick={getReviewValue} 
+                            defaultChecked={review === "kcontents"}
                         /> K-Contents
                     </label>
                 </div>
