@@ -1,6 +1,5 @@
 import './css/Market.css';
 import Arrow from './Arrow';
-import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
     Chart as ChartJS,
@@ -18,11 +17,10 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 function Market() {
 
     const location = useLocation();
-    console.log(location.state);
-    // const { category, review } = location.pathname
+    const result = location.state;
 
     return (
-        <main>
+        <>
             <article className='marketContainer'>
                 <div className='divContainer'>
                     <p>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</p>
@@ -39,7 +37,7 @@ function Market() {
                 </div>
                 <Arrow direction="up" />
             </article>
-        </main>
+        </>
     )
 }
 

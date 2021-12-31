@@ -1,38 +1,36 @@
 import styled, { keyframes } from 'styled-components';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function ClassCard() {
 
     const location = useLocation();
-    console.log(location.state);
-    // const { category, review } = location.pathname
-    const [getClass, setGetClass] = useState("");
+    const navigate = useNavigate();
+    const result = location.state;
 
-    // 선택한 클래스 저장하는 함수
+    // 선택한 클래스 저장하고 페이지 전환하는 함수
     function handleGetClass(event) {
-        setGetClass(event.target.title);
+        const selectClass = event.target.title;
+        navigate(`/page/kcontents/${selectClass}`, 
+            {state: {...result, selectClass:selectClass}});
     }
 
     return (
-        <main>
-            <Article>
-                <ClassDivContainer>
-                    <ClassDiv title="A" onClick={handleGetClass}>
-                        <span>A Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="B" onClick={handleGetClass}>
-                        <span>B Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="C" onClick={handleGetClass}>
-                        <span>C Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="D" onClick={handleGetClass}>
-                        <span>D Class</span>
-                    </ClassDiv>
-                </ClassDivContainer>
-            </Article>
-        </main>
+        <Article>
+            <ClassDivContainer>
+                <ClassDiv title="A" onClick={handleGetClass}>
+                    <span>A Class</span>
+                </ClassDiv>
+                <ClassDiv title="B" onClick={handleGetClass}>
+                    <span>B Class</span>
+                </ClassDiv>
+                <ClassDiv title="C" onClick={handleGetClass}>
+                    <span>C Class</span>
+                </ClassDiv>
+                <ClassDiv title="D" onClick={handleGetClass}>
+                    <span>D Class</span>
+                </ClassDiv>
+            </ClassDivContainer>
+        </Article>
     )
 }
 

@@ -11,9 +11,16 @@ import {
     Legend,
   } from 'chart.js';
 import { Radar } from 'react-chartjs-2'
+import { useLocation } from 'react-router-dom';
 import word_cloud from './image/word_cloud.jpg';
 
 function Kcontents() {
+
+    const location = useLocation();
+    const result = location.state;
+
+    console.log(result);
+
     return (
         <>
             <main>

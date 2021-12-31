@@ -1,15 +1,11 @@
-import MenuBox from './MenuBox';
 import styled from 'styled-components';
 
 function Page() {
     return (
         <>
-            <MenuBox />
-            <main>
-                <article className='page'>
-                    <PageP>원하는 분류를 선택하세요.</PageP>
-                </article>
-            </main>
+            <article className='page'>
+                <PageP>원하는 분류를 선택하세요.</PageP>
+            </article>
         </>
     )
 }
