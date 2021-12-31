@@ -16,6 +16,7 @@ class Corona(db.Model):
 
 class Contents(db.Model):
     __table__name = 'Contents'
+    id = db.Column(db.Integer, nullable=False, auto_incrent=True)
     name = db.Column(db.String(60), primary_key=True, nullable=False)
     group_name = db.Column(db.String(10), nullable=False)
     category = db.Column(db.String(10), nullable=False)
@@ -32,5 +33,8 @@ class Contents(db.Model):
     imdb_url = db.Column(db.String(200), nullable=False)
     poster_url = db.Column(db.String(200), nullable=False)
 
-    # def __init__(self, name):
-    # self.name = name
+    def serialize(self):
+        return {"id": self.id, "name": self.name, "group_name": self.group_name, "category": self.category,
+                "genre": self.genre, "genre2": self.genre2, "actors": self.actors, "summary": self.summary, "year": self.year,
+                "score": self.score, "award": self.award, "global": self._score, "popularity": self.popularity, "total_score": self.total_score,
+                "imdb_url": self.imdb_url, "poster_url": self.poster_url}
