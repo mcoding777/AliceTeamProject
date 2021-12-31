@@ -20,10 +20,9 @@ function MenuBox(props) {
     function getHandleResult() {
         if (category === "" || review === "") {
             alert("선택하지 않은 항목이 있습니다.");
-            props.result("", "");
         }
         else {
-            props.result(category, review);
+            props.a();
         }
     }
 

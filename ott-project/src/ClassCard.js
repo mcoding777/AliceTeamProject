@@ -1,95 +1,41 @@
-import { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Kcontents from './Kcontents';
-import MenuBox from './MenuBox';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function ClassCard() {
 
+    const location = useLocation();
+    console.log(location.state);
+    // const { category, review } = location.pathname
     const [getClass, setGetClass] = useState("");
-    const renderResult = renderResults();
 
+    // 선택한 클래스 저장하는 함수
     function handleGetClass(event) {
         setGetClass(event.target.title);
     }
 
-    const [result, setResult] = useState({
-        category: "",
-        review: ""
-    });
-    const navigate = useNavigate();
-
-    // MenuBox에서 선택한 항목 가져오는 함수
-    function getResult(c, r) {
-        setResult(current => {
-            const newCurrent = {...current};
-            newCurrent.category = c;
-            newCurrent.review = r;
-            return newCurrent;
-        });
-    }
-
-    // 선택한 항목에 따라 페이지를 바꿔주는 함수
-    function renderResults() {
-        if (result.review === "market") {
-            navigate("/market", {state: result});
-            // return <Market category={result.category} />
-        }
-        else if (result.review === "kcontents") {
-            navigate("/kcontents");
-            // return <ClassCard category={result.category} />
-        }
-    };
-
-    useEffect(() => {
-        renderResults();
-    }, [result]);
-
-    // 선택한 항목에 따라 페이지를 렌더링해주는 함수
-    function renderResults() {
-        if (getClass === "") {
-            return (
-                <>
-                    <MenuBox result={getResult} />
-                    <main>
-                        <Article>
-                            <ClassDivContainer>
-                                <ClassDiv title="A" onClick={handleGetClass}>
-                                    <span>A Class</span>
-                                </ClassDiv>
-                                <ClassDiv title="B" onClick={handleGetClass}>
-                                    <span>B Class</span>
-                                </ClassDiv>
-                                <ClassDiv title="C" onClick={handleGetClass}>
-                                    <span>C Class</span>
-                                </ClassDiv>
-                                <ClassDiv title="D" onClick={handleGetClass}>
-                                    <span>D Class</span>
-                                </ClassDiv>
-                            </ClassDivContainer>
-                        </Article>
-                    </main>
-                </>
-            )
-        }
-        else {
-            return (
-            <>
-                <MenuBox result={getResult} />
-                <Kcontents />
-            </>
-            )
-        }
-    }
-
-    console.log(`카드는 ${getClass} 클래스를 선택하셨습니다`);
-
     return (
-        <>
-            {renderResult}
-        </>
+        <main>
+            <Article>
+                <ClassDivContainer>
+                    <ClassDiv title="A" onClick={handleGetClass}>
+                        <span>A Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="B" onClick={handleGetClass}>
+                        <span>B Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="C" onClick={handleGetClass}>
+                        <span>C Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="D" onClick={handleGetClass}>
+                        <span>D Class</span>
+                    </ClassDiv>
+                </ClassDivContainer>
+            </Article>
+        </main>
     )
 }
+
 
 export default ClassCard;
 
