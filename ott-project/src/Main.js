@@ -30,19 +30,19 @@ function Main() {
             datasets: [
               {
                 type: 'line',
-                label: '영화관 매출액',
+                label: '국내 영화관 매출액',
                 borderColor: '#F05454',
                 borderWidth: 2,
-                data: coronas.map(x => x.movie_cost),
+                data: coronas.map(x => x.movie_cost / 100000000),
                 tension: 0.5,
                 yAxisID: 'y0', // 축 id
               },
               {
                 type: 'line',
-                label: '넷플릭스 매출액',
+                label: '넷플릭스 코리아 매출액',
                 borderColor: '#30475E',
                 borderWidth: 2,
-                data: coronas.map(x => x.ott_cost),
+                data: coronas.map(x => x.ott_cost / 100000000),
                 tension: 0.5,
                 yAxisID: 'y1',
               },
@@ -58,7 +58,17 @@ function Main() {
                     position: 'left',
                     grid: { // 축 기준이 되는 grid 스타일링
                         borderColor: "rgb(54, 162, 235)",
-                      }
+                      },
+                    title: {
+                    display: true,
+                    align: 'center',
+                    color: 'black',
+                    font: {
+                        size: 14,
+                        weight: 300,
+                    },
+                    text: '달러(억)'
+                },
                 },
                 y1: {
                     id: 'y1',
@@ -67,7 +77,17 @@ function Main() {
                     position: 'right',
                     grid: {
                         borderColor: "rgb(255, 99, 132)",
-                      }
+                      },
+                    title: {
+                    display: true,
+                    align: 'center',
+                    color: 'black',
+                    font: {
+                        size: 14,
+                        weight: 300,
+                    },
+                    text: '달러(억)'
+                },
                 },
             },
             plugins: {
@@ -76,13 +96,27 @@ function Main() {
                     usePointStyle: true,
                     // 범례 도형 모양과 관련된 속성으로, false일 경우엔 기본 직사각형 도형으로 표시됩니다.
                     },
-                }
+                },
+            }
+        };
+
+        const chartAreaPlugin = {
+            id: 'chartAreaPlugin',
+            beforeDraw(chart, args, options) {
+                const { ctx, chartArea : {top, bottom, left, right, width, height} } = chart;
+                ctx.save();
+
+                console.log(left, top, bottom, right, width, height);
+
+                ctx.fillStyle = 'rgba(142, 5, 5, 0.1)';
+                const leftMid = (width / 2) + left // x축 중간 지점
+                ctx.fillRect(bottom+(width/4)+(left/2), top, width/4, height);
             }
         };
     
         return (
             <div className='covid_table'>
-                <Chart type="line" data={data} options={options} />
+                <Chart type="line" data={data} options={options} plugins={[chartAreaPlugin]} />
             </div>
         )
     }
@@ -98,7 +132,7 @@ function Main() {
                 <Arrow direction="down" />
             </article>
             <article className='how_to_use1'>
-                <p>COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
+                <p>2020년 COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
                     여러분의 성공적인 영화 제작과 투자를 위해<br />
                     한국 컨텐츠의 영향력을 분석해드립니다.
                 </p>
