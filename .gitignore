@@ -5,3 +5,5 @@
 .DS_Store
 .ipynb_checkpoints
 .gitlab
+/k_contents.xlsx
+/k_contents.csv
