@@ -52,7 +52,7 @@ function MenuBox() {
                             <input 
                                 type="radio" 
                                 name="category" 
-                                value="tv" 
+                                value="tv-series" 
                                 onClick={getCategoryValue} 
                                 defaultChecked={category === "tv"}
                             /> TV Series
@@ -73,7 +73,7 @@ function MenuBox() {
                             <input 
                                 type="radio" 
                                 name="review" 
-                                value="kcontents" 
+                                value="k-contents" 
                                 onClick={getReviewValue} 
                                 defaultChecked={review === "kcontents"}
                             /> K-Contents

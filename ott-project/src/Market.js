@@ -1,5 +1,5 @@
 import Arrow from './Arrow';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
     Chart as ChartJS,
@@ -19,18 +19,33 @@ function Market() {
 
     const location = useLocation();
     const result = location.state;
+    const category = result.category;
+    const [releaseData, setReleaseData] = useState({});
+
+    console.log(result);
+
+    const getRelease = async () => {
+        const release = await fetch(`http://13.58.124.132/${category}/market`);
+        const release_json = await release.json();
+        if (category === "movie") {
+            setReleaseData({...release_json.movie_num});
+        }
+        else {
+            setReleaseData({...release_json.tvseries_num});
+        }
+    }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    useEffect(() => { window.scrollTo(0, 0); }, []);
+    // location으로 받은 항목이 달라지면 차트 데이터도 다시 받아오기
+    useEffect(() => { getRelease(); }, [result]);
 
     return (
         <>
             <article>
                 <div className='divContainer'>
                     <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
-                    <ReleaseChart />
+                    <ReleaseChart getData={releaseData} />
                 </div>
                 <Arrow direction="down" />
             </article>
@@ -58,10 +73,12 @@ ChartJS.register(
     Legend
   );
   
-function ReleaseChart() {
+function ReleaseChart({getData}) {
+
+    const release = getData;
 
     const data = {
-      labels: ['2015', '2016', '2017', '2018', '2019', '2020'],
+      labels: Object.keys(release),
       datasets: [
         {
           type: 'bar',
@@ -69,7 +86,7 @@ function ReleaseChart() {
           borderColor: '#1A374D',
           borderWidth: 5,
           backgroundColor: '#6998AB',
-          data: [700, 600, 807, 432, 234, 453],
+          data: Object.values(release),
         },
       ],
     };

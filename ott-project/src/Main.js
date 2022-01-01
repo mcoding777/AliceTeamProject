@@ -45,7 +45,7 @@ function Main() {
                     여러분의 성공적인 영화 제작과 투자를 위해<br />
                     한국 컨텐츠의 영향력을 분석해드립니다.
                 </p>
-                <CovidChart get={coronas} />
+                <CovidChart getData={coronas} />
                 <Arrow direction="down" />
             </article>
             <article className='how_to_use2'>
@@ -65,9 +65,9 @@ function Main() {
 export default Main;
 
 // 코로나 차트
-function CovidChart({get}) {
+function CovidChart({getData}) {
 
-    const coronas = get;
+    const coronas = getData;
 
     const data = {
         labels: coronas.map(x => x.years),
