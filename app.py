@@ -116,9 +116,7 @@ def create_app():
             classname = request.args.get('class', type=str)
             posters = db.session.query(Contents.poster_url).filter_by(
                 category="Movie", group_name=classname).order_by(func.rand()).limit(5).all()
-            poster_list = []
-            for p in posters:
-                poster_list.append(p)
+            poster_list = [p for p in posters]
             # numbers = db.session.query(Contents).filter_by(
             #     category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
