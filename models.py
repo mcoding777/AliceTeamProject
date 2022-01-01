@@ -1,11 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-import decimal
-import flask.json
 
-#app = Flask(__name__)
 db = SQLAlchemy()
-#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sebas:sebaschan@sebas-db.cwtjdyjp19qi.us-east-2.rds.amazonaws.com:3306/Sebas?charset=utf8"
+# app = Flask(__name__)
+# db = SQLAlchemy(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sebas:sebaschan@sebas-db.cwtjdyjp19qi.us-east-2.rds.amazonaws.com:3306/Sebas?charset=utf8"
 
 
 class Corona(db.Model):
@@ -36,12 +35,12 @@ class Contents(db.Model):
     popularity = db.Column(db.Integer, nullable=False)
     total_score = db.Column(db.DECIMAL(6, 4), nullable=False)
     imdb_url = db.Column(db.String(200), nullable=False)
-    poster_url = db.Column(db.String(200), nullable=False)
+    poster_url = db.Column(db.String(500), nullable=False)
 
     def serialize(self):
         return {"id": self.id, "name": self.name, "group_name": self.group_name, "category": self.category,
                 "genre": self.genre, "genre2": self.genre2, "actors": self.actors, "summary": self.summary, "year": self.year,
-                "score": self.score, "award": self.award, "global": self.global_score, "popularity": self.popularity, "total_score": self.total_score,
+                "score": self.score, "award": self.award, "global_score": self.global_score, "popularity": self.popularity, "total_score": self.total_score,
                 "imdb_url": self.imdb_url, "poster_url": self.poster_url}
 
     # class MyJSONEncoder(flask.json.JSONDecoder):
@@ -53,4 +52,4 @@ class Contents(db.Model):
 
 # db.create_all()
 # if __name__ == "__main__":
-    # app.run(debug=True)
+#     app.run(debug=True)
