@@ -11,7 +11,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-import { Bar, Pie } from 'react-chartjs-2'
+import { Bar, Doughnut } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import styled from 'styled-components';
 
@@ -109,7 +109,7 @@ function GenreChart() {
             borderColor: 'white',
             borderWidth: 1,
             backgroundColor: [
-                "#11052C",
+                "#FF5959",
                 "#3D087B",
                 "#F43B86",
                 "#FFE459",
@@ -151,7 +151,7 @@ function GenreChart() {
 
     return (
         <GenreChartDiv>
-            <Pie 
+            <Doughnut 
                 data={data} 
                 options={options} 
                 plugins={[ChartDataLabels]} 
