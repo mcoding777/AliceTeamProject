@@ -27,7 +27,7 @@ function MenuBox() {
         navigate("/page/market", {state: {category:category, review:review}});
             // return <Market category={result.category} />
         }
-        else if (review === "kcontents") {
+        else if (review === "k-contents") {
         navigate("/page/kcontents", {state: {category:category, review:review}});
             // return <ClassCard category={result.category} />
         }

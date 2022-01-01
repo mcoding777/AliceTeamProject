@@ -10,6 +10,7 @@ import {
     Legend,
   } from 'chart.js';
 import { Radar } from 'react-chartjs-2'
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import word_cloud from './image/word_cloud.jpg';
 import styled from 'styled-components';
@@ -17,10 +18,29 @@ import styled from 'styled-components';
 function Kcontents() {
 
     const location = useLocation();
+    const category = location.state.category;
     const selectClass = location.pathname.slice(-1);
-    const result = location.state;
 
-    // console.log(selectClass);
+    const [totalData, setTotalData] = useState({});
+    const score = Math.floor(Number(totalData.score));
+    const award = Math.floor(Number(totalData.award));
+    const global = Math.floor(Number(totalData.global));
+    const popularity = Math.floor(Number(totalData.popularity));
+
+    console.log(score, award, global, popularity);
+
+    const getTotal = async () => {
+        const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
+        const total = await fetch(
+            `http://13.58.124.132/${category}/k-contents/{class}?class=${APIclass}`);
+        const total_json = await total.json();
+        setTotalData({...total_json});
+    }
+
+    // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
+    useEffect(() => { window.scrollTo(0, 0); }, []);
+    // location으로 받은 항목이 달라지면 종합 데이터도 다시 받아오기
+    useEffect(() => { getTotal(); }, [category, selectClass]);
 
     return (
         <>
@@ -40,12 +60,16 @@ function Kcontents() {
                             </TotalP>
                             <ScoreContainer>
                                 <StarDiv>
-                                    <p>SCORE <span>★★★★★</span></p>
-                                    <p>AWARD <span>★★★★★</span></p>
-                                    <p>GLOBAL <span>★★★★★</span></p>
-                                    <p>POPULARITY <span>★★★★★</span></p>
+                                    <p>SCORE <span>{"★".repeat(score)}</span></p>
+                                    <p>AWARD <span>{"★".repeat(award)}</span></p>
+                                    <p>GLOBAL <span>{"★".repeat(global)}</span></p>
+                                    <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
                                 </StarDiv>
-                                <TotalChart />
+                                <TotalChart 
+                                    score={score} 
+                                    award={award} 
+                                    global={global} 
+                                    popularity={popularity} />
                             </ScoreContainer>
                         </DivContainer>
                     </div>
@@ -77,7 +101,7 @@ ChartJS.register(
     Legend
   );
 
-function TotalChart() {
+function TotalChart({score, award, global, popularity}) {
 
     const data = {
       labels: ['SCORE', 'AWARD', 'GLOBAL', 'POPULARITY'],
@@ -87,7 +111,7 @@ function TotalChart() {
           borderColor: '#8E0505',
           borderWidth: 2,
           backgroundColor: 'rgba(142, 5, 5, 0.2)',
-          data: [5, 4, 3, 5],
+          data: [score, award, global, popularity],
         },
       ],
     };

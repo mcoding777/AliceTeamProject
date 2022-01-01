@@ -18,11 +18,10 @@ import styled from 'styled-components';
 function Market() {
 
     const location = useLocation();
-    const result = location.state;
-    const category = result.category;
+    const category = location.state.category;
     const [releaseData, setReleaseData] = useState({});
 
-    console.log(result);
+    // console.log(category);
 
     const getRelease = async () => {
         const release = await fetch(`http://13.58.124.132/${category}/market`);
@@ -38,7 +37,7 @@ function Market() {
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
     useEffect(() => { window.scrollTo(0, 0); }, []);
     // location으로 받은 항목이 달라지면 차트 데이터도 다시 받아오기
-    useEffect(() => { getRelease(); }, [result]);
+    useEffect(() => { getRelease(); }, [category]);
 
     return (
         <>
