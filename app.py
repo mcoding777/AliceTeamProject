@@ -1,10 +1,16 @@
 from flask import Flask, jsonify, make_response, session, request
+from decimal import Decimal
+import math
+import json
+from flask.json.tag import PassDict
 from flask_cors import CORS, cross_origin
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 from flask_restx import Resource, Api, reqparse
 from six import string_types
 from models import Corona, Contents, db
 import config
+import flask.json
 app = Flask(__name__)
 
 
@@ -24,13 +30,12 @@ def create_app():
             return make_response(jsonify(result), 200)
 
     @api.route('/movie/market')
-    @api.doc(params={"movie": "movie", "market": "market"})
-    @api.param('movie', "market")
+    # @api.doc(params={"movie": "movie", "market": "market"})
+    # @api.param('movie', "market")
     class Market(Resource):
         def get(self):
-            category_data = request.args.get('category', type=str)
-            review = request.args.get('review', type=str)
-            print(category_data)
+            # category_data = request.args.get('movie', type=str)
+            # review = request.args.get('market', type=str)
             movie_2015 = db.session.query(Contents).filter_by(
                 category="movie", year=2015).count()
             movie_2016 = db.session.query(Contents).filter_by(
@@ -45,20 +50,19 @@ def create_app():
                 category="movie", year=2020).count()
             movie_2021 = db.session.query(Contents).filter_by(
                 category="movie", year=2021).count()
-            #result_2015 = [r.serialize() for r in movie_2015]
+            # result_2015 = [r.serialize() for r in movie_2015]
             movie_num = {2015: movie_2015, 2016: movie_2016, 2017: movie_2017,
                          2018: movie_2018, 2019: movie_2019, 2020: movie_2020, 2021: movie_2021}
 
             return make_response(jsonify({"movie_num": movie_num}), 200)
 
-    @api.route('/tvseries/market')
-    @api.doc(params={"tvseries": "tvseries", "market": "market"})
-    @api.param('tvseries', "market")
+    @api.route('/category/market')
+    # @api.doc(params={"tv-series": "category", "market": "review"})
+    # @api.param('tv-series', "market")
     class Market(Resource):
         def get(self):
-            category_data = request.args.get('category', type=str)
-            review = request.args.get('review', type=str)
-            print(category_data)
+            # category_data = request.args.get('tv-series', type=str)
+            # review = request.args.get('market', type=str)
             drama_2015 = db.session.query(Contents).filter_by(
                 category="Series", year=2015).count()
             drama_2016 = db.session.query(Contents).filter_by(
@@ -73,11 +77,56 @@ def create_app():
                 category="Series", year=2020).count()
             drama_2021 = db.session.query(Contents).filter_by(
                 category="Series", year=2021).count()
-            #result_2015 = [r.serialize() for r in movie_2015]
+            # result_2015 = [r.serialize() for r in movie_2015]
             drama_num = {2015: drama_2015, 2016: drama_2016, 2017: drama_2017,
                          2018: drama_2018, 2019: drama_2019, 2020: drama_2020, 2021: drama_2021}
 
             return make_response(jsonify({"tvseries_num": drama_num}), 200)
+
+    @api.route('/tv-series/k-contents/{class}')
+    @api.doc(params={"class": "SeriesA,SeriesB,SeriesC,SeriesD 중 하나"})
+    @api.param("class")
+    class K_contents(Resource):
+        def get(self):
+            classname = request.args.get('class', type=str)
+            posters = db.session.query(Contents.poster_url).filter_by(
+                category="Series", group_name=classname).order_by(func.rand()).limit(5).all()
+            # numbers = db.session.query(Contents).filter_by(
+            #     category="Series", group_name=classname).count()
+            popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
+                category="Series", group_name=classname).first()[0]
+            award = db.session.query(func.avg(Contents.award)).filter_by(
+                category="Series", group_name=classname).first()[0]
+            global_score = db.session.query(func.avg(Contents.global_score)).filter_by(
+                category="Series", group_name=classname).first()[0]
+            # print(popularity, award, global_score)
+            scores = (db.session.query(func.avg(Contents.score)).filter_by(
+                category="Series", group_name=classname)).first()[0]
+
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": posters})
+
+    @api.route('/movie/k-contents/{class}')
+    @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
+    @api.param("class")
+    class K_contents(Resource):
+        def get(self):
+            classname = request.args.get('class', type=str)
+            posters = db.session.query(Contents.poster_url).filter_by(
+                category="Movie", group_name=classname).order_by(func.rand()).limit(5).all()
+            # numbers = db.session.query(Contents).filter_by(
+            #     category="Series", group_name=classname).count()
+            popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
+                category="Movie", group_name=classname).first()[0]
+            award = db.session.query(func.avg(Contents.award)).filter_by(
+                category="Movie", group_name=classname).first()[0]
+            global_score = db.session.query(func.avg(Contents.global_score)).filter_by(
+                category="Movie", group_name=classname).first()[0]
+            # print(popularity, award, global_score)
+            scores = (db.session.query(func.avg(Contents.score)).filter_by(
+                category="Movie", group_name=classname)).first()[0]
+
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": posters})
+
     return app
 
 

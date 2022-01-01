@@ -1,5 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+import decimal
+import flask.json
 
 #app = Flask(__name__)
 db = SQLAlchemy()
@@ -41,6 +43,12 @@ class Contents(db.Model):
                 "genre": self.genre, "genre2": self.genre2, "actors": self.actors, "summary": self.summary, "year": self.year,
                 "score": self.score, "award": self.award, "global": self.global_score, "popularity": self.popularity, "total_score": self.total_score,
                 "imdb_url": self.imdb_url, "poster_url": self.poster_url}
+
+    # class MyJSONEncoder(flask.json.JSONDecoder):
+    #     def default(self, obj):
+    #         if isinstance(obj, decimal.Decimal):
+    #             return str(obj)
+    #         return super(MyJSONEncoder, self).default(obj)
 
 
 # db.create_all()
