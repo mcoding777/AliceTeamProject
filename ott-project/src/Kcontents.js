@@ -17,9 +17,10 @@ import word_cloud from './image/word_cloud.jpg';
 function Kcontents() {
 
     const location = useLocation();
+    const selectClass = location.pathname.slice(-1);
     const result = location.state;
 
-    console.log(result);
+    // console.log(selectClass);
 
     return (
         <>
