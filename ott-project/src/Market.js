@@ -1,4 +1,3 @@
-import './css/Market.css';
 import Arrow from './Arrow';
 import { useLocation } from 'react-router-dom';
 import {
@@ -13,6 +12,7 @@ import {
   } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import styled from 'styled-components';
 
 function Market() {
 
@@ -21,19 +21,17 @@ function Market() {
 
     return (
         <>
-            <article className='marketContainer'>
+            <article>
                 <div className='divContainer'>
-                    <p>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</p>
+                    <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
                     <ReleaseChart />
-                    <div id='arrow' />
                 </div>
                 <Arrow direction="down" />
             </article>
-            <article className='marketContainer'>
+            <article>
                 <div className='divContainer'>
-                    <p>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</p>
+                    <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
                     <GenreChart />
-                    <div id='arrow' className='uparrow' />
                 </div>
                 <Arrow direction="up" />
             </article>
@@ -44,7 +42,6 @@ function Market() {
 export default Market;
 
 // 차트
-
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -72,9 +69,9 @@ function ReleaseChart() {
     };
   
     return (
-        <div className='releaseContainer'>
+        <ReleaseChartDiv>
             <Bar type="bar" data={data} />
-        </div>
+        </ReleaseChartDiv>
     )
   }
 
@@ -130,13 +127,40 @@ function GenreChart() {
         },
     }
 
-return (
-    <div className='genreContainer'>
-        <Pie 
-            data={data} 
-            options={options} 
-            plugins={[ChartDataLabels]} 
-        />
-    </div>
-)
+    return (
+        <GenreChartDiv>
+            <Pie 
+                data={data} 
+                options={options} 
+                plugins={[ChartDataLabels]} 
+            />
+        </GenreChartDiv>
+    )
 }
+
+// styled-components
+const TextP = styled.p`
+    font-size: 30px;
+    font-weight: bold;
+
+    text-align: left;
+
+    margin: 0 0 0 50px;
+`;
+
+const ReleaseChartDiv = styled.div`
+    background-color: white;
+
+    width: 700px;
+
+    margin: 50px auto 0;
+    padding: 50px;
+`;
+
+const GenreChartDiv = styled.div`
+    width: 600px;
+    height: 400px;
+  
+    margin: 50px auto 50px;
+    padding: 30px;
+`;
