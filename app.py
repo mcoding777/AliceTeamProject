@@ -89,11 +89,10 @@ def create_app():
     class K_contents(Resource):
         def get(self):
             classname = request.args.get('class', type=str)
-            posters = db.session.query(Contents.poster_url).filter_by(
+            posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Series", group_name=classname).order_by(func.rand()).limit(5).all()
-            poster_list = []
-            for p in posters:
-                poster_list.append(p)
+            poster_list = [p[0] for p in posters]
+            imdb_list = [p[1] for p in posters]
             # numbers = db.session.query(Contents).filter_by(
             #     category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
@@ -106,7 +105,7 @@ def create_app():
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Series", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list})
 
     @api.route('/movie/k-contents/{class}')
     @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
@@ -114,9 +113,11 @@ def create_app():
     class K_contents(Resource):
         def get(self):
             classname = request.args.get('class', type=str)
-            posters = db.session.query(Contents.poster_url).filter_by(
+            posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Movie", group_name=classname).order_by(func.rand()).limit(5).all()
-            poster_list = [p for p in posters]
+            poster_list = [p[0] for p in posters]
+            imdb_list = [p[1] for p in posters]
+            #poster_split = [p.split(',')[0] for p in poster_list]
             # numbers = db.session.query(Contents).filter_by(
             #     category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
@@ -125,11 +126,12 @@ def create_app():
                 category="Movie", group_name=classname).first()[0]
             global_score = db.session.query(func.avg(Contents.global_score)).filter_by(
                 category="Movie", group_name=classname).first()[0]
+            #global_list = str(global_score).split('.')[0]
             # print(popularity, award, global_score)
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Movie", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list})
 
     return app
 
