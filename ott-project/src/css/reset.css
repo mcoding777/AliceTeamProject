@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+    vertical-align: baseline;
+}
+
+body {
+    text-align: center;
+
+    color: white;
+
+    box-sizing: border-box;
+}
+
+body::before {
+    content: "";
+    
+    position: fixed;
+    top: -150px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-image: url("../image/background-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: -1; 
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+main article {
+    height: 100vh;
+}
+
+main article .divContainer {
+    padding: 70px 0 0 300px;
+}
