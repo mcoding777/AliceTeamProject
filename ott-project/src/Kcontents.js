@@ -37,8 +37,8 @@ function Kcontents() {
 
     // 종합지수(문구) 데이터
     const totalScore = Math.floor(totalData.total_score);
-    const totalPercent = Math.floor(totalData.category_numbers / totalData.total_numbers * 100);
-    const totalContents = totalData.category_numbers;
+    const totalPercent = Math.floor(totalData.class_numbers / totalData.total_numbers * 100);
+    const totalContents = totalData.class_numbers;
 
     // console.log(poster);
 
