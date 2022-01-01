@@ -15,22 +15,24 @@ function ClassCard() {
     }
 
     return (
-        <Article>
-            <ClassDivContainer>
-                <ClassDiv title="A" onClick={handleGetClass}>
-                    <span>A Class</span>
-                </ClassDiv>
-                <ClassDiv title="B" onClick={handleGetClass}>
-                    <span>B Class</span>
-                </ClassDiv>
-                <ClassDiv title="C" onClick={handleGetClass}>
-                    <span>C Class</span>
-                </ClassDiv>
-                <ClassDiv title="D" onClick={handleGetClass}>
-                    <span>D Class</span>
-                </ClassDiv>
-            </ClassDivContainer>
-        </Article>
+        <article>
+            <div className='divContainer'>
+                <ClassDivContainer>
+                    <ClassDiv title="A" onClick={handleGetClass}>
+                        <span>A Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="B" onClick={handleGetClass}>
+                        <span>B Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="C" onClick={handleGetClass}>
+                        <span>C Class</span>
+                    </ClassDiv>
+                    <ClassDiv title="D" onClick={handleGetClass}>
+                        <span>D Class</span>
+                    </ClassDiv>
+                </ClassDivContainer>
+            </div>
+        </article>
     )
 }
 
@@ -54,12 +56,6 @@ const FadeIn = keyframes`
     }
 `;
 
-const Article = styled.article`
-    padding: 5vh 70px 6vh 300px;
-
-    box-sizing: border-box;
-`;
-
 const ClassDivContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -68,9 +64,8 @@ const ClassDivContainer = styled.div`
     align-content: space-between;
 
     width: 1200px;
-    height: 100%;
+    height: 600px;
 
-    padding: 30px;
     box-sizing: border-box;
 `;
 
