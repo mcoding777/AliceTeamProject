@@ -1,8 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 
 function Arrow({direction}) {
+
+    function UpScroll() {
+        if (direction === "up") {
+            window.scrollTo( 0, 0 );
+        }
+    }
+
     return (
-        <ScrollArrow direction={direction} />
+        <ScrollArrow direction={direction} onClick={UpScroll} />
     )
 }
 
