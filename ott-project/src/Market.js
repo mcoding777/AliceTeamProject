@@ -20,17 +20,20 @@ function Market() {
     const location = useLocation();
     const category = location.state.category;
     const [releaseData, setReleaseData] = useState({});
+    const [genreData, setGenreData] = useState({});
 
-    // console.log(category);
+    console.log(genreData);
 
     const getRelease = async () => {
-        const release = await fetch(`http://13.58.124.132/${category}/market`);
-        const release_json = await release.json();
+        const APIrelease = await fetch(`http://13.58.124.132/${category}/market`);
+        const APIjson = await APIrelease.json();
         if (category === "movie") {
-            setReleaseData({...release_json.movie_num});
+            setReleaseData(APIjson.movie_num);
+            setGenreData(APIjson.genre_percent);
         }
         else {
-            setReleaseData({...release_json.tvseries_num});
+            setReleaseData(APIjson.tvseries_num);
+            setGenreData(APIjson.genre_percent);
         }
     }
 
@@ -51,7 +54,7 @@ function Market() {
             <article>
                 <div className='divContainer'>
                     <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
-                    <GenreChart />
+                    <GenreChart getData={genreData} />
                 </div>
                 <Arrow direction="up" />
             </article>
@@ -74,10 +77,10 @@ ChartJS.register(
   
 function ReleaseChart({getData}) {
 
-    const release = getData;
+    const APIrelease = getData;
 
     const data = {
-      labels: Object.keys(release),
+      labels: Object.keys(APIrelease),
       datasets: [
         {
           type: 'bar',
@@ -85,7 +88,7 @@ function ReleaseChart({getData}) {
           borderColor: '#1A374D',
           borderWidth: 5,
           backgroundColor: '#6998AB',
-          data: Object.values(release),
+          data: Object.values(APIrelease),
         },
       ],
     };
@@ -97,12 +100,14 @@ function ReleaseChart({getData}) {
     )
   }
 
-function GenreChart() {
+function GenreChart({getData}) {
+
+    const APIgenre = getData;
 
     // Chart.register(ChartDataLabels); 글로벌 플러그인
 
     const data = {
-        labels: ['Action', 'Drama', 'Comedy', 'Crime', 'etc'],
+        labels: Object.keys(APIgenre),
         datasets: [
         {
             label: "장르 분포도",
@@ -114,8 +119,9 @@ function GenreChart() {
                 "#F43B86",
                 "#FFE459",
                 "#3E8E7E",
+                "#9AE66E"
             ],
-            data: [25, 20, 25, 15, 15],
+            data: (Object.values(APIgenre)).map((item) => { return Math.floor(item) }),
         },
         ],
     };
@@ -133,6 +139,11 @@ function GenreChart() {
                     let index = ctx.dataIndex;
                     let label = ctx.chart.data.labels[index];
                     return label + '\n' + value + '%';
+                },
+                display: (context) => {
+                    let index = context.dataIndex;
+                    let value = context.dataset.data[index];
+                    return value > 0 ? true : false;
                 },
             },
             legend: {
