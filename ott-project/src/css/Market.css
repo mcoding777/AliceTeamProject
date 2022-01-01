@@ -1,6 +1,5 @@
 .marketContainer .divContainer {
-    margin-left: 300px;
-    padding: 70px 0 0 0;
+    padding: 70px 0 0 300px;
 }
 
 .marketContainer .divContainer p {
