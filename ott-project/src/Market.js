@@ -1,4 +1,5 @@
 import Arrow from './Arrow';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
     Chart as ChartJS,
@@ -18,6 +19,11 @@ function Market() {
 
     const location = useLocation();
     const result = location.state;
+
+    // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>
