@@ -56,7 +56,7 @@ def create_app():
 
             return make_response(jsonify({"movie_num": movie_num}), 200)
 
-    @api.route('/category/market')
+    @api.route('/tv-series/market')
     # @api.doc(params={"tv-series": "category", "market": "review"})
     # @api.param('tv-series', "market")
     class Market(Resource):
