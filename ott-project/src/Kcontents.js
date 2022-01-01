@@ -17,26 +17,37 @@ import styled from 'styled-components';
 
 function Kcontents() {
 
+    // 선택한 카테고리, 클래스 정보
     const location = useLocation();
     const category = location.state.category;
     const selectClass = location.pathname.slice(-1);
 
+    // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
+
+    // 별표 및 종합차트 데이터
     const score = Math.floor(Number(totalData.score));
     const award = Math.floor(Number(totalData.award));
     const global = Math.floor(Number(totalData.global));
     const popularity = Math.floor(Number(totalData.popularity));
+
+    // 포스터 데이터
     const poster = totalData.poster;
     const imdb = totalData.imdb;
 
-    console.log(poster);
+    // 종합지수(문구) 데이터
+    const totalScore = Math.floor(totalData.total_score);
+    const totalPercent = Math.floor(totalData.category_numbers / totalData.total_numbers * 100);
+    const totalContents = totalData.category_numbers;
+
+    // console.log(poster);
 
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
-        const total = await fetch(
+        const APItotal = await fetch(
             `http://13.58.124.132/${category}/k-contents/{class}?class=${APIclass}`);
-        const total_json = await total.json();
-        setTotalData(total_json);
+        const APIjson = await APItotal.json();
+        setTotalData(APIjson);
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
@@ -63,7 +74,7 @@ function Kcontents() {
                                 }
                             </PosterDiv>
                             <TotalP>
-                                A class 는 종합평점 4점이상으로 전체 컨텐츠중 1% 비중으로 7개의 컨텐츠가 있습니다.
+                                {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
                             </TotalP>
                             <ScoreContainer>
                                 <StarDiv>

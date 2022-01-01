@@ -25,15 +25,15 @@ function Market() {
     console.log(genreData);
 
     const getRelease = async () => {
-        const release = await fetch(`http://13.58.124.132/${category}/market`);
-        const release_json = await release.json();
+        const APIrelease = await fetch(`http://13.58.124.132/${category}/market`);
+        const APIjson = await APIrelease.json();
         if (category === "movie") {
-            setReleaseData(release_json.movie_num);
-            setGenreData(release_json.genre_percent);
+            setReleaseData(APIjson.movie_num);
+            setGenreData(APIjson.genre_percent);
         }
         else {
-            setReleaseData(release_json.tvseries_num);
-            setGenreData(release_json.genre_percent);
+            setReleaseData(APIjson.tvseries_num);
+            setGenreData(APIjson.genre_percent);
         }
     }
 
@@ -47,14 +47,14 @@ function Market() {
             <article>
                 <div className='divContainer'>
                     <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
-                    <ReleaseChart release={releaseData} />
+                    <ReleaseChart getData={releaseData} />
                 </div>
                 <Arrow direction="down" />
             </article>
             <article>
                 <div className='divContainer'>
                     <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
-                    <GenreChart genre={genreData} />
+                    <GenreChart getData={genreData} />
                 </div>
                 <Arrow direction="up" />
             </article>
@@ -75,9 +75,9 @@ ChartJS.register(
     Legend
   );
   
-function ReleaseChart({release}) {
+function ReleaseChart({getData}) {
 
-    const APIrelease = release;
+    const APIrelease = getData;
 
     const data = {
       labels: Object.keys(APIrelease),
@@ -100,9 +100,9 @@ function ReleaseChart({release}) {
     )
   }
 
-function GenreChart({genre}) {
+function GenreChart({getData}) {
 
-    const APIgenre = genre;
+    const APIgenre = getData;
 
     // Chart.register(ChartDataLabels); 글로벌 플러그인
 
