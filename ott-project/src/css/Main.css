@@ -1,96 +1,4 @@
-/* 공통 부분 (상속)*/
-* {
-    margin: 0;
-    padding: 0;
-
-    text-decoration: none;
-    vertical-align: baseline;
-}
-
-body {
-    text-align: center;
-
-    color: white;
-
-    box-sizing: border-box;
-}
-
-body::before {
-    content: "";
-    
-    position: fixed;
-    top: -150px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    background-image: url("../image/background-image.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    z-index: -1; 
-}
-
-main {
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-}
-
-.arrow {
-    position: relative;
-
-    margin-top: 70px;
-}
-
-.arrow::before {
-    content: "";
-
-    position: absolute;
-    left: 48vw;
-
-    width: 50px;
-    height: 50px;
-
-    border-top: 5px solid white;
-    border-right: 5px solid white;
-
-    transform: rotate(135deg);
-
-    animation: downArrow 1.5s ease-out infinite;
-}
-
-@keyframes downArrow {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        margin-top: 10px;
-    }
-}
-
-@keyframes upArrow {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        margin-top: -10px;
-    }
-}
-
-/* Main 페이지 구역 나누기 (상속)*/
-main article {
-    height: 100vh;
-}
-
-/* Main 페이지*/
+/* Main 페이지 */
 .main .logo {
     width: 235px;
     height: 60px;
@@ -105,38 +13,16 @@ main article {
     line-height: 90px;
 }
 
-
-/* How To Use 페이지 (상속)*/
-.how_to_use1,.how_to_use2 {
-    position: relative;
-}
-.how_to_use1,.how_to_use2 p {
+/* How To Use 페이지 */
+.how_to_use1 p, .how_to_use2 p {
     padding: 100px 0 0 100px;
+    margin-bottom: 30px;
 
     font-size: 30px;
     font-weight: 500;
     text-align: start;
 }
 
-
-/* How To Use1 페이지*/
-.how_to_use1 .covid_table {
-    width: 500px;
-    height: 300px;
-
-    position: absolute;
-    top: 30%;
-    right: 10%;
-
-    background-color: blue;
-}
-
-.how_to_use1 .arrow {
-    margin-top: 400px;
-}
-
-
-/* How To Use2 페이지*/
 .how_to_use2 .logo {
     display: inline-block;
 
@@ -147,20 +33,6 @@ main article {
 }
 
 .how_to_use2 .world_map {
-    width: 1000px;
-    height: 500px;
-
-    position: absolute;
-    top: 25%;
-    right: 10%;
-}
-
-.how_to_use2 .arrow {
-    margin-top: 430px;
-}
-
-.how_to_use2 .arrow::before {
-    transform: rotate(-45deg);
-
-    animation: upArrow 1.5s ease-out infinite;
+    width: 900px;
+    height: 400px;
 }
