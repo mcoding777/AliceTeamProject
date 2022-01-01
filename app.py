@@ -91,6 +91,9 @@ def create_app():
             classname = request.args.get('class', type=str)
             posters = db.session.query(Contents.poster_url).filter_by(
                 category="Series", group_name=classname).order_by(func.rand()).limit(5).all()
+            poster_list = []
+            for p in posters:
+                poster_list.append(p)
             # numbers = db.session.query(Contents).filter_by(
             #     category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
@@ -103,7 +106,7 @@ def create_app():
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Series", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": posters})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list})
 
     @api.route('/movie/k-contents/{class}')
     @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
@@ -113,6 +116,9 @@ def create_app():
             classname = request.args.get('class', type=str)
             posters = db.session.query(Contents.poster_url).filter_by(
                 category="Movie", group_name=classname).order_by(func.rand()).limit(5).all()
+            poster_list = []
+            for p in posters:
+                poster_list.append(p)
             # numbers = db.session.query(Contents).filter_by(
             #     category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
@@ -125,7 +131,7 @@ def create_app():
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Movie", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": posters})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list})
 
     return app
 
