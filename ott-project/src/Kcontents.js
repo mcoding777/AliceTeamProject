@@ -27,15 +27,16 @@ function Kcontents() {
     const global = Math.floor(Number(totalData.global));
     const popularity = Math.floor(Number(totalData.popularity));
     const poster = totalData.poster;
+    const imdb = totalData.imdb;
 
-    console.log(score, award, global, popularity);
+    console.log(poster);
 
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
         const total = await fetch(
             `http://13.58.124.132/${category}/k-contents/{class}?class=${APIclass}`);
         const total_json = await total.json();
-        setTotalData({...total_json});
+        setTotalData(total_json);
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
@@ -50,11 +51,16 @@ function Kcontents() {
                     <div className='divContainer'>
                         <DivContainer>
                             <PosterDiv>
-                                <img src={poster[0]} alt="오징어게임" />
-                                <img src={poster[1]} alt="슬기로운의사생활" />
-                                <img src={poster[2]} alt="지옥" />
-                                <img src={poster[3]} alt="연애의참견" />
-                                <img src={poster[4]} alt="고요의바다" />
+                                {poster && poster.map((item, index) => {
+                                    return (
+                                        <img src={item} 
+                                            alt={"이미지" + index} 
+                                            onClick={
+                                                () => { window.open(imdb[index], '_blank'); }
+                                            } 
+                                        />)
+                                    })
+                                }
                             </PosterDiv>
                             <TotalP>
                                 A class 는 종합평점 4점이상으로 전체 컨텐츠중 1% 비중으로 7개의 컨텐츠가 있습니다.
