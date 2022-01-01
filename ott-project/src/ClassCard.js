@@ -10,6 +10,7 @@ function ClassCard() {
     // 선택한 클래스 저장하고 페이지 전환하는 함수
     function handleGetClass(event) {
         const selectClass = event.target.title;
+        console.log(`${selectClass}를 클릭했습니다`);
         navigate(`/page/kcontents/${selectClass}`, 
             {state: {...result, selectClass:selectClass}});
     }
