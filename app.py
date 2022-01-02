@@ -51,10 +51,19 @@ def create_app():
             movie_2021 = db.session.query(Contents).filter_by(
                 category="movie", year=2021).count()
             # result_2015 = [r.serialize() for r in movie_2015]
+            numbers = db.session.query(Contents).filter_by(category="Movie").count()
+            drama = db.session.query(Contents).filter_by(category="Movie", genre2="Drama").count()
+            etc = db.session.query(Contents).filter_by(category="Movie", genre2="ets").count()
+            comedy = db.session.query(Contents).filter_by(category="Movie", genre2="Comedy").count()
+            fantasy = db.session.query(Contents).filter_by(category="Movie", genre2="Fantasy").count()
+            crime = db.session.query(Contents).filter_by(category="Movie", genre2="Crime").count()
+            action = db.session.query(Contents).filter_by(category="Movie", genre2="Action").count()
+
+            genre_percent = {"drama" : (drama/numbers)*100, "etc": (etc/numbers)*100, "comedy":(comedy/numbers)*100, "fantasy":(fantasy/numbers)*100,"crime":(crime/numbers)*100, "action":(action/numbers)*100}
             movie_num = {2015: movie_2015, 2016: movie_2016, 2017: movie_2017,
                          2018: movie_2018, 2019: movie_2019, 2020: movie_2020, 2021: movie_2021}
 
-            return make_response(jsonify({"movie_num": movie_num}), 200)
+            return make_response(jsonify({"movie_num": movie_num, "genre_percent":genre_percent}), 200)
 
     @api.route('/tv-series/market')
     # @api.doc(params={"tv-series": "category", "market": "review"})
@@ -77,11 +86,20 @@ def create_app():
                 category="Series", year=2020).count()
             drama_2021 = db.session.query(Contents).filter_by(
                 category="Series", year=2021).count()
+            
+            numbers = db.session.query(Contents).filter_by(category="Series").count()
+            drama = db.session.query(Contents).filter_by(category="Series", genre2="Drama").count()
+            etc = db.session.query(Contents).filter_by(category="Series", genre2="ets").count()
+            comedy = db.session.query(Contents).filter_by(category="Series", genre2="Comedy").count()
+            fantasy = db.session.query(Contents).filter_by(category="Series", genre2="Fantasy").count()
+            crime = db.session.query(Contents).filter_by(category="Series", genre2="Crime").count()
+            action = db.session.query(Contents).filter_by(category="Series", genre2="Action").count()
+            genre_percent = {"drama" : (drama/numbers)*100, "etc": (etc/numbers)*100, "comedy":(comedy/numbers)*100, "fatnasy":(fantasy/numbers)*100,"crime":(crime/numbers)*100, "action":(action/numbers)*100}
             # result_2015 = [r.serialize() for r in movie_2015]
             drama_num = {2015: drama_2015, 2016: drama_2016, 2017: drama_2017,
                          2018: drama_2018, 2019: drama_2019, 2020: drama_2020, 2021: drama_2021}
 
-            return make_response(jsonify({"tvseries_num": drama_num}), 200)
+            return make_response(jsonify({"tvseries_num": drama_num, "genre_percent":genre_percent}), 200)
 
     @api.route('/tv-series/k-contents/{class}')
     @api.doc(params={"class": "SeriesA,SeriesB,SeriesC,SeriesD 중 하나"})
@@ -93,8 +111,7 @@ def create_app():
                 category="Series", group_name=classname).order_by(func.rand()).limit(5).all()
             poster_list = [p[0] for p in posters]
             imdb_list = [p[1] for p in posters]
-            # numbers = db.session.query(Contents).filter_by(
-            #     category="Series", group_name=classname).count()
+            numbers = db.session.query(Contents).filter_by(category="Series", group_name=classname).count()
             popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
                 category="Series", group_name=classname).first()[0]
             award = db.session.query(func.avg(Contents.award)).filter_by(
@@ -104,8 +121,13 @@ def create_app():
             # print(popularity, award, global_score)
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Series", group_name=classname)).first()[0]
+            numbers = db.session.query(Contents).filter_by(category="Series").count()
+            class_numbers =db.session.query(Contents).filter_by(category="Series", group_name=classname).count()
+            total_scores = (db.session.query(func.avg(Contents.total_score)).filter_by(
+                category="Series", group_name=classname)).first()[0]
+            
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list, "total_score":total_scores, "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
 
     @api.route('/movie/k-contents/{class}')
     @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
@@ -130,8 +152,13 @@ def create_app():
             # print(popularity, award, global_score)
             scores = (db.session.query(func.avg(Contents.score)).filter_by(
                 category="Movie", group_name=classname)).first()[0]
+            
+            numbers = db.session.query(Contents).filter_by(category="Movie").count()
+            class_numbers =db.session.query(Contents).filter_by(category="Movie", group_name=classname).count()
+            total_scores = (db.session.query(func.avg(Contents.total_score)).filter_by(
+                category="Movie", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list})
+            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list, "total_score":total_scores, "total_numbers":489, "category_numbers":numbers, "class_numbers":class_numbers})
 
     return app
 
