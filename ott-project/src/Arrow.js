@@ -47,7 +47,7 @@ const ScrollArrow = styled.div`
     position: relative;
 
     height: 50px;
-    margin-top: 30px;
+    margin-top: 10px;
 
     &::before {
         content: "";

@@ -60,36 +60,34 @@ function Kcontents() {
             <main>
                 <article>
                     <div className='divContainer'>
-                        <DivContainer>
-                            <PosterDiv>
-                                {poster && poster.map((item, index) => {
-                                    return (
-                                        <img src={item} 
-                                            alt={"이미지" + index} 
-                                            onClick={
-                                                () => { window.open(imdb[index], '_blank'); }
-                                            } 
-                                        />)
-                                    })
-                                }
-                            </PosterDiv>
-                            <TotalP>
-                                {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
-                            </TotalP>
-                            <ScoreContainer>
-                                <StarDiv>
-                                    <p>SCORE <span>{"★".repeat(score)}</span></p>
-                                    <p>AWARD <span>{"★".repeat(award)}</span></p>
-                                    <p>GLOBAL <span>{"★".repeat(global)}</span></p>
-                                    <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
-                                </StarDiv>
-                                <TotalChart 
-                                    score={score} 
-                                    award={award} 
-                                    global={global} 
-                                    popularity={popularity} />
-                            </ScoreContainer>
-                        </DivContainer>
+                        <PosterDiv>
+                            {poster && poster.map((item, index) => {
+                                return (
+                                    <img src={item} 
+                                        alt={"이미지" + index} 
+                                        onClick={
+                                            () => { window.open(imdb[index], '_blank'); }
+                                        } 
+                                    />)
+                                })
+                            }
+                        </PosterDiv>
+                        <TotalP>
+                            {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
+                        </TotalP>
+                        <ScoreContainer>
+                            <StarDiv>
+                                <p>SCORE <span>{"★".repeat(score)}</span></p>
+                                <p>AWARD <span>{"★".repeat(award)}</span></p>
+                                <p>GLOBAL <span>{"★".repeat(global)}</span></p>
+                                <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
+                            </StarDiv>
+                            <TotalChart 
+                                score={score} 
+                                award={award} 
+                                global={global} 
+                                popularity={popularity} />
+                        </ScoreContainer>
                     </div>
                     <Arrow />
                 </article>
@@ -157,6 +155,11 @@ function TotalChart({score, award, global, popularity}) {
   }
 
   // styled-components
+const FlexContainer = styled.div`
+    width: 1200px;
+    height: 570px;
+`;
+
 const PosterDiv = styled.div`
     width: 700px;
     height: 180px;
@@ -165,11 +168,6 @@ const PosterDiv = styled.div`
     justify-content: space-between;
 
     margin: 0 auto;
-`;
-
-const DivContainer = styled.div`
-    width: 1200px;
-    height: 570px;
 `;
 
 const TotalP = styled.p`
@@ -200,7 +198,7 @@ const StarDiv = styled.div`
         width: 90%;
         height: 60px;
 
-        padding: 7px 30px 0 30px;
+        padding: 7px 30px;
 
         box-sizing: border-box;
         text-align: left;
