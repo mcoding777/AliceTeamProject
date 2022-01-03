@@ -56,51 +56,49 @@ function Kcontents() {
     useEffect(() => { getTotal(); }, [category, selectClass]);
 
     return (
-        <>
-            <main>
-                <article>
-                    <div className='divContainer'>
-                        <PosterDiv>
-                            {poster && poster.map((item, index) => {
-                                return (
-                                    <img src={item} 
-                                        alt={"이미지" + index} 
-                                        onClick={
-                                            () => { window.open(imdb[index], '_blank'); }
-                                        } 
-                                    />)
-                                })
-                            }
-                        </PosterDiv>
-                        <TotalP>
-                            {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
-                        </TotalP>
-                        <ScoreContainer>
-                            <StarDiv>
-                                <p>SCORE <span>{"★".repeat(score)}</span></p>
-                                <p>AWARD <span>{"★".repeat(award)}</span></p>
-                                <p>GLOBAL <span>{"★".repeat(global)}</span></p>
-                                <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
-                            </StarDiv>
-                            <TotalChart 
-                                score={score} 
-                                award={award} 
-                                global={global} 
-                                popularity={popularity} />
-                        </ScoreContainer>
-                    </div>
-                    <Arrow />
-                </article>
-                <article>
-                    <div className='divContainer'>
-                        <WordCloudP>
-                            A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
-                        </WordCloudP>
-                        <img src={word_cloud} alt="워드클라우드" />
-                    </div>
-                </article>
-            </main>
-        </>
+        <main>
+            <article>
+                <div className='divContainer'>
+                    <PosterDiv>
+                        {poster && poster.map((item, index) => {
+                            return (
+                                <img src={item} 
+                                    alt={"이미지" + index} 
+                                    onClick={
+                                        () => { window.open(imdb[index], '_blank'); }
+                                    } 
+                                />)
+                            })
+                        }
+                    </PosterDiv>
+                    <TotalP>
+                        {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
+                    </TotalP>
+                    <ScoreContainer>
+                        <StarDiv>
+                            <p>SCORE <span>{"★".repeat(score)}</span></p>
+                            <p>AWARD <span>{"★".repeat(award)}</span></p>
+                            <p>GLOBAL <span>{"★".repeat(global)}</span></p>
+                            <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
+                        </StarDiv>
+                        <TotalChart 
+                            score={score} 
+                            award={award} 
+                            global={global} 
+                            popularity={popularity} />
+                    </ScoreContainer>
+                </div>
+                <Arrow />
+            </article>
+            <article>
+                <div className='divContainer'>
+                    <WordCloudP>
+                        A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
+                    </WordCloudP>
+                    <img src={word_cloud} alt="워드클라우드" />
+                </div>
+            </article>
+        </main>
     )
 }
 
