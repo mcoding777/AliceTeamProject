@@ -154,12 +154,7 @@ function TotalChart({score, award, global, popularity}) {
     )
   }
 
-  // styled-components
-const FlexContainer = styled.div`
-    width: 1200px;
-    height: 570px;
-`;
-
+// styled-components
 const PosterDiv = styled.div`
     width: 700px;
     height: 180px;

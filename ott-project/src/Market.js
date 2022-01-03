@@ -47,14 +47,14 @@ function Market() {
             <article>
                 <div className='divContainer'>
                     <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
-                    <ReleaseChart getData={releaseData} />
+                    <ReleaseChart chartData={releaseData} />
                 </div>
                 <Arrow direction="down" />
             </article>
             <article>
                 <div className='divContainer'>
                     <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
-                    <GenreChart getData={genreData} />
+                    <GenreChart chartData={genreData} />
                 </div>
                 <Arrow direction="up" />
             </article>
@@ -75,12 +75,10 @@ ChartJS.register(
     Legend
   );
   
-function ReleaseChart({getData}) {
-
-    const APIrelease = getData;
+function ReleaseChart({chartData}) {
 
     const data = {
-      labels: Object.keys(APIrelease),
+      labels: Object.keys(chartData),
       datasets: [
         {
           type: 'bar',
@@ -88,7 +86,7 @@ function ReleaseChart({getData}) {
           borderColor: '#1A374D',
           borderWidth: 5,
           backgroundColor: '#6998AB',
-          data: Object.values(APIrelease),
+          data: Object.values(chartData),
         },
       ],
     };
@@ -100,16 +98,14 @@ function ReleaseChart({getData}) {
     )
   }
 
-function GenreChart({getData}) {
-
-    const APIgenre = getData;
+function GenreChart({chartData}) {
 
     // Chart.register(ChartDataLabels); 글로벌 플러그인
 
     const data = {
-        labels: Object.keys(APIgenre),
+        labels: Object.keys(chartData),
         datasets: [
-        {
+            {
             label: "장르 분포도",
             borderColor: 'white',
             borderWidth: 1,
@@ -121,8 +117,9 @@ function GenreChart({getData}) {
                 "#3E8E7E",
                 "#9AE66E"
             ],
-            data: (Object.values(APIgenre)).map((item) => { return Math.floor(item) }),
-        },
+            data: (Object.values(chartData)).map((item) => { 
+                return Math.floor(item) }),
+            },
         ],
     };
 
@@ -178,7 +175,7 @@ const TextP = styled.p`
 
     text-align: left;
 
-    margin: 0 0 0 50px;
+    margin-left: 50px;
 `;
 
 const ReleaseChartDiv = styled.div`
