@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/AliceTeamProject/index.html/static/css/main.c3c099b6.css",
+    "main.js": "/AliceTeamProject/index.html/static/js/main.8fc9a5a7.js",
+    "static/media/background-image.jpg": "/AliceTeamProject/index.html/static/media/background-image.e709f7714c14b4b78405.jpg",
+    "static/media/word_cloud.jpg": "/AliceTeamProject/index.html/static/media/word_cloud.72e1eeecdf4eef6d04aa.jpg",
+    "index.html": "/AliceTeamProject/index.html/index.html",
+    "main.c3c099b6.css.map": "/AliceTeamProject/index.html/static/css/main.c3c099b6.css.map",
+    "main.8fc9a5a7.js.map": "/AliceTeamProject/index.html/static/js/main.8fc9a5a7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3c099b6.css",
+    "static/js/main.8fc9a5a7.js"
+  ]
+}
