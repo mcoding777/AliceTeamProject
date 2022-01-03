@@ -15,24 +15,26 @@ function ClassCard() {
     }
 
     return (
-        <article>
-            <div className='divContainer'>
-                <ClassDivContainer>
-                    <ClassDiv title="A" onClick={handleGetClass}>
-                        <span>A Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="B" onClick={handleGetClass}>
-                        <span>B Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="C" onClick={handleGetClass}>
-                        <span>C Class</span>
-                    </ClassDiv>
-                    <ClassDiv title="D" onClick={handleGetClass}>
-                        <span>D Class</span>
-                    </ClassDiv>
-                </ClassDivContainer>
-            </div>
-        </article>
+        <main>
+            <article>
+                <div className='divContainer'>
+                    <ClassDivContainer>
+                        <ClassDiv title="A" onClick={handleGetClass}>
+                            <span>A Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="B" onClick={handleGetClass}>
+                            <span>B Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="C" onClick={handleGetClass}>
+                            <span>C Class</span>
+                        </ClassDiv>
+                        <ClassDiv title="D" onClick={handleGetClass}>
+                            <span>D Class</span>
+                        </ClassDiv>
+                    </ClassDivContainer>
+                </div>
+            </article>
+        </main>
     )
 }
 

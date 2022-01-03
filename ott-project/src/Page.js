@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 function Page() {
     return (
-        <>
-            <article className='page'>
+        <main>
+            <article>
                 <PageP>원하는 분류를 선택하세요.</PageP>
             </article>
-        </>
+        </main>
     )
 }
 
