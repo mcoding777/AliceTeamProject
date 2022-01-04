@@ -17,4 +17,6 @@ export default Page;
 const PageP = styled.p`
     font-size: 60px;
     font-weight: bold;
+
+    margin-left: 300px;
 `;
