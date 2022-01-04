@@ -41,14 +41,15 @@ function Main() {
                 </Link>
                 <Arrow direction="down" />
             </Article>
-            <article className='how_to_use1'>
-                <p>2020년 COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
+            <Article>
+                <Description>
+                    2020년 COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
                     여러분의 성공적인 영화 제작과 투자를 위해<br />
                     한국 컨텐츠의 영향력을 분석해드립니다.
-                </p>
-                <CovidChart getData={coronas} />
+                </Description>
+                <CovidChart coronas={coronas} />
                 <Arrow direction="down" />
-            </article>
+            </Article>
             <article className='how_to_use2'>
                 <p>우리 서비스는
                     <img src="./image/netflix-logo.png" alt="넷플릭스 로고" className='logo' />
@@ -66,9 +67,7 @@ function Main() {
 export default Main;
 
 // 코로나 차트
-function CovidChart({getData}) {
-
-    const coronas = getData;
+function CovidChart({coronas}) {
 
     const data = {
         labels: coronas.map(x => x.years),
@@ -181,12 +180,20 @@ const Title = styled.h1`
     font-weight: 500;
 `;
 
+const Description = styled.p`
+    width: 1200px;
+
+    font-size: 30px;
+    font-weight: 500;
+    text-align: start;
+
+    margin-bottom: 30px;
+`;
+
 const CoronaDiv = styled.div`
     width: 700px;
 
     background-color: white;
 
     padding: 50px;
-    margin: auto;
-    box-sizing: border-box;
 `;
