@@ -14,7 +14,7 @@ function ClassCard() {
     }
 
     return (
-        <main>
+        <>
             <article>
                 <div className='divContainer'>
                     <ClassDivContainer>
@@ -41,7 +41,7 @@ function ClassCard() {
                     </ClassDivContainer>
                 </div>
             </article>
-        </main>
+        </>
     )
 }
 

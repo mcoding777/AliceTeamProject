@@ -56,7 +56,7 @@ function Kcontents() {
     useEffect(() => { getTotal(); }, [category, selectClass]);
 
     return (
-        <main>
+        <>
             <article>
                 <div className='divContainer'>
                     <PosterDiv>
@@ -98,7 +98,7 @@ function Kcontents() {
                     <img src={word_cloud} alt="워드클라우드" />
                 </div>
             </article>
-        </main>
+        </>
     )
 }
 

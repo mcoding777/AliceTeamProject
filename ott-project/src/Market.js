@@ -69,7 +69,7 @@ function Market() {
     useEffect(() => { getRelease() }, [category]);
 
     return (
-        <main>
+        <>
             <Article>
                 <Text>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</Text>
                 <ReleaseChart releaseData={loading ? releaseData : dummyRelease} />
@@ -80,7 +80,7 @@ function Market() {
                 <GenreChart genreData={loading ? genreData : dummyGenre} />
                 <Arrow direction="up" />
             </Article>
-        </main>
+        </>
     )
 }
 
