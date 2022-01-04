@@ -1,5 +1,6 @@
 import Button from './Button';
 import Arrow from './Arrow';
+import Article from './Article';
 import './css/Main.css';
 import { Link } from 'react-router-dom';
 import 'chart.js/auto'
@@ -32,14 +33,14 @@ function Main() {
 
     return (
         <main>
-            <article className='main'>
-                <img src="./image/netflix-logo.png" alt="넷플릭스 로고" className='logo' />
-                <h1>영화 제작사와 투자자 여러분<br />환영합니다</h1>
+            <Article>
+                <Logo src="./image/netflix-logo.png" alt="넷플릭스 로고" />
+                <Title>영화 제작사와 투자자 여러분<br />환영합니다</Title>
                 <Link to="/page">
                     <Button text="시작하기" />
                 </Link>
                 <Arrow direction="down" />
-            </article>
+            </Article>
             <article className='how_to_use1'>
                 <p>2020년 COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
                     여러분의 성공적인 영화 제작과 투자를 위해<br />
@@ -166,6 +167,20 @@ function CovidChart({getData}) {
 }
 
 // styled-components
+const Logo = styled.img`
+    display: block;
+
+    width: 235px;
+    height: 60px;
+
+    margin-bottom: 30px;
+`;
+
+const Title = styled.h1`
+    font-size: 70px;
+    font-weight: 500;
+`;
+
 const CoronaDiv = styled.div`
     width: 700px;
 
