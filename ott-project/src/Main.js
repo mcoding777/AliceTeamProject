@@ -204,6 +204,8 @@ const Logo = styled.img`
 const TitleStyle = styled.h1`
     font-size: 70px;
     font-weight: 500;
+
+    margin-bottom: 90px;
 `;
 
 const Description = styled.p`

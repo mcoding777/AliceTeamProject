@@ -48,6 +48,7 @@ const ScrollArrow = styled.div`
 
     height: 50px;
     margin-top: ${props => props.direction === "up" ? 50 : 20}px;
+    margin-right: 50px;
 
     &::before {
         content: "";
