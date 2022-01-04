@@ -1,6 +1,6 @@
 import Button from './Button';
 import Arrow from './Arrow';
-import Article from './Article';
+import { Article } from './AreaTag';
 import { Link } from 'react-router-dom';
 import {
     Chart as ChartJS,

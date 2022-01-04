@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Article from './Article';
+import { Article, Contents } from './AreaTag';
 
 function ClassCard() {
 
@@ -15,7 +15,7 @@ function ClassCard() {
     }
 
     return (
-        <>
+        <Contents>
             <Article>
                 <ClassDivContainer>
                     <ClassDiv 
@@ -40,7 +40,7 @@ function ClassCard() {
                     </ClassDiv>
                 </ClassDivContainer>
             </Article>
-        </>
+        </Contents>
     )
 }
 
