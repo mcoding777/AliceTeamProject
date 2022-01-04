@@ -4,14 +4,14 @@
 
     text-decoration: none;
     vertical-align: baseline;
+
+    box-sizing: border-box;
 }
 
 body {
     text-align: center;
 
     color: white;
-
-    box-sizing: border-box;
 }
 
 body::before {
@@ -37,8 +37,4 @@ main {
 
 main article {
     height: 100vh;
-}
-
-main article .divContainer {
-    padding: 70px 0 0 300px;
 }

@@ -1,7 +1,9 @@
 import Arrow from './Arrow';
+import { Article, Contents } from './AreaTag';
 import {
     Chart as ChartJS,
     CategoryScale,
+    RadialLinearScale,
     LinearScale,
     PointElement,
     LineElement,
@@ -24,6 +26,7 @@ function Kcontents() {
 
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
+    const [loading, setLoading] = useState(false);
 
     // 별표 및 종합차트 데이터
     const score = Math.floor(Number(totalData.score));
@@ -42,6 +45,24 @@ function Kcontents() {
 
     // console.log(poster);
 
+    // API 오류 뜰 때 사용할 더미 데이터
+    const dummyRelease = {
+        "2015": 400,
+        "2016": 500,
+        "2017": 400,
+        "2018": 300,
+        "2019": 450,
+        "2020": 350
+    }
+    const dummyGenre = {
+        "Action": 25,
+        "Drama": 30,
+        "Comedy": 35,
+        "Crime": 20,
+        "Fantasy": 10,
+        "Etc": 5
+    }
+
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
         const APItotal = await fetch(
@@ -56,49 +77,45 @@ function Kcontents() {
     useEffect(() => { getTotal(); }, [category, selectClass]);
 
     return (
-        <main>
-            <article>
-                <div className='divContainer'>
-                    <PosterDiv>
-                        {poster && poster.map((item, index) => {
-                            return (
-                                <img src={item} 
-                                    alt={"이미지" + index} 
-                                    onClick={
-                                        () => { window.open(imdb[index], '_blank'); }
-                                    } 
-                                />)
-                            })
-                        }
-                    </PosterDiv>
-                    <TotalP>
-                        {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
-                    </TotalP>
-                    <ScoreContainer>
-                        <StarDiv>
-                            <p>SCORE <span>{"★".repeat(score)}</span></p>
-                            <p>AWARD <span>{"★".repeat(award)}</span></p>
-                            <p>GLOBAL <span>{"★".repeat(global)}</span></p>
-                            <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
-                        </StarDiv>
-                        <TotalChart 
-                            score={score} 
-                            award={award} 
-                            global={global} 
-                            popularity={popularity} />
-                    </ScoreContainer>
-                </div>
+        <Contents>
+            <Article>
+                <PosterDiv>
+                    {poster && poster.map((item, index) => {
+                        return (
+                            <img src={item} 
+                                alt={"이미지" + index} 
+                                onClick={
+                                    () => { window.open(imdb[index], '_blank'); }
+                                } 
+                            />)
+                        })
+                    }
+                </PosterDiv>
+                <TotalP>
+                    {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
+                </TotalP>
+                <ScoreContainer>
+                    <StarDiv>
+                        <p>SCORE <span>{"★".repeat(score)}</span></p>
+                        <p>AWARD <span>{"★".repeat(award)}</span></p>
+                        <p>GLOBAL <span>{"★".repeat(global)}</span></p>
+                        <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
+                    </StarDiv>
+                    <TotalChart 
+                        score={score} 
+                        award={award} 
+                        global={global} 
+                        popularity={popularity} />
+                </ScoreContainer>
                 <Arrow />
-            </article>
-            <article>
-                <div className='divContainer'>
-                    <WordCloudP>
-                        A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
-                    </WordCloudP>
-                    <img src={word_cloud} alt="워드클라우드" />
-                </div>
-            </article>
-        </main>
+            </Article>
+            <Article>
+                <WordCloudP>
+                    A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
+                </WordCloudP>
+                <img src={word_cloud} alt="워드클라우드" />
+            </Article>
+        </Contents>
     )
 }
 
@@ -107,12 +124,13 @@ export default Kcontents;
 // 차트
 ChartJS.register(
     CategoryScale,
+    RadialLinearScale,
     LinearScale,
     PointElement,
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
   );
 
 function TotalChart({score, award, global, popularity}) {
