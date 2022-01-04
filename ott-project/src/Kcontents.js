@@ -1,5 +1,6 @@
 import Arrow from './Arrow';
 import { Article, Contents } from './AreaTag';
+import Text from './Text';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -66,7 +67,7 @@ function Kcontents() {
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
         const APItotal = await fetch(
-            `http://13.58.124.132/${category}/k-contents/{class}?class=${APIclass}`);
+            `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
     }
@@ -91,9 +92,9 @@ function Kcontents() {
                         })
                     }
                 </PosterDiv>
-                <TotalP>
+                <TotalText>
                     {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
-                </TotalP>
+                </TotalText>
                 <ScoreContainer>
                     <StarDiv>
                         <p>SCORE <span>{"★".repeat(score)}</span></p>
@@ -110,10 +111,10 @@ function Kcontents() {
                 <Arrow />
             </Article>
             <Article>
-                <WordCloudP>
+                <Text>
                     A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
-                </WordCloudP>
-                <img src={word_cloud} alt="워드클라우드" />
+                </Text>
+                <WordCloudImg src={word_cloud} alt="워드클라우드" />
             </Article>
         </Contents>
     )
@@ -172,20 +173,18 @@ function TotalChart({score, award, global, popularity}) {
 
 // styled-components
 const PosterDiv = styled.div`
-    width: 700px;
-    height: 180px;
-
     display: flex;
     justify-content: space-between;
 
-    margin: 0 auto;
+    width: 900px;
+    height: 150px;
+
+    margin: 50px 0;
 `;
 
-const TotalP = styled.p`
+const TotalText = styled.p`
     font-size: 25px;
     font-weight: bold;
-
-    margin: 50px auto;
 `;
 
 const ScoreContainer = styled.div`
@@ -194,7 +193,8 @@ const ScoreContainer = styled.div`
     justify-content: space-between;
 
     width: 1000px;
-    margin: auto;
+
+    margin-top: 50px;
 `;
 
 const StarDiv = styled.div`
@@ -231,16 +231,15 @@ const StarDiv = styled.div`
 
 const TotalChartDiv = styled.div`
     width: 470px;
-    height: 250px;
+    height: 270px;
   
     padding: 10px;
   
     background-color: white;
 `;
 
-const WordCloudP = styled.p`
-    font-size: 30px;
+const WordCloudImg = styled.img`
+    display: block;
 
-    text-align: left;
-    margin: 0 0 30px 100px;
+    margin-top: 50px;
 `;

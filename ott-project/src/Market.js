@@ -23,7 +23,7 @@ function Market() {
     const location = useLocation();
     const category = location.state.category;
 
-    // API로 받아온 차트 정보
+    // API 요청해서 받은 데이터
     const [releaseData, setReleaseData] = useState({});
     const [genreData, setGenreData] = useState({});
     const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ function Market() {
     // console.log(genreData);
 
     const getRelease = async () => {
-        const APIrelease = await fetch(`http://13.58.124.132/${category}/market`);
+        const APIrelease = await fetch(`https://www.sebaschan.shop/${category}/market`);
         const APIjson = await APIrelease.json();
         if (category === "movie") {
             setReleaseData(APIjson.movie_num);
