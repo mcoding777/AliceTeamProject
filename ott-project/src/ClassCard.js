@@ -8,10 +8,9 @@ function ClassCard() {
     const result = location.state;
 
     // 선택한 클래스 저장하고 페이지 전환하는 함수
-    function handleGetClass(event) {
-        const selectClass = event.target.title;
+    const handleGetClass = (selectClass) => {
         console.log(`${selectClass}를 클릭했습니다`);
-        navigate(`/page/kcontents/${selectClass}`, {state: result});
+        navigate(`/page/kcontents/${selectClass}`, { state: result });
     }
 
     return (
@@ -19,16 +18,24 @@ function ClassCard() {
             <article>
                 <div className='divContainer'>
                     <ClassDivContainer>
-                        <ClassDiv title="A" onClick={handleGetClass}>
+                        <ClassDiv 
+                            title="A" 
+                            onClick={() => handleGetClass("A")}>
                             <span>A Class</span>
                         </ClassDiv>
-                        <ClassDiv title="B" onClick={handleGetClass}>
+                        <ClassDiv 
+                            title="B" 
+                            onClick={() => handleGetClass("B")}>
                             <span>B Class</span>
                         </ClassDiv>
-                        <ClassDiv title="C" onClick={handleGetClass}>
+                        <ClassDiv 
+                            title="C" 
+                            onClick={() => handleGetClass("C")}>
                             <span>C Class</span>
                         </ClassDiv>
-                        <ClassDiv title="D" onClick={handleGetClass}>
+                        <ClassDiv 
+                            title="D" 
+                            onClick={() => handleGetClass("D")}>
                             <span>D Class</span>
                         </ClassDiv>
                     </ClassDivContainer>
