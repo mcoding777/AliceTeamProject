@@ -26,18 +26,14 @@ function Main() {
     const [coronas, setCoronas] = useState([]);
 
     const getCorona = async () => {
-        const corona = await fetch(`http://cors-anywhere.herokuapp.com/http://13.58.124.132/corona`);
+        const corona = await fetch(`http://13.58.124.132/corona`);
         const corona_json = await corona.json();
         setCoronas(corona_json);
     }
 
-    console.log(coronas);
+    // console.log(coronas);
 
-    useEffect(() => {
-        getCorona()
-    }, []);
-
-
+    useEffect(() => { getCorona() }, []);
 
     return (
         <main>

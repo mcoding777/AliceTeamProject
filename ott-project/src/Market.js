@@ -5,11 +5,11 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
+    ArcElement,
   } from 'chart.js';
 import { Bar, Doughnut } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -17,12 +17,34 @@ import styled from 'styled-components';
 
 function Market() {
 
+    // 선택한 카테고리와 리뷰 정보
     const location = useLocation();
     const category = location.state.category;
+
+    // API로 받아온 차트 정보
     const [releaseData, setReleaseData] = useState({});
     const [genreData, setGenreData] = useState({});
+    const [loading, setLoading] = useState(false);
 
-    console.log(genreData);
+    // API 오류 뜰 때 사용할 더미 데이터
+    const dummyRelease = {
+        "2015": 400,
+        "2016": 500,
+        "2017": 400,
+        "2018": 300,
+        "2019": 450,
+        "2020": 350
+    }
+    const dummyGenre = {
+        "Action": 25,
+        "Drama": 30,
+        "Comedy": 35,
+        "Crime": 20,
+        "Fantasy": 10,
+        "Etc": 5
+    }
+
+    // console.log(genreData);
 
     const getRelease = async () => {
         const APIrelease = await fetch(`http://13.58.124.132/${category}/market`);
@@ -30,31 +52,33 @@ function Market() {
         if (category === "movie") {
             setReleaseData(APIjson.movie_num);
             setGenreData(APIjson.genre_percent);
+            setLoading(true);
         }
         else {
             setReleaseData(APIjson.tvseries_num);
             setGenreData(APIjson.genre_percent);
+            setLoading(true);
         }
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
     useEffect(() => { window.scrollTo(0, 0); }, []);
     // location으로 받은 항목이 달라지면 차트 데이터도 다시 받아오기
-    useEffect(() => { getRelease(); }, [category]);
+    useEffect(() => { getRelease() }, [category]);
 
     return (
         <main>
             <article>
                 <div className='divContainer'>
                     <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
-                    <ReleaseChart chartData={releaseData} />
+                    <ReleaseChart releaseData={loading ? releaseData : dummyRelease} />
                 </div>
                 <Arrow direction="down" />
             </article>
             <article>
                 <div className='divContainer'>
                     <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
-                    <GenreChart chartData={genreData} />
+                    <GenreChart genreData={loading ? genreData : dummyGenre} />
                 </div>
                 <Arrow direction="up" />
             </article>
@@ -68,42 +92,39 @@ export default Market;
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    ArcElement,
   );
   
-function ReleaseChart({chartData}) {
+function ReleaseChart({releaseData}) {
 
     const data = {
-      labels: Object.keys(chartData),
-      datasets: [
-        {
-          type: 'bar',
-          label: '릴리즈되는 한국 컨텐츠 수',
-          borderColor: '#1A374D',
-          borderWidth: 5,
-          backgroundColor: '#6998AB',
-          data: Object.values(chartData),
-        },
-      ],
+        labels: Object.keys(releaseData),
+        datasets: [
+            {
+            label: '릴리즈되는 한국 컨텐츠 수',
+            borderColor: '#1A374D',
+            borderWidth: 5,
+            backgroundColor: '#6998AB',
+            data: Object.values(releaseData),
+            },
+        ],
     };
   
     return (
         <ReleaseChartDiv>
-            <Bar type="bar" data={data} />
+            <Bar data={data} />
         </ReleaseChartDiv>
     )
   }
 
-function GenreChart({chartData}) {
-
-    // Chart.register(ChartDataLabels); 글로벌 플러그인
+function GenreChart({genreData}) {
 
     const data = {
-        labels: Object.keys(chartData),
+        labels: Object.keys(genreData),
         datasets: [
             {
             label: "장르 분포도",
@@ -117,7 +138,7 @@ function GenreChart({chartData}) {
                 "#3E8E7E",
                 "#9AE66E"
             ],
-            data: (Object.values(chartData)).map((item) => { 
+            data: (Object.values(genreData)).map((item) => { 
                 return Math.floor(item) }),
             },
         ],
