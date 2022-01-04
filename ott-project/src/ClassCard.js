@@ -4,6 +4,7 @@ import { Article, Contents } from './AreaTag';
 
 function ClassCard() {
 
+    // 선택한 카테고리 정보
     const location = useLocation();
     const navigate = useNavigate();
     const result = location.state;

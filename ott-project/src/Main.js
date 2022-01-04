@@ -166,6 +166,7 @@ function CovidChart({coronas}) {
         }
     };
 
+    // 일정 영역만 색칠해주는 플러그인
     const chartAreaPlugin = {
         id: 'chartAreaPlugin',
         beforeDraw(chart, args, options) {
