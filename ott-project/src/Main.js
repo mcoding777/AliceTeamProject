@@ -1,10 +1,18 @@
 import Button from './Button';
 import Arrow from './Arrow';
 import Article from './Article';
-import './css/Main.css';
 import { Link } from 'react-router-dom';
-import 'chart.js/auto'
-import { Chart } from 'react-chartjs-2'
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+import { Line } from 'react-chartjs-2'
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -34,8 +42,11 @@ function Main() {
     return (
         <main>
             <Article>
-                <Logo src="./image/netflix-logo.png" alt="넷플릭스 로고" />
-                <Title>영화 제작사와 투자자 여러분<br />환영합니다</Title>
+                <Logo 
+                    src="./image/netflix-logo.png" 
+                    alt="넷플릭스 로고" 
+                />
+                <TitleStyle>영화 제작사와 투자자 여러분<br />환영합니다</TitleStyle>
                 <Link to="/page">
                     <Button text="시작하기" />
                 </Link>
@@ -50,16 +61,23 @@ function Main() {
                 <CovidChart coronas={coronas} />
                 <Arrow direction="down" />
             </Article>
-            <article className='how_to_use2'>
-                <p>우리 서비스는
-                    <img src="./image/netflix-logo.png" alt="넷플릭스 로고" className='logo' />
+            <Article>
+                <Description>
+                    우리 서비스는
+                    <Logo 
+                        src="./image/netflix-logo.png" 
+                        alt="넷플릭스 로고" 
+                        position="description" 
+                    />
                     한국 컨텐츠를 기준으로 분석합니다.<br />
                     각 나라에서 흥행하는 한국 컨텐츠를 바탕으로<br />
                     효율적인 벤치마킹을 경험해보십시오.
-                </p>
-                <img src="./image/world-map-movie.png" alt="세계지도" className='world_map' />
+                </Description>
+                <Worldmap 
+                    src="./image/world-map-movie.png" 
+                    alt="세계지도" />
                 <Arrow direction="up" />
-            </article>
+            </Article>
         </main>
     )
 }
@@ -67,13 +85,22 @@ function Main() {
 export default Main;
 
 // 코로나 차트
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
 function CovidChart({coronas}) {
 
     const data = {
         labels: coronas.map(x => x.years),
         datasets: [
             {
-            type: 'line',
             label: '국내 영화관 매출액',
             borderColor: '#F05454',
             borderWidth: 2,
@@ -82,7 +109,6 @@ function CovidChart({coronas}) {
             yAxisID: 'y0', // 축 id
             },
             {
-            type: 'line',
             label: '넷플릭스 코리아 매출액',
             borderColor: '#30475E',
             borderWidth: 2,
@@ -160,22 +186,25 @@ function CovidChart({coronas}) {
 
     return (
         <CoronaDiv>
-            <Chart type="line" data={data} options={options} plugins={[chartAreaPlugin]} />
+            <Line type="line" data={data} options={options} plugins={[chartAreaPlugin]} />
         </CoronaDiv>
     )
 }
 
 // styled-components
 const Logo = styled.img`
-    display: block;
+    display: ${props => props.position === "description" ? "inline-block" : "block"};
 
-    width: 235px;
-    height: 60px;
+    width: ${props => props.position === "description" ? 110 : 235}px;
+    height: ${props => props.position === "description" ? 35 : 60}px;
 
-    margin-bottom: 30px;
+    margin-bottom: ${props => props.position === "description" ? 0 : 30}px;
+    margin: ${props => props.position === "description" && "0 10px"};
+
+    vertical-align: middle;
 `;
 
-const Title = styled.h1`
+const TitleStyle = styled.h1`
     font-size: 70px;
     font-weight: 500;
 `;
@@ -196,4 +225,9 @@ const CoronaDiv = styled.div`
     background-color: white;
 
     padding: 50px;
+`;
+
+const Worldmap = styled.img`
+    width: 900px;
+    height: 400px;
 `;
