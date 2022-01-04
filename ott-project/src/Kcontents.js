@@ -1,6 +1,7 @@
 import Arrow from './Arrow';
 import { Article, Contents } from './AreaTag';
 import Text from './Text';
+import WordCloud from './WordCloud';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -114,7 +115,7 @@ function Kcontents() {
                 <Text>
                     A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                 </Text>
-                <WordCloudImg src={word_cloud} alt="워드클라우드" />
+                <WordCloud />
             </Article>
         </Contents>
     )
@@ -236,10 +237,4 @@ const TotalChartDiv = styled.div`
     padding: 10px;
   
     background-color: white;
-`;
-
-const WordCloudImg = styled.img`
-    display: block;
-
-    margin-top: 50px;
 `;
