@@ -1,4 +1,6 @@
 import Arrow from './Arrow';
+import Article from './Article';
+import Text from './Text';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
@@ -68,20 +70,16 @@ function Market() {
 
     return (
         <main>
-            <article>
-                <div className='divContainer'>
-                    <TextP>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</TextP>
-                    <ReleaseChart releaseData={loading ? releaseData : dummyRelease} />
-                </div>
+            <Article>
+                <Text>매년 넷플릭스에 릴리즈되는 한국 컨텐츠는 이렇습니다.</Text>
+                <ReleaseChart releaseData={loading ? releaseData : dummyRelease} />
                 <Arrow direction="down" />
-            </article>
-            <article>
-                <div className='divContainer'>
-                    <TextP>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</TextP>
-                    <GenreChart genreData={loading ? genreData : dummyGenre} />
-                </div>
+            </Article>
+            <Article>
+                <Text>넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.</Text>
+                <GenreChart genreData={loading ? genreData : dummyGenre} />
                 <Arrow direction="up" />
-            </article>
+            </Article>
         </main>
     )
 }
@@ -190,28 +188,18 @@ function GenreChart({genreData}) {
 }
 
 // styled-components
-const TextP = styled.p`
-    font-size: 30px;
-    font-weight: bold;
-
-    text-align: left;
-
-    margin-left: 50px;
-`;
-
 const ReleaseChartDiv = styled.div`
     background-color: white;
 
     width: 700px;
 
-    margin: 50px auto 0;
+    margin: 50px 0 0 300px;
     padding: 50px;
 `;
 
 const GenreChartDiv = styled.div`
     width: 600px;
-    height: 400px;
+    height: 440px;
   
-    margin: 50px auto 50px;
-    padding: 30px;
+    margin: 50px 0 0 300px;
 `;
