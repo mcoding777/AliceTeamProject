@@ -66,7 +66,7 @@ function Kcontents() {
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
         const APItotal = await fetch(
-            `http://13.58.124.132/${category}/k-contents/{class}?class=${APIclass}`);
+            `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
     }
