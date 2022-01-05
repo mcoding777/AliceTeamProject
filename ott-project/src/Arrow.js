@@ -26,7 +26,7 @@ const Uparrow = keyframes`
     }
     100% {
     opacity: 0;
-    margin-top: -10px;
+    margin-top: -1.4vh;
     }
 `;
 
@@ -39,27 +39,27 @@ const Downarrow = keyframes`
     }
     100% {
     opacity: 0;
-    margin-top: 10px;
+    margin-top: 1.4vh;
     }
 `;
 
 const ScrollArrow = styled.div`
     position: relative;
 
-    height: 50px;
-    margin-top: ${props => props.direction === "up" ? 50 : 20}px;
-    margin-right: 50px;
+    height: 6.7vh;
+    margin-top: ${props => props.direction === "up" ? 6.7 : 2.7}vh;
+    margin-right: 3.3vw;
 
     &::before {
         content: "";
 
         position: absolute;
 
-        width: 50px;
-        height: 50px;
+        width: 3.3vw;
+        height: 6.7vh;
 
-        border-top: 5px solid white;
-        border-right: 5px solid white;
+        border-top: 0.3vw solid white;
+        border-right: 0.3vw solid white;
 
         transform: rotate(${props => props.direction === "up" ? "-45deg" : "135deg"});
 

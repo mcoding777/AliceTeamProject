@@ -159,8 +159,8 @@ function CovidChart({coronas}) {
         plugins: {
             legend: { // 범례 스타일링
                 labels: {
-                usePointStyle: true,
-                // 범례 도형 모양과 관련된 속성으로, false일 경우엔 기본 직사각형 도형으로 표시됩니다.
+                    usePointStyle: true,
+                    // 범례 도형 모양과 관련된 속성으로, false일 경우엔 기본 직사각형 도형으로 
                 },
             },
         }
@@ -192,41 +192,41 @@ function CovidChart({coronas}) {
 const Logo = styled.img`
     display: ${props => props.position === "description" ? "inline-block" : "block"};
 
-    width: ${props => props.position === "description" ? 110 : 235}px;
-    height: ${props => props.position === "description" ? 35 : 60}px;
+    width: ${props => props.position === "description" ? 7 : 15.3}vw;
+    height: ${props => props.position === "description" ? 4.7 : 8}vh;
 
-    margin-bottom: ${props => props.position === "description" ? 0 : 30}px;
+    margin-bottom: ${props => props.position === "description" ? 0 : 4}vh;
     margin: ${props => props.position === "description" && "0 10px"};
 
     vertical-align: middle;
 `;
 
 const TitleStyle = styled.h1`
-    font-size: 70px;
+    font-size: 4.6vw;
     font-weight: 500;
 
-    margin-bottom: 90px;
+    margin-bottom: 12vh;
 `;
 
 const Description = styled.p`
-    width: 1200px;
+    width: 78.2vw;
 
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: 500;
     text-align: start;
 
-    margin-bottom: 30px;
+    margin-bottom: 4vh;
 `;
 
 const CoronaDiv = styled.div`
-    width: 700px;
+    width: 45.6vw;
 
     background-color: white;
 
-    padding: 50px;
+    padding: 6.7vh 3.3vw;
 `;
 
 const Worldmap = styled.img`
-    width: 900px;
-    height: 400px;
+    width: 58.6vw;
+    height: 53.1vh;
 `;
