@@ -69,27 +69,33 @@ const ClassDivContainer = styled.div`
     justify-content: space-around;
     align-content: space-between;
 
-    width: 1200px;
-    height: 600px;
-
-    box-sizing: border-box;
+    width: 78.2vw;
+    height: 80vh;
 `;
 
 const ClassDiv = styled.div`
-    width: 500px;
-    height: 290px;
-    border-radius: 30px;
+    width: 32.6vw;
+    height: 38.5vh;
+    border-radius: 2vw;
 
     cursor: pointer;
 
     animation: ${FadeIn} 0.5s ease-in;
 
-    font-size: 50px;
+    font-size: 3.3vw;
     color: black;
     text-align: center;
-    line-height: 290px; // 부모 요소 높이와 동일하게 하면 가운데 위치됨
+    line-height: 38.5vh; // 부모 요소 높이와 동일하게 하면 가운데 위치됨
 
     position: relative;
+
+    &[title="A"],
+    &[title="B"],
+    &[title="C"],
+    &[title="D"] {
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
     &[title="A"] {
         background-image: url(${img1});
