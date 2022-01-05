@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Text = styled.p`
-    width: 1000px;
+    width: 65.1vw;
 
-    font-size: 30px;
+    font-size: 2vw;
     font-weight: bold;
     
     text-align: left;

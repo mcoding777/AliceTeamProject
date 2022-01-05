@@ -48,7 +48,7 @@ function Market() {
 
     // console.log(genreData);
 
-    const getRelease = async () => {
+    const getChartData = async () => {
         const APIrelease = await fetch(`https://www.sebaschan.shop/${category}/market`);
         const APIjson = await APIrelease.json();
         if (category === "movie") {
@@ -63,10 +63,11 @@ function Market() {
         }
     }
 
-    // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
-    useEffect(() => { window.scrollTo(0, 0); }, []);
-    // location으로 받은 항목이 달라지면 차트 데이터도 다시 받아오기
-    useEffect(() => { getRelease() }, [category]);
+    // 카테고리가 바뀔 때 스크롤바는 항상 최상단으로 이동 & 차트 데이터 받아오기
+    useEffect(() => { 
+        window.scrollTo(0, 0);
+        getChartData();
+     }, [category]);
 
     return (
         <Contents>
@@ -191,15 +192,15 @@ function GenreChart({genreData}) {
 const ReleaseChartDiv = styled.div`
     background-color: white;
 
-    width: 700px;
+    width: 45.6vw;
 
-    margin-top: 50px;
-    padding: 50px;
+    margin-top: 6.7vh;
+    padding: 6.7vh 3.3vw;
 `;
 
 const GenreChartDiv = styled.div`
-    width: 600px;
-    height: 440px;
+    width: 39vw;
+    height: 58.4vh;
   
-    margin-top: 50px;
+    margin-top: 6.7vh;
 `;
