@@ -37,8 +37,8 @@ function Kcontents() {
     const popularity = Math.floor(Number(totalData.popularity));
 
     // 포스터 데이터
-    const poster = totalData.poster;
-    const imdb = totalData.imdb;
+    const [poster, setPoster] = useState([]);
+    const [imdb, setImdb] = useState([]);
 
     // 종합지수(문구) 데이터
     const totalScore = Math.floor(totalData.total_score);
@@ -74,26 +74,21 @@ function Kcontents() {
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
-    useEffect(() => { window.scrollTo(0, 0); }, []);
     // location으로 받은 항목이 달라지면 종합 데이터도 다시 받아오기
-    useEffect(() => { getTotal(); }, [category, selectClass]);
+    useEffect(() => { 
+        window.scrollTo(0, 0);
+        getTotal(); }, [category, selectClass]);
+
+    // totalData가 바뀌면 포스터와 imdb 주소도 다시 받아오기
+    useEffect(() => { 
+        setPoster(totalData.poster);
+        setImdb(totalData.imdb); 
+    }, [totalData]);
 
     return (
         <Contents>
             <Article>
-                <PosterSlider />
-                {/* <PosterDiv>
-                    {poster && poster.map((item, index) => {
-                        return (
-                            <img src={item} 
-                                alt={"이미지" + index} 
-                                onClick={
-                                    () => { window.open(imdb[index], '_blank'); }
-                                } 
-                            />)
-                        })
-                    }
-                </PosterDiv> */}
+                <PosterSlider poster={poster} imdb={imdb} />
                 <TotalText>
                     {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
                 </TotalText>
