@@ -16,7 +16,6 @@ import {
 import { Radar } from 'react-chartjs-2'
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import word_cloud from './image/word_cloud.jpg';
 import styled from 'styled-components';
 
 function Kcontents() {
