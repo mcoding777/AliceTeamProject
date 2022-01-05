@@ -88,7 +88,9 @@ function MenuBox() {
                     한국 컨텐츠의 영향력을<br />
                     다양한 지표로 분석해드립니다.<br />
                     Market : 넷플릭스 시장 현황<br />
-                    K-Contents : 한국 컨텐츠 분석
+                    K-Contents : 한국 컨텐츠 분석<br />
+                    <br />
+                    데이터 분석 기간 : 2015.01 ~ 2021.02
                 </TipContainer>
                 <ButtonContainer>
                     <button 
@@ -111,8 +113,8 @@ export default MenuBox;
 
 // styled-components
 const NavBox = styled.nav`
-    width: 300px;
-    height: 670px;
+    width: 19.6vw;
+    height: 89vh;
 
     position: fixed;
     top: 5vh;
@@ -120,7 +122,7 @@ const NavBox = styled.nav`
 
     background-color: #981217;
 
-    padding: 30px;
+    padding: 4vh 2vw;
 
     color: black;
 
@@ -129,13 +131,15 @@ const NavBox = styled.nav`
 `;
 
 const SelectContainer = styled.div`
-    height: 12%;
+    height: 10vh;
 
     line-height: 1.7em;
     background-color: white;
 
-    margin-bottom: 10px;
-    padding: 10px 15px;
+    margin-bottom: 2vh;
+    padding: 1.4vh 1vw;
+
+    font-size: 1.1vw;
 
     & label {
         display: block;
@@ -147,44 +151,42 @@ const SelectContainer = styled.div`
 const MenuText = styled.p`
     text-align: left;
 
-    font-size: 2em;
+    font-size: 2.1vw;
     font-weight: bold;
 
     color: white;
 `;
 
 const TipContainer = styled.p`
-    margin-top: 30px;
-
-    font-size: 0.85em;
+    font-size: 0.85vw;
     font-weight: 500;
     line-height: 150%;
 
-    margin-top: 15%;
-    margin-bottom: 15%;
+    margin: 10% 0;
 
     text-align: left;
 `;
 
 const ButtonContainer = styled.div`
     width: 100%;
+    height: 60px;
 
     & button {
         all: unset;
 
         width: 47%;
-        height: 60px;
+        height: 8vh;
 
         background-color: #2D0000;
         color: white;
 
-        font-size: 20px;
+        font-size: 1.3vw;
         font-weight: bold;
 
         cursor: pointer;
 
         &:nth-child(1) {
-            margin-right: 5px;
+            margin-right: 0.4vw;
         }
     }
 `;
