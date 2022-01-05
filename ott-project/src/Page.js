@@ -15,6 +15,6 @@ export default Page;
 
 // styled-components
 const PageP = styled.p`
-    font-size: 60px;
+    font-size: 4vw;
     font-weight: bold;
 `;

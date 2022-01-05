@@ -8,5 +8,5 @@ export const Article = styled.article`
 `;
 
 export const Contents = styled.div`
-    margin-left: 300px;
+    margin-left: 19.6vw;
 `;
