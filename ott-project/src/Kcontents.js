@@ -177,14 +177,14 @@ const PosterDiv = styled.div`
     display: flex;
     justify-content: space-between;
 
-    width: 900px;
-    height: 150px;
+    width: 58.6vw;
+    height: 20vh;
 
-    margin: 50px 0;
+    margin: 6.7vh 0;
 `;
 
 const TotalText = styled.p`
-    font-size: 25px;
+    font-size: 1.7vw;
     font-weight: bold;
 `;
 
@@ -193,9 +193,9 @@ const ScoreContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
 
-    width: 1000px;
+    width: 65.1vw;
 
-    margin-top: 50px;
+    margin-top: 6.7vh;
 `;
 
 const StarDiv = styled.div`
@@ -204,13 +204,13 @@ const StarDiv = styled.div`
     & p {
         background-color: #363636;
 
-        font-size: 30px;
+        font-size: 2vw;
         font-weight: bold;
 
         width: 90%;
-        height: 60px;
+        height: 8vh;
 
-        padding: 7px 30px;
+        padding: 1vh 2vw;
 
         box-sizing: border-box;
         text-align: left;
@@ -221,7 +221,7 @@ const StarDiv = styled.div`
         
         &:nth-child(2),
         :nth-child(3) {
-            margin: 10px 0;
+            margin: 1.4vh 0;
         }
 
         & span {
@@ -231,10 +231,10 @@ const StarDiv = styled.div`
 `;
 
 const TotalChartDiv = styled.div`
-    width: 470px;
-    height: 270px;
+    width: 30.6vw;
+    height: 35.9vh;
   
-    padding: 10px;
+    padding: 1.4vh 0.7vw;
   
     background-color: white;
 `;

@@ -436,8 +436,8 @@ function WordCloud() {
 export default WordCloud;
 
 const WordCloudDiv = styled.div`
-    width: 1000px;
-    height: 500px;
+    width: 65.1vw;
+    height: 66.4vh;
 
-    margin-top: 50px;
+    margin-top: 6.7vh;
 `;
