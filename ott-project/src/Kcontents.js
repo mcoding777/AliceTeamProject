@@ -2,6 +2,7 @@ import Arrow from './Arrow';
 import { Article, Contents } from './AreaTag';
 import Text from './Text';
 import WordCloud from './WordCloud';
+import PosterSlider from './PosterSlider';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -80,7 +81,8 @@ function Kcontents() {
     return (
         <Contents>
             <Article>
-                <PosterDiv>
+                <PosterSlider />
+                {/* <PosterDiv>
                     {poster && poster.map((item, index) => {
                         return (
                             <img src={item} 
@@ -91,7 +93,7 @@ function Kcontents() {
                             />)
                         })
                     }
-                </PosterDiv>
+                </PosterDiv> */}
                 <TotalText>
                     {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
                 </TotalText>
