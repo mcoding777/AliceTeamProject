@@ -14,7 +14,7 @@ function CenterSlider() {
             className: "center",
             centerMode: true,
             infinite: true,
-            centerPadding: "80px",
+            centerPadding: "13%",
             slidesToShow: 3,
             speed: 500,
         };
@@ -42,25 +42,29 @@ function CenterSlider() {
 export default CenterSlider;
 
 const PosterContainer = styled.div`
-    width: 700px;
-    height: 200px;
+    width: 45.6vw;
+    height: 26.6vh;
 
     margin: 6.7vh 0;
 
     & img {
-        width: 150px;
-        height: 200px;
+        width: 9.8vw;
+        height: 26.6vh;
     }
 
     & .slick-next {
-        right: -40px;
+        right: -2.6vw;
+
+        &::before {
+            font-size: 50px;
+        }
     }
 
     & .slick-prev {
-        left: -40px;
-    }
+        left: -4.6vw;
 
-    & .slick-list {
-        padding: 0 80px;
+        &::before {
+            font-size: 3.3vw;
+        }
     }
 `;
