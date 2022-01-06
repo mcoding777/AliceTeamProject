@@ -1,6 +1,7 @@
 import Button from './Button';
 import Arrow from './Arrow';
 import { Article } from './AreaTag';
+import logo from './image/netflix-logo.png'
 import { Link } from 'react-router-dom';
 import {
     Chart as ChartJS,
@@ -39,7 +40,7 @@ function Main() {
         <main>
             <Article>
                 <Logo 
-                    src="./image/netflix-logo.png" 
+                    src={logo} 
                     alt="넷플릭스 로고" 
                 />
                 <TitleStyle>영화 제작사와 투자자 여러분<br />환영합니다</TitleStyle>
@@ -61,7 +62,7 @@ function Main() {
                 <Description>
                     우리 서비스는
                     <Logo 
-                        src="./image/netflix-logo.png" 
+                        src={logo}
                         alt="넷플릭스 로고" 
                         position="description" 
                     />

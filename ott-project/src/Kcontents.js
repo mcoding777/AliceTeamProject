@@ -1,6 +1,7 @@
 import Arrow from './Arrow';
 import { Article, Contents } from './AreaTag';
 import Text from './Text';
+import Loading from './Loading';
 import WordCloud from './WordCloud';
 import PosterSlider from './PosterSlider';
 import {
@@ -28,7 +29,7 @@ function Kcontents() {
 
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // 별표 및 종합차트 데이터
     const score = Math.floor(Number(totalData.score));
@@ -72,6 +73,7 @@ function Kcontents() {
             `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
+        setLoading(false); 
     }
 
     function getScoreRender() {
@@ -100,32 +102,40 @@ function Kcontents() {
 
     return (
         <Contents>
-            <Article>
-                <PosterSlider poster={poster} imdb={imdb} />
-                <TotalText>
-                    {selectClass} class 는 종합평점 {totalScoreRender} 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
-                </TotalText>
-                <ScoreContainer>
-                    <StarDiv>
-                        <p>SCORE <span>{"★".repeat(score)}</span></p>
-                        <p>AWARD <span>{"★".repeat(award)}</span></p>
-                        <p>GLOBAL <span>{"★".repeat(global)}</span></p>
-                        <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
-                    </StarDiv>
-                    <TotalChart 
-                        score={score} 
-                        award={award} 
-                        global={global} 
-                        popularity={popularity} />
-                </ScoreContainer>
-                <Arrow />
-            </Article>
-            <Article>
-                <Text>
-                    A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
-                </Text>
-                <WordCloud />
-            </Article>
+            { loading ? 
+                <Article>
+                    <Loading />
+                </Article>
+            :
+                <>
+                    <Article>
+                        <PosterSlider poster={poster} imdb={imdb} />
+                        <TotalText>
+                            {selectClass} class 는 종합평점 {totalScoreRender} 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
+                        </TotalText>
+                        <ScoreContainer>
+                            <StarDiv>
+                                <p>SCORE <span>{"★".repeat(score)}</span></p>
+                                <p>AWARD <span>{"★".repeat(award)}</span></p>
+                                <p>GLOBAL <span>{"★".repeat(global)}</span></p>
+                                <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
+                            </StarDiv>
+                            <TotalChart 
+                                score={score} 
+                                award={award} 
+                                global={global} 
+                                popularity={popularity} />
+                        </ScoreContainer>
+                        <Arrow />
+                    </Article>
+                    <Article>
+                        <Text>
+                            A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
+                        </Text>
+                        <WordCloud />
+                    </Article>
+                </>
+            }
         </Contents>
     )
 }
