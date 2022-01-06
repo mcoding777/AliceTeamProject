@@ -104,10 +104,30 @@ function Kcontents() {
                         </TotalText>
                         <ScoreContainer>
                             <StarDiv>
-                                <p>SCORE <span>{"★".repeat(score)}</span></p>
-                                <p>AWARD <span>{"★".repeat(award)}</span></p>
-                                <p>GLOBAL <span>{"★".repeat(global)}</span></p>
-                                <p>POPULARITY <span>{"★".repeat(popularity)}</span></p>
+                                <p title="IMDB 평점을 5점 만점 기준으로 환산한 점수입니다.">
+                                    SCORE 
+                                    <span>
+                                        {"★".repeat(score)}
+                                    </span>
+                                </p>
+                                <p title="수상 횟수(1점) 및 후보(0.5점) 비율을 합산 후 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                    AWARD 
+                                    <span>
+                                        {"★".repeat(award)}
+                                    </span>
+                                </p>
+                                <p title="해당 컨텐츠가 릴리즈된 국가 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                    GLOBAL 
+                                    <span>
+                                        {"★".repeat(global)}
+                                    </span>
+                                </p>
+                                <p title="IMDB 평점 참가자 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                    POPULARITY 
+                                    <span>
+                                        {"★".repeat(popularity)}
+                                    </span>
+                                </p>
                             </StarDiv>
                             <TotalChart 
                                 score={score} 
@@ -115,6 +135,9 @@ function Kcontents() {
                                 global={global} 
                                 popularity={popularity} />
                         </ScoreContainer>
+                        <ScoreTip>
+                            ※ 각 지표에 마우스를 올리면 설명이 나옵니다.
+                        </ScoreTip>
                         <Arrow />
                     </Article>
                     <Article>
@@ -145,7 +168,18 @@ const ScoreContainer = styled.div`
 
     width: 65.1vw;
 
-    margin-top: 6.7vh;
+    margin-top: 5.5vh;
+    margin-bottom: 1vh;
+`;
+
+const ScoreTip = styled.p`
+    width: 65.1vw;
+
+    font-size: 1vw;
+
+    text-align: left;
+
+    opacity: 0.7;
 `;
 
 const StarDiv = styled.div`
