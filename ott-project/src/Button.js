@@ -19,6 +19,7 @@ const RedButton = styled.button`
         background-color: #981217;
     
         padding: 2vh 0.7vw;
+        margin: 12vh 0 3vh 0;
     
         text-shadow: 0 0.3vw 0.6vh rgba(0, 0, 0, 0.25);
         font-size: 2vw;

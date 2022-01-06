@@ -275,7 +275,7 @@ const ReleaseChartDiv = styled.div`
 
     width: 45.6vw;
 
-    margin-top: 6.7vh;
+    margin: 6.7vh 0 3vh 0;
     padding: 6.7vh 3.3vw;
 `;
 
@@ -283,7 +283,7 @@ const GenreChartDiv = styled.div`
     width: 39vw;
     height: 58.4vh;
   
-    margin-top: 6.7vh;
+    margin: 6.7vh 0 6vh 0;
 `;
 
 const TotalChartDiv = styled.div`
