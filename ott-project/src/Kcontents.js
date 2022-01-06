@@ -37,7 +37,7 @@ function Kcontents() {
     // 종합지수(문구) 데이터
     const totalScore = Math.floor(totalData.total_score);
     const totalScoreRender = getScoreRender();
-    const totalPercent = Math.floor(totalData.class_numbers / totalData.total_numbers * 100);
+    const totalPercent = Math.floor(totalData.class_numbers / totalData.category_numbers * 100);
     const totalContents = totalData.class_numbers;
 
     // API 오류 뜰 때 사용할 더미 데이터
