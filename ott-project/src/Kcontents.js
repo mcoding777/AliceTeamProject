@@ -133,6 +133,7 @@ function Kcontents() {
                             A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                         </Text>
                         <WordCloud />
+                        <Arrow direction="up" />
                     </Article>
                 </>
             }

@@ -425,7 +425,8 @@ function WordCloud() {
         },
       ];
 
-      console.log(words.length);
+      // console.log(words.length);
+      
     return (
         <WordCloudDiv>
             <ReactWordcloud words={words} options={options} />
@@ -437,7 +438,7 @@ export default WordCloud;
 
 const WordCloudDiv = styled.div`
     width: 65.1vw;
-    height: 66.4vh;
+    height: 55vh;
 
     margin-top: 6.7vh;
 `;
