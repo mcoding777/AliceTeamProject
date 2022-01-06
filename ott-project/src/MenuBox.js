@@ -118,6 +118,7 @@ const NavBox = styled.nav`
 
     position: fixed;
     top: 5vh;
+    bottom: 5vh;
     z-index: 1;
 
     background-color: #981217;
@@ -168,8 +169,7 @@ const TipContainer = styled.p`
 `;
 
 const ButtonContainer = styled.div`
-    width: 100%;
-    height: 60px;
+    height: 8vh;
 
     & button {
         all: unset;
