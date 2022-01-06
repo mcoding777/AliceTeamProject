@@ -52,6 +52,8 @@ const PosterContainer = styled.div`
     & img {
         width: 9vw;
         height: 24vh;
+
+        cursor: pointer;
     }
 
     & .slick-next {
