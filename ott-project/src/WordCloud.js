@@ -440,5 +440,5 @@ const WordCloudDiv = styled.div`
     width: 65.1vw;
     height: 55vh;
 
-    margin-top: 6.7vh;
+    margin: 6.7vh 0 3vh 0;
 `;

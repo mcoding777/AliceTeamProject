@@ -4,17 +4,21 @@ import Text from './Text';
 import Loading from './Loading';
 import WordCloud from './WordCloud';
 import PosterSlider from './PosterSlider';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
 import { TotalChart } from './DataChart';
+import Button from './Button.js';
+import { useEffect, useState } from 'react';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 function Kcontents() {
 
     // 선택한 카테고리, 클래스 정보
+    const navigate = useNavigate();
     const location = useLocation();
     const category = location.state.category;
     const selectClass = location.pathname.slice(-1);
+
+    console.log(category);
 
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
@@ -35,8 +39,6 @@ function Kcontents() {
     const totalScoreRender = getScoreRender();
     const totalPercent = Math.floor(totalData.class_numbers / totalData.total_numbers * 100);
     const totalContents = totalData.class_numbers;
-
-    console.log(poster);
 
     // API 오류 뜰 때 사용할 더미 데이터
     // const dummyRelease = {
@@ -75,6 +77,10 @@ function Kcontents() {
         } else {
             return ( "2점 미만으로" )
         }
+    }
+
+    const handlePrevPage = () => {
+        navigate(-1, {state: {category:category}});
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
@@ -145,6 +151,9 @@ function Kcontents() {
                             A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                         </Text>
                         <WordCloud />
+                        <PrevPage onClick={() => handlePrevPage()}>
+                            <Button text="뒤로가기" />
+                        </PrevPage>
                         <Arrow direction="up" />
                     </Article>
                 </>
@@ -212,4 +221,9 @@ const StarDiv = styled.div`
             color: yellow;
         }
     }
+`;
+
+const PrevPage = styled.div`
+    align-self: end;
+    margin-right: 5vw;
 `;
