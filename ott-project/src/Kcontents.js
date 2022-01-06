@@ -4,21 +4,10 @@ import Text from './Text';
 import Loading from './Loading';
 import WordCloud from './WordCloud';
 import PosterSlider from './PosterSlider';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    RadialLinearScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Radar } from 'react-chartjs-2'
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { TotalChart } from './DataChart';
 
 function Kcontents() {
 
@@ -47,7 +36,7 @@ function Kcontents() {
     const totalPercent = Math.floor(totalData.class_numbers / totalData.total_numbers * 100);
     const totalContents = totalData.class_numbers;
 
-    // console.log(poster);
+    console.log(poster);
 
     // API 오류 뜰 때 사용할 더미 데이터
     // const dummyRelease = {
@@ -143,66 +132,7 @@ function Kcontents() {
 
 export default Kcontents;
 
-// 차트
-ChartJS.register(
-    CategoryScale,
-    RadialLinearScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  );
-
-function TotalChart({score, award, global, popularity}) {
-
-    const data = {
-      labels: ['SCORE', 'AWARD', 'GLOBAL', 'POPULARITY'],
-      datasets: [
-        {
-          label: '종합지표',
-          borderColor: '#8E0505',
-          borderWidth: 2,
-          backgroundColor: 'rgba(142, 5, 5, 0.2)',
-          data: [score, award, global, popularity],
-        },
-      ],
-    };
-
-    const options = {
-        maintainAspectRatio: false, // 가로 세로 비율 고정을 어떻게 할 것인가?
-        scales: {
-            r: { // 좌표값
-              beginAtZero: true, // 0부터 시작할까?
-              max: 5,
-            }
-        },
-        plugins: {
-            legend: {
-                display: false,
-            },
-        },
-    }
-  
-    return (
-        <TotalChartDiv>
-            <Radar data={data} options={options} />
-        </TotalChartDiv>
-    )
-  }
-
 // styled-components
-const PosterDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-
-    width: 58.6vw;
-    height: 20vh;
-
-    margin: 6.7vh 0;
-`;
-
 const TotalText = styled.p`
     font-size: 1.6vw;
     font-weight: bold;
@@ -248,13 +178,4 @@ const StarDiv = styled.div`
             color: yellow;
         }
     }
-`;
-
-const TotalChartDiv = styled.div`
-    width: 30.6vw;
-    height: 35.9vh;
-  
-    padding: 1.4vh 0.7vw;
-  
-    background-color: white;
 `;
