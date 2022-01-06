@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-function Button(props) {
+function Button({text}) {
     return (
-        <RedButton>{props.text}</RedButton>
+        <RedButton text={text}>{text}</RedButton>
     )
 }
 
@@ -10,19 +10,19 @@ export default Button;
 
 // styled-components
 const RedButton = styled.button`
-        width: 250px;
-        height: 70px;
+        width: 16.3vw;
+        height: 9.3vh;
     
-        border-radius: 60px;
-        box-shadow: inset 0 2px 5px 3px rgba(0, 0, 0, 0.5);
-        border: solid 1px #000;
+        border-radius: 4vw;
+        box-shadow: inset 0 0.3vh 0.4vw 0.2vw rgba(0, 0, 0, 0.5);
+        border: solid 0.07vw #000;
         background-color: #981217;
     
-        margin: 90px auto 0;
-        padding: 15px 10px;
+        padding: 2vh 0.7vw;
+        margin: ${ props => props.text === "시작하기" && "12vh 0 3vh 0" };
     
-        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        font-size: 30px;
+        text-shadow: 0 0.3vw 0.6vh rgba(0, 0, 0, 0.25);
+        font-size: 2vw;
         font-weight: 900;
         text-align: center;
         color: #fff;

@@ -1,6 +1,6 @@
-import './css/MenuBox.css';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 function MenuBox() {
 
@@ -35,71 +35,73 @@ function MenuBox() {
 
     return (
         <>
-            <nav>
-                <div className='menubox'>
-                    <p>CATEGORY</p>
-                    <div>
-                        <label>
-                            <input 
-                                type="radio" 
-                                name="category" 
-                                value="movie" 
-                                onClick={getCategoryValue} 
-                                defaultChecked={category === "movie"}
-                            /> Movie
-                        </label>
-                        <label>
-                            <input 
-                                type="radio" 
-                                name="category" 
-                                value="tv-series" 
-                                onClick={getCategoryValue} 
-                                defaultChecked={category === "tv"}
-                            /> TV Series
-                        </label>
-                    </div> 
-                    <p>REVIEW</p>
-                    <div>
-                        <label>
-                            <input 
-                                type="radio" 
-                                name="review" 
-                                value="market" 
-                                onClick={getReviewValue} 
-                                defaultChecked={review === "market"}
-                            /> Market
-                        </label>
-                        <label>
-                            <input 
-                                type="radio" 
-                                name="review" 
-                                value="k-contents" 
-                                onClick={getReviewValue} 
-                                defaultChecked={review === "kcontents"}
-                            /> K-Contents
-                        </label>
-                    </div>
-                    <p className='tip'>
-                        CATEGORY는 넷플릭스 컨텐츠를<br />
-                        크게 2가지 분류로 나눕니다.<br />
-                        Movie : 영화<br />
-                        TV Series : TV쇼(드라마)<br />
-                        <br />
-                        REVIEW는 넷플릭스 시장의 인사이트와<br />
-                        한국 컨텐츠의 영향력을<br />
-                        다양한 지표로 분석해드립니다.<br />
-                        Market : 넷플릭스 시장 현황<br />
-                        K-Contents : 한국 컨텐츠 분석
-                    </p>
+            <NavBox>
+                <MenuText>CATEGORY</MenuText>
+                <SelectContainer>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="category" 
+                            value="movie" 
+                            onClick={getCategoryValue} 
+                            defaultChecked={category === "movie"}
+                        /> Movie
+                    </label>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="category" 
+                            value="tv-series" 
+                            onClick={getCategoryValue} 
+                            defaultChecked={category === "tv"}
+                        /> TV Series
+                    </label>
+                </SelectContainer> 
+                <MenuText>REVIEW</MenuText>
+                <SelectContainer>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="review" 
+                            value="market" 
+                            onClick={getReviewValue} 
+                            defaultChecked={review === "market"}
+                        /> Market
+                    </label>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="review" 
+                            value="k-contents" 
+                            onClick={getReviewValue} 
+                            defaultChecked={review === "kcontents"}
+                        /> K-Contents
+                    </label>
+                </SelectContainer>
+                <TipContainer>
+                    CATEGORY는 넷플릭스 컨텐츠를<br />
+                    크게 2가지 분류로 나눕니다.<br />
+                    Movie : 영화<br />
+                    TV Series : TV쇼(드라마)<br />
+                    <br />
+                    REVIEW는 넷플릭스 시장의 인사이트와<br />
+                    한국 컨텐츠의 영향력을<br />
+                    다양한 지표로 분석해드립니다.<br />
+                    Market : 넷플릭스 시장 현황<br />
+                    K-Contents : 한국 컨텐츠 분석<br />
+                    <br />
+                    데이터 분석 기간 : 2015.01 ~ 2021.02
+                </TipContainer>
+                <ButtonContainer>
                     <button 
-                        style={{marginRight:"10px"}}
-                        onClick={getHandleResult} 
-                    >결과보기</button>
-                    <Link to="/" style={{color: "white"}}>
+                        onClick={getHandleResult}>
+                        결과보기
+                    </button>
+                    <Link to="/">
                         <button>처음으로</button>
                     </Link>
-                </div>
-            </nav>
+                </ButtonContainer>
+            </NavBox>
             <main>
                 <Outlet />
             </main>
@@ -108,3 +110,83 @@ function MenuBox() {
 }
 
 export default MenuBox;
+
+// styled-components
+const NavBox = styled.nav`
+    width: 19.6vw;
+    height: 89vh;
+
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    z-index: 1;
+
+    background-color: #981217;
+
+    padding: 4vh 2vw;
+
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+`;
+
+const SelectContainer = styled.div`
+    height: 10vh;
+
+    line-height: 1.7em;
+    background-color: white;
+
+    margin-bottom: 2vh;
+    padding: 1.4vh 1vw;
+
+    font-size: 1.1vw;
+
+    & label {
+        display: block;
+
+        text-align: left;
+    }
+`;
+
+const MenuText = styled.p`
+    text-align: left;
+
+    font-size: 2.1vw;
+    font-weight: bold;
+
+    color: white;
+`;
+
+const TipContainer = styled.p`
+    font-size: 0.85vw;
+    font-weight: 500;
+    line-height: 150%;
+
+    margin: 10% 0;
+
+    text-align: left;
+`;
+
+const ButtonContainer = styled.div`
+    height: 8vh;
+
+    & button {
+        all: unset;
+
+        width: 47%;
+        height: 8vh;
+
+        background-color: #2D0000;
+        color: white;
+
+        font-size: 1.3vw;
+        font-weight: bold;
+
+        cursor: pointer;
+
+        &:nth-child(1) {
+            margin-right: 0.4vw;
+        }
+    }
+`;
