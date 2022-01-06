@@ -28,6 +28,7 @@ function CenterSlider({poster, imdb}) {
                             <div>
                                 <img src={item} 
                                     alt={"이미지" + index} 
+                                    key={index} 
                                     onClick={() => { 
                                         window.open(imdb[index], '_blank'); }
                                     } 
