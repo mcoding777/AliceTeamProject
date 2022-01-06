@@ -42,28 +42,29 @@ function Kcontents() {
 
     // 종합지수(문구) 데이터
     const totalScore = Math.floor(totalData.total_score);
+    const totalScoreRender = getScoreRender();
     const totalPercent = Math.floor(totalData.class_numbers / totalData.total_numbers * 100);
     const totalContents = totalData.class_numbers;
 
     // console.log(poster);
 
     // API 오류 뜰 때 사용할 더미 데이터
-    const dummyRelease = {
-        "2015": 400,
-        "2016": 500,
-        "2017": 400,
-        "2018": 300,
-        "2019": 450,
-        "2020": 350
-    }
-    const dummyGenre = {
-        "Action": 25,
-        "Drama": 30,
-        "Comedy": 35,
-        "Crime": 20,
-        "Fantasy": 10,
-        "Etc": 5
-    }
+    // const dummyRelease = {
+    //     "2015": 400,
+    //     "2016": 500,
+    //     "2017": 400,
+    //     "2018": 300,
+    //     "2019": 450,
+    //     "2020": 350
+    // }
+    // const dummyGenre = {
+    //     "Action": 25,
+    //     "Drama": 30,
+    //     "Comedy": 35,
+    //     "Crime": 20,
+    //     "Fantasy": 10,
+    //     "Etc": 5
+    // }
 
     const getTotal = async () => {
         const APIclass = `${category === "movie" ? "Movie" : "Series"}` + selectClass;
@@ -71,6 +72,18 @@ function Kcontents() {
             `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
+    }
+
+    function getScoreRender() {
+        if (totalScore >= 4) {
+            return ( "4점 이상으로" )
+        } else if (totalScore < 4 && totalScore >= 3) {
+            return ( "4점 미만 3점 이상으로" ) 
+        } else if (totalScore < 3 && totalScore >= 2) {
+            return ( "3점 미만 2점 이상으로" )
+        } else {
+            return ( "2점 미만으로" )
+        }
     }
 
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
@@ -90,7 +103,7 @@ function Kcontents() {
             <Article>
                 <PosterSlider poster={poster} imdb={imdb} />
                 <TotalText>
-                    {selectClass} class 는 종합평점 {totalScore}점이상으로 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
+                    {selectClass} class 는 종합평점 {totalScoreRender} 전체 컨텐츠중 {totalPercent}% 비중으로 {totalContents}개의 컨텐츠가 있습니다.
                 </TotalText>
                 <ScoreContainer>
                     <StarDiv>
@@ -180,7 +193,7 @@ const PosterDiv = styled.div`
 `;
 
 const TotalText = styled.p`
-    font-size: 1.7vw;
+    font-size: 1.6vw;
     font-weight: bold;
 `;
 
