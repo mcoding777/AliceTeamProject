@@ -438,5 +438,7 @@ export default WordCloud;
 
 const WordCloudDiv = styled.div`
     width: 55vw;
-    height: 65vh;
+    height: 55vh;
+
+    margin-top: 5vh;
 `;
