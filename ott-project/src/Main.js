@@ -10,25 +10,26 @@ import { CovidChart } from './DataChart';
 // 첫 메인화면 컴포넌트
 function Main() {
 
-    useEffect(() => {
-        sessionStorage.clear();
-    }, [])
-
+    // 코로나 차트 데이터
     const [coronas, setCoronas] = useState([]);
 
     const getCorona = async () => {
         const corona = await fetch(`https://www.sebaschan.shop/corona`);
         const corona_json = await corona.json();
         setCoronas(corona_json);
-    }
+    };
 
     // console.log(coronas);
 
-    useEffect(() => { getCorona() }, []);
+    // 페이지가 렌더링되면 코로나 차트 데이터 받아오기 & 세션 스토리지 클리어
+    useEffect(() => {
+        sessionStorage.clear(); 
+        getCorona(); 
+    }, []);
 
     return (
         <main>
-            <Article>
+            <Article id="section1">
                 <Logo 
                     src={logo} 
                     alt="넷플릭스 로고" 
@@ -36,7 +37,7 @@ function Main() {
                 <TitleStyle>영화 제작사와 투자자 여러분<br />환영합니다</TitleStyle>
                 <Arrow direction="down" />
             </Article>
-            <Article>
+            <Article id="section2">
                 <Description>
                     2020년 COVID-19로 인해 OTT 플랫폼의 영향력은 더욱 커졌습니다.<br />
                     여러분의 성공적인 영화 제작과 투자를 위해<br />
@@ -45,7 +46,7 @@ function Main() {
                 <CovidChart coronas={coronas} />
                 <Arrow direction="down" />
             </Article>
-            <Article>
+            <Article id="section3">
                 <Description>
                     우리 서비스는
                     <Logo 

@@ -54,7 +54,7 @@ function Market() {
 
     // 카테고리가 바뀔 때 스크롤바는 항상 최상단으로 이동 & 차트 데이터 받아오기
     useEffect(() => { 
-        window.scrollTo(0, 0);
+        window.scrollTo({top:0, behavior:'smooth'});
         getChartData();
      }, [category]);
 
