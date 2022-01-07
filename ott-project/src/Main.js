@@ -34,9 +34,6 @@ function Main() {
                     alt="넷플릭스 로고" 
                 />
                 <TitleStyle>영화 제작사와 투자자 여러분<br />환영합니다</TitleStyle>
-                <Link to="/page">
-                    <Button text="시작하기" />
-                </Link>
                 <Arrow direction="down" />
             </Article>
             <Article>
@@ -63,7 +60,9 @@ function Main() {
                 <Worldmap 
                     src="./image/world-map-movie.png" 
                     alt="세계지도" />
-                <Arrow direction="up" />
+                <Link to="/page">
+                    <Button text="시작하기" />
+                </Link>
             </Article>
         </main>
     )
@@ -87,6 +86,8 @@ const Logo = styled.img`
 const TitleStyle = styled.h1`
     font-size: 4.6vw;
     font-weight: 500;
+
+    margin-bottom: 100px;
 `;
 
 const Description = styled.p`

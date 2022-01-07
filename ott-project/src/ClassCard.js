@@ -24,22 +24,54 @@ function ClassCard() {
                     <ClassDiv 
                         title="A" 
                         onClick={() => handleGetClass("A")}>
-                        <span>A Class</span>
+                        <div>
+                            <span>
+                                A Class <br />
+                                <span>
+                                    A Class에 있는 컨텐츠는 자체 평가 종합 점수가 <br />
+                                    매우 우수한 컨텐츠입니다.
+                                </span>
+                            </span>
+                        </div>
                     </ClassDiv>
                     <ClassDiv 
                         title="B" 
                         onClick={() => handleGetClass("B")}>
-                        <span>B Class</span>
+                        <div>
+                            <span>
+                                B Class <br />
+                                <span>
+                                    B Class에 있는 컨텐츠는 자체 평가 종합 점수가 <br />
+                                    우수한 컨텐츠입니다.
+                                </span>
+                            </span>
+                        </div>
                     </ClassDiv>
                     <ClassDiv 
                         title="C" 
                         onClick={() => handleGetClass("C")}>
-                        <span>C Class</span>
+                        <div>
+                            <span>
+                                C Class <br />
+                                <span>
+                                    C Class에 있는 컨텐츠는 자체 평가 종합 점수가 <br />
+                                    보통인 컨텐츠입니다.
+                                </span>
+                            </span>
+                        </div>
                     </ClassDiv>
                     <ClassDiv 
                         title="D" 
                         onClick={() => handleGetClass("D")}>
-                        <span>D Class</span>
+                        <div>
+                            <span>
+                                D Class <br />
+                                <span>
+                                    D Class에 있는 컨텐츠는 자체 평가 종합 점수가 <br />
+                                    다소 미흡한 컨텐츠입니다.
+                                </span>
+                            </span>
+                        </div>
                     </ClassDiv>
                 </ClassDivContainer>
             </Article>
@@ -87,7 +119,7 @@ const ClassDiv = styled.div`
     font-size: 3.3vw;
     color: black;
     text-align: center;
-    line-height: 38.5vh; // 부모 요소 높이와 동일하게 하면 가운데 위치됨
+    /* line-height: 38.5vh; // 부모 요소 높이와 동일하게 하면 가운데 위치됨 */
 
     position: relative;
 
@@ -115,27 +147,41 @@ const ClassDiv = styled.div`
         background-image: url(${img4});
     }
 
-    &::before {
+    &::after {
         content: "";
 
         width: 100%;
         height: 100%;
-        border-radius: 30px;
 
         position: absolute;
         top: 0;
         left: 0;
-        z-index: 1;
 
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(10px);
 
     }
 
-    & span {
-        position: absolute;
-        z-index: 2;
+    & div {
+        display: inline-block;
+        margin: auto 0;
 
-        transform: translateX(-50%);
+        & span {
+            position: absolute;
+            z-index: 2;
+
+            transform: translateX(-50%);
+
+            & span {
+                display: inline-block;
+
+                width: 25vw;
+                margin-top: 15%;
+
+                font-size: 1.1vw;
+                font-weight: 500;
+            }
+
+        }
     }
 `;
 
