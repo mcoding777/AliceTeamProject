@@ -86,7 +86,7 @@ function Kcontents() {
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
     // location으로 받은 항목이 달라지면 종합 데이터도 다시 받아오기
     useEffect(() => { 
-        window.scrollTo({top:0, left:0, behavior:'smooth'});
+        window.scrollTo({top:0, behavior:'smooth'});
         getTotal(); }, [category, selectClass]);
 
     // totalData가 바뀌면 포스터와 imdb 주소도 다시 받아오기
