@@ -36,34 +36,19 @@ def create_app():
         def get(self):
             # category_data = request.args.get('movie', type=str)
             # review = request.args.get('market', type=str)
-            movie_2015 = db.session.query(Contents).filter_by(
-                category="movie", year=2015).count()
-            movie_2016 = db.session.query(Contents).filter_by(
-                category="movie", year=2016).count()
-            movie_2017 = db.session.query(Contents).filter_by(
-                category="movie", year=2017).count()
-            movie_2018 = db.session.query(Contents).filter_by(
-                category="movie", year=2019).count()
-            movie_2019 = db.session.query(Contents).filter_by(
-                category="movie", year=2019).count()
-            movie_2020 = db.session.query(Contents).filter_by(
-                category="movie", year=2020).count()
-            movie_2021 = db.session.query(Contents).filter_by(
-                category="movie", year=2021).count()
-            # result_2015 = [r.serialize() for r in movie_2015]
+            movie_years = db.session.query(Contents.year, func.count(Contents.year)).filter_by(category="movie").group_by(Contents.year).all()
+            movie_num = dict(movie_years)
+
             numbers = db.session.query(Contents).filter_by(category="Movie").count()
-            drama = db.session.query(Contents).filter_by(category="Movie", genre2="Drama").count()
-            etc = db.session.query(Contents).filter_by(category="Movie", genre2="ets").count()
-            comedy = db.session.query(Contents).filter_by(category="Movie", genre2="Comedy").count()
-            fantasy = db.session.query(Contents).filter_by(category="Movie", genre2="Fantasy").count()
-            crime = db.session.query(Contents).filter_by(category="Movie", genre2="Crime").count()
-            action = db.session.query(Contents).filter_by(category="Movie", genre2="Action").count()
+            #장르별 숫자 받아오기
+            genre2 = db.session.query(Contents.genre2, func.count(Contents.genre2)).filter_by(category="movie").group_by(Contents.genre2).all()
+            genre_list = {}
+            for gen in genre2 :
+                genre_list[gen[0]] = (gen[1]/numbers)*100
+            genre_list['Etc'] = genre_list.pop('ets')
+            genre_list['Fantasy'] = 0.0
 
-            genre_percent = {"drama" : (drama/numbers)*100, "etc": (etc/numbers)*100, "comedy":(comedy/numbers)*100, "fantasy":(fantasy/numbers)*100,"crime":(crime/numbers)*100, "action":(action/numbers)*100}
-            movie_num = {2015: movie_2015, 2016: movie_2016, 2017: movie_2017,
-                         2018: movie_2018, 2019: movie_2019, 2020: movie_2020, 2021: movie_2021}
-
-            return make_response(jsonify({"movie_num": movie_num, "genre_percent":genre_percent}), 200)
+            return make_response(jsonify({"movie_num": movie_num, "genre_percent":genre_list}), 200)
 
     @api.route('/tv-series/market')
     # @api.doc(params={"tv-series": "category", "market": "review"})
@@ -72,34 +57,18 @@ def create_app():
         def get(self):
             # category_data = request.args.get('tv-series', type=str)
             # review = request.args.get('market', type=str)
-            drama_2015 = db.session.query(Contents).filter_by(
-                category="Series", year=2015).count()
-            drama_2016 = db.session.query(Contents).filter_by(
-                category="Series", year=2016).count()
-            drama_2017 = db.session.query(Contents).filter_by(
-                category="Series", year=2017).count()
-            drama_2018 = db.session.query(Contents).filter_by(
-                category="Series", year=2019).count()
-            drama_2019 = db.session.query(Contents).filter_by(
-                category="Series", year=2019).count()
-            drama_2020 = db.session.query(Contents).filter_by(
-                category="Series", year=2020).count()
-            drama_2021 = db.session.query(Contents).filter_by(
-                category="Series", year=2021).count()
+            drama_years = db.session.query(Contents.year, func.count(Contents.year)).filter_by(category="Series").group_by(Contents.year).all()
+            drama_num = dict(drama_years)
             
             numbers = db.session.query(Contents).filter_by(category="Series").count()
-            drama = db.session.query(Contents).filter_by(category="Series", genre2="Drama").count()
-            etc = db.session.query(Contents).filter_by(category="Series", genre2="ets").count()
-            comedy = db.session.query(Contents).filter_by(category="Series", genre2="Comedy").count()
-            fantasy = db.session.query(Contents).filter_by(category="Series", genre2="Fantasy").count()
-            crime = db.session.query(Contents).filter_by(category="Series", genre2="Crime").count()
-            action = db.session.query(Contents).filter_by(category="Series", genre2="Action").count()
-            genre_percent = {"drama" : (drama/numbers)*100, "etc": (etc/numbers)*100, "comedy":(comedy/numbers)*100, "fatnasy":(fantasy/numbers)*100,"crime":(crime/numbers)*100, "action":(action/numbers)*100}
-            # result_2015 = [r.serialize() for r in movie_2015]
-            drama_num = {2015: drama_2015, 2016: drama_2016, 2017: drama_2017,
-                         2018: drama_2018, 2019: drama_2019, 2020: drama_2020, 2021: drama_2021}
+            #장르별 숫자 받아오기
+            genre2 = db.session.query(Contents.genre2, func.count(Contents.genre2)).filter_by(category="Series").group_by(Contents.genre2).all()
+            genre_list = {}
+            for gen in genre2 :
+                genre_list[gen[0]] = (gen[1]/numbers)*100
+            genre_list['Etc'] = genre_list.pop('ets')
 
-            return make_response(jsonify({"tvseries_num": drama_num, "genre_percent":genre_percent}), 200)
+            return make_response(jsonify({"tvseries_num": drama_num, "genre_percent":genre_list}), 200)
 
     @api.route('/tv-series/k-contents/{class}')
     @api.doc(params={"class": "SeriesA,SeriesB,SeriesC,SeriesD 중 하나"})
@@ -107,27 +76,20 @@ def create_app():
     class K_contents(Resource):
         def get(self):
             classname = request.args.get('class', type=str)
+            #포스터와 idmb 리스트 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
-                category="Series", group_name=classname).order_by(func.rand()).limit(5).all()
+                category="Series", group_name=classname).all()
             poster_list = [p[0] for p in posters]
             imdb_list = [p[1] for p in posters]
-            numbers = db.session.query(Contents).filter_by(category="Series", group_name=classname).count()
-            popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
-                category="Series", group_name=classname).first()[0]
-            award = db.session.query(func.avg(Contents.award)).filter_by(
-                category="Series", group_name=classname).first()[0]
-            global_score = db.session.query(func.avg(Contents.global_score)).filter_by(
-                category="Series", group_name=classname).first()[0]
-            # print(popularity, award, global_score)
-            scores = (db.session.query(func.avg(Contents.score)).filter_by(
-                category="Series", group_name=classname)).first()[0]
+            
+            #드라마 컨텐츠 숫자, 클래스내 컨텐츠 숫자
             numbers = db.session.query(Contents).filter_by(category="Series").count()
             class_numbers =db.session.query(Contents).filter_by(category="Series", group_name=classname).count()
-            total_scores = (db.session.query(func.avg(Contents.total_score)).filter_by(
-                category="Series", group_name=classname)).first()[0]
             
+            #전체 점수 평균 계산(점수 항목/클래스 콘텐츠 숫자)
+            score_list = (db.session.query(func.avg(Contents.score), func.avg(Contents.award), func.avg(Contents.global_score), func.avg(Contents.popularity), func.avg(Contents.total_score)).filter_by(category="Series", group_name=classname)).first()       
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list, "total_score":total_scores, "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
+            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
 
     @api.route('/movie/k-contents/{class}')
     @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
@@ -135,30 +97,20 @@ def create_app():
     class K_contents(Resource):
         def get(self):
             classname = request.args.get('class', type=str)
+            #포스터와 imdb 링크 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
-                category="Movie", group_name=classname).order_by(func.rand()).limit(5).all()
+                category="Movie", group_name=classname).order_by(func.rand()).all()
             poster_list = [p[0] for p in posters]
             imdb_list = [p[1] for p in posters]
-            #poster_split = [p.split(',')[0] for p in poster_list]
-            # numbers = db.session.query(Contents).filter_by(
-            #     category="Series", group_name=classname).count()
-            popularity = db.session.query(func.avg(Contents.popularity)).filter_by(
-                category="Movie", group_name=classname).first()[0]
-            award = db.session.query(func.avg(Contents.award)).filter_by(
-                category="Movie", group_name=classname).first()[0]
-            global_score = db.session.query(func.avg(Contents.global_score)).filter_by(
-                category="Movie", group_name=classname).first()[0]
-            #global_list = str(global_score).split('.')[0]
-            # print(popularity, award, global_score)
-            scores = (db.session.query(func.avg(Contents.score)).filter_by(
-                category="Movie", group_name=classname)).first()[0]
             
+            #전체 점수 평균 계산(점수 항목/클래스 콘텐츠 숫자)
+            score_list = (db.session.query(func.avg(Contents.score), func.avg(Contents.award), func.avg(Contents.global_score), func.avg(Contents.popularity), func.avg(Contents.total_score)).filter_by(category="Movie", group_name=classname)).first()
+
+            #드라마 컨텐츠 숫자, 클래스내 컨텐츠 숫자
             numbers = db.session.query(Contents).filter_by(category="Movie").count()
             class_numbers =db.session.query(Contents).filter_by(category="Movie", group_name=classname).count()
-            total_scores = (db.session.query(func.avg(Contents.total_score)).filter_by(
-                category="Movie", group_name=classname)).first()[0]
 
-            return jsonify({"score": scores, "award": award, "global": global_score, "popularity": popularity, "poster": poster_list, "imdb": imdb_list, "total_score":total_scores, "total_numbers":489, "category_numbers":numbers, "class_numbers":class_numbers})
+            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
 
     return app
 
