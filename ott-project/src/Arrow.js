@@ -46,7 +46,7 @@ const Downarrow = keyframes`
 const ScrollArrow = styled.div`
     position: relative;
 
-    height: 6.7vh;
+    height: 3.3vw;
     
     margin-right: 3.3vw;
 
@@ -56,7 +56,7 @@ const ScrollArrow = styled.div`
         position: absolute;
 
         width: 3.3vw;
-        height: 6.7vh;
+        height: 3.3vw;
 
         border-top: 0.3vw solid white;
         border-right: 0.3vw solid white;

@@ -61,7 +61,7 @@ const PosterContainer = styled.div`
         right: -2.6vw;
 
         &::before {
-            font-size: 50px;
+            font-size: 3.3vw;
         }
     }
 
