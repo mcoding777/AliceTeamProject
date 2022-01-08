@@ -83,18 +83,6 @@ def create_app():
                 dic = {score[0]:{"score": score[1], "award": score[2], "global": score[3], "popularity": score[4], "total_score": score[5]}}
                 genre_score.append(dic)
 
-             #워드 클라우드 단어 받아오기
-            words = db.session.query(Wordcloud.words).filter_by(group_name=classname).first()[0]
-            word_list = words.split(',')
-            # print(word_list)
-            text_list = []
-            value_list = []
-            for i in range(100):
-                if i%2 == 0:
-                    text_list.append(word_list[i])
-                else :
-                    value_list.append(word_list[i])
-
             return make_response(jsonify({"tvseries_num": drama_num, "genre_percent":genre_list,"genre_score":genre_score}), 200)
 
     @api.route('/tv-series/k-contents/{class}')
