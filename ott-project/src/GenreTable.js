@@ -175,11 +175,11 @@ export default function GenreTable({genreTableData}) {
 }
 
 const GenreTableDiv = styled.div`
-  width: 800px;
+  width: 52vw;
 
-  padding: 10px;
-  border-radius: 10px;
-  margin: 20px 0;
+  padding: 1.4vh 0.7vw;
+  border-radius: 1%;
+  margin: 2.7vh 0;
 
   background-color: #363636;
 `;
