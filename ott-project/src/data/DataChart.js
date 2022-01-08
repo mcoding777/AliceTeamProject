@@ -60,25 +60,6 @@ export function CovidChart({coronas}) {
                 display: true,
                 position: 'left',
                 grid: { // 축 기준이 되는 grid 스타일링
-                    borderColor: "rgb(54, 162, 235)",
-                    },
-                title: {
-                display: true,
-                align: 'center',
-                color: 'black',
-                font: {
-                    size: 12,
-                    weight: 300,
-                },
-                text: '넷플릭스 코리아 매출액 (억 달러)'
-            },
-            },
-            y1: {
-                id: 'y1',
-                type: 'linear',
-                display: true,
-                position: 'right',
-                grid: {
                     borderColor: "rgb(255, 99, 132)",
                     },
                 title: {
@@ -89,7 +70,26 @@ export function CovidChart({coronas}) {
                     size: 12,
                     weight: 300,
                 },
-                text: '국내 영화관 매출액 (억 달러)'
+                text: '국내 영화관 매출액 (억 달러)',
+            },
+            },
+            y1: {
+                id: 'y1',
+                type: 'linear',
+                display: true,
+                position: 'right',
+                grid: {
+                    borderColor: "rgb(54, 162, 235)", 
+                    },
+                title: {
+                display: true,
+                align: 'center',
+                color: 'black',
+                font: {
+                    size: 12,
+                    weight: 300,
+                },
+                text: '넷플릭스 코리아 매출액 (억 달러)',
             },
             },
         },
