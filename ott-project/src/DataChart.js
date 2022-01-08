@@ -224,7 +224,9 @@ export function GenreChart({genreData}) {
 // 종합지수 차트
 export function TotalChart({score, award, global, popularity}) {
 
-    ChartJS.register( RadialLinearScale );
+    ChartJS.register( RadialLinearScale, LineElement );
+
+    console.log(score, award, global, popularity);
 
     const data = {
       labels: ['SCORE', 'AWARD', 'GLOBAL', 'POPULARITY'],

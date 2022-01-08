@@ -16,7 +16,7 @@ function Kcontents() {
     const navigate = useNavigate();
     const location = useLocation();
     const category = location.state.category;
-    const selectClass = location.pathname.slice(-1) || sessionStorage.getItem("class");
+    const selectClass = location.pathname.slice(-1);
 
     // console.log(selectClass);
 
