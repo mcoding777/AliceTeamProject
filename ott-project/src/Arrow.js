@@ -2,14 +2,38 @@ import styled, { keyframes } from 'styled-components';
 
 function Arrow({direction}) {
 
-    function UpScroll() {
+    const handleScrollMove = () => {
+
         if (direction === "up") {
-            window.scrollTo( 0, 0 );
+            window.scrollTo({top:0, left:0, behavior:'smooth'});
+        } else {
+            // 현재 스크롤 위치
+            const scrollPosition = window.scrollY;
+
+            // console.log(scrollPosition);
+
+            // 스크롤바 이동할 섹션(위치)
+            // const section2 = document.getElementById('section2');
+            // const section3 = document.getElementById('section3');
+    
+            // article 요소의 길이
+            const elementHeight = document.querySelector('article').scrollHeight;
+    
+            if (scrollPosition < elementHeight) {
+                // section2.scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo({top: elementHeight, behavior:'smooth'});
+            }
+            else {
+                // section3.scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo({top: elementHeight*2, behavior:'smooth'});
+            }
+
+            // downScroll(scrollPosition);
         }
     }
 
     return (
-        <ScrollArrow direction={direction} onClick={UpScroll} />
+        <ScrollArrow direction={direction} onClick={() => handleScrollMove()} />
     )
 }
 
