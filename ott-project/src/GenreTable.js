@@ -140,8 +140,8 @@ export default function GenreTable({genreTableData}) {
 
   return (
     <GenreTableDiv>
-      <TableContainer component={Paper} sx={{ height: 300 }}>
-        <Table sx={{ minWidth: 600, rowHeight: 250 }} aria-label="simple table">
+      <TableContainer component={Paper} sx={{ height: 300, rowHeight: 300 }}>
+        <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: "bold" }}>장르별 자체 평가 점수</TableCell>
@@ -179,8 +179,13 @@ const GenreTableDiv = styled.div`
   width: 52vw;
 
   padding: 1.4vh 0.7vw;
+  margin: 3vh 0 2vh 0;
+
   border-radius: 1%;
-  margin: 2.7vh 0;
 
   background-color: #363636;
+
+  & .MuiTableCell-root {
+    padding: 14px;
+  }
 `;
