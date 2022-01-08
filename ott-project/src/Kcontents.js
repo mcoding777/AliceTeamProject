@@ -18,8 +18,6 @@ function Kcontents() {
     const category = location.state.category;
     const selectClass = location.pathname.slice(-1);
 
-    // console.log(selectClass);
-
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
     const [loading, setLoading] = useState(true);
@@ -39,6 +37,10 @@ function Kcontents() {
     const totalScoreRender = getScoreRender();
     const totalPercent = Math.round(totalData.class_numbers / totalData.category_numbers * 100);
     const totalContents = totalData.class_numbers;
+
+    // 워드클라우드 데이터
+    const wordCloudTexts = totalData.text_list;
+    const wordCloudValues = totalData.value_list;
 
     // API 오류 뜰 때 사용할 더미 데이터
     // const dummyRelease = {
@@ -151,9 +153,9 @@ function Kcontents() {
                     </Article>
                     <Article>
                         <Text>
-                            A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
+                            {selectClass} class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                         </Text>
-                        <WordCloud />
+                        <WordCloud texts={wordCloudTexts} values={wordCloudValues} />
                         <PrevPage onClick={() => handlePrevPage()}>
                             <Button text="뒤로가기" />
                         </PrevPage>
