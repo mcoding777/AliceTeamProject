@@ -16,9 +16,7 @@ function Kcontents() {
     const navigate = useNavigate();
     const location = useLocation();
     const category = location.state.category;
-    const selectClass = location.pathname.slice(-1);
-
-    console.log(category);
+    const selectClass = location.pathname.slice(-1) || sessionStorage.getItem("class");
 
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
