@@ -1,12 +1,12 @@
 import Button from './components/Button';
 import Arrow from './components/Arrow';
 import { Article } from './components/AreaTag';
+import { CovidChart } from './data/DataChart';
 import logo from './image/netflix-logo.png';
 import worldmap from './image/world-map-movie.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { CovidChart } from './DataChart';
 
 // 첫 메인화면 컴포넌트
 function Main() {

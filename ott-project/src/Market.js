@@ -1,11 +1,11 @@
 import Arrow from './components/Arrow';
 import { Article, Contents } from './components/AreaTag';
 import Text from './components/Text';
-import Loading from './Loading';
-import GenreTable from './GenreTable';
+import Loading from './components/Loading';
+import GenreTable from './data/GenreTable';
+import { ReleaseChart, GenreChart } from './data/DataChart';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ReleaseChart, GenreChart } from './DataChart';
 import styled from 'styled-components';
 
 function Market() {
