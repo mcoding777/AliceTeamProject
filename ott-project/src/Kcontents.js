@@ -147,9 +147,6 @@ function Kcontents() {
                                 global={global} 
                                 popularity={popularity} />
                         </ScoreContainer>
-                        <ScoreTip>
-                            ※ 각 지표에 마우스를 올리면 설명이 나옵니다.
-                        </ScoreTip>
                         <Arrow />
                     </Article>
                     <Article>
@@ -185,16 +182,6 @@ const ScoreContainer = styled.div`
 
     margin-top: 5.5vh;
     margin-bottom: 1vh;
-`;
-
-const ScoreTip = styled.p`
-    width: 65.1vw;
-
-    font-size: 1vw;
-
-    text-align: left;
-
-    opacity: 0.7;
 `;
 
 const StarDiv = styled.div`
