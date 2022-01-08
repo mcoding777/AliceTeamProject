@@ -99,7 +99,7 @@ function Kcontents() {
 
     // 로딩중 페이지 1초 지연
     useEffect(() => { 
-        const timer = setTimeout(() => { setLoading(false); }, 2000);
+        const timer = setTimeout(() => { setLoading(false); }, 3000);
         return (() => { clearTimeout(timer); })
     }, []);
 
