@@ -121,13 +121,13 @@ export default Market;
 
 // styled-components
 const DescriptionDiv = styled.div`
-    width: 52vw;
+    width: 50vw;
     height: 20vh;
 
     text-align: left;
 
     opacity: 0.7;
 
-    font-size: 1.1vw;
+    font-size: 1vw;
     font-weight: 300;
 `;

@@ -6,6 +6,7 @@ import WordCloud from './WordCloud';
 import PosterSlider from './PosterSlider';
 import { TotalChart } from './DataChart';
 import Button from './Button.js';
+import cloud_A from './image/cloud_A.jpg';
 import { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -150,7 +151,7 @@ function Kcontents() {
                         <Text>
                             A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                         </Text>
-                        <WordCloud />
+                        <img src={cloud_A} />
                         <PrevPage onClick={() => handlePrevPage()}>
                             <Button text="뒤로가기" />
                         </PrevPage>

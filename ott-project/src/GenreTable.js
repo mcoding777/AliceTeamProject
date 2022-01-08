@@ -140,8 +140,8 @@ export default function GenreTable({genreTableData}) {
 
   return (
     <GenreTableDiv>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 600 }} aria-label="simple table">
+      <TableContainer component={Paper} sx={{ height: 300 }}>
+        <Table sx={{ minWidth: 600, rowHeight: 250 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell sx={{ fontWeight: "bold" }}>장르별 자체 평가 점수</TableCell>
@@ -151,7 +151,7 @@ export default function GenreTable({genreTableData}) {
               <TableCell sx={{ fontWeight: "bold" }} align="center">Score</TableCell>
               <TableCell sx={{ fontWeight: "bold", color: "red" }} align="center">Total</TableCell>
             </TableRow>
-          </TableHead>
+          </TableHead >
           <TableBody>
             {genreTable.map((row) => (
               <TableRow
