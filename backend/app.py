@@ -94,7 +94,7 @@ def create_app():
             #포스터와 idmb 리스트 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Series", group_name=classname).all()
-            poster_list = [re.sub("http://|https://", "", p[0]) for p in posters]
+            poster_list = [re.sub("http://|https://", "http://", p[0]) for p in posters]
             imdb_list = [p[1] for p in posters]
             
             #드라마 컨텐츠 숫자, 클래스내 컨텐츠 숫자
@@ -114,7 +114,7 @@ def create_app():
             #포스터와 imdb 링크 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Movie", group_name=classname).order_by(func.rand()).all()
-            poster_list = [re.sub("http://|https://", "", p[0]) for p in posters]
+            poster_list = [re.sub("http://|https://", "http://", p[0]) for p in posters]
             imdb_list = [p[1] for p in posters]
             
             #전체 점수 평균 계산(점수 항목/클래스 콘텐츠 숫자)
