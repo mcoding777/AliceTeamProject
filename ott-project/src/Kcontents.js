@@ -25,19 +25,19 @@ function Kcontents() {
     const [loading, setLoading] = useState(true);
 
     // 별표 및 종합차트 데이터
-    const score = Math.floor(Number(totalData.score));
-    const award = Math.floor(Number(totalData.award));
-    const global = Math.floor(Number(totalData.global));
-    const popularity = Math.floor(Number(totalData.popularity));
+    const score = Math.round(Number(totalData.score));
+    const award = Math.round(Number(totalData.award));
+    const global = Math.round(Number(totalData.global));
+    const popularity = Math.round(Number(totalData.popularity));
 
     // 포스터 데이터
     const [poster, setPoster] = useState([]);
     const [imdb, setImdb] = useState([]);
 
     // 종합지수(문구) 데이터
-    const totalScore = Math.floor(totalData.total_score);
+    const totalScore = Math.round(totalData.total_score);
     const totalScoreRender = getScoreRender();
-    const totalPercent = Math.floor(totalData.class_numbers / totalData.category_numbers * 100);
+    const totalPercent = Math.round(totalData.class_numbers / totalData.category_numbers * 100);
     const totalContents = totalData.class_numbers;
 
     // API 오류 뜰 때 사용할 더미 데이터
