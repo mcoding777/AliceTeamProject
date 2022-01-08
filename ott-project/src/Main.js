@@ -1,7 +1,8 @@
 import Button from './Button';
 import Arrow from './Arrow';
 import { Article } from './AreaTag';
-import logo from './image/netflix-logo.png'
+import logo from './image/netflix-logo.png';
+import worldmap from './image/world-map-movie.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -54,7 +55,7 @@ function Main() {
                 세계시장에 대한 새로운 통찰을 드립니다.<br />
                 </Description>
                 <Worldmap 
-                    src="./image/world-map-movie.png" 
+                    src={worldmap}
                     alt="세계지도" />
                 <Link to="/page">
                     <Button text="시작하기" />
