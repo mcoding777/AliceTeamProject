@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { Article, Contents } from './AreaTag';
 
 function Page() {
     return (
-        <>
-            <article className='page'>
+        <Contents>
+            <Article>
                 <PageP>원하는 분류를 선택하세요.</PageP>
-            </article>
-        </>
+            </Article>
+        </Contents>
     )
 }
 
@@ -14,11 +15,6 @@ export default Page;
 
 // styled-components
 const PageP = styled.p`
-    font-size: 60px;
+    font-size: 4vw;
     font-weight: bold;
-
-    position: absolute;
-
-    left: 40%;
-    bottom: 50%;
 `;

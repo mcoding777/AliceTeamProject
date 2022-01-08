@@ -2,14 +2,38 @@ import styled, { keyframes } from 'styled-components';
 
 function Arrow({direction}) {
 
-    function UpScroll() {
+    const handleScrollMove = () => {
+
         if (direction === "up") {
-            window.scrollTo( 0, 0 );
+            window.scrollTo({top:0, left:0, behavior:'smooth'});
+        } else {
+            // 현재 스크롤 위치
+            const scrollPosition = window.scrollY;
+
+            // console.log(scrollPosition);
+
+            // 스크롤바 이동할 섹션(위치)
+            // const section2 = document.getElementById('section2');
+            // const section3 = document.getElementById('section3');
+    
+            // article 요소의 길이
+            const elementHeight = document.querySelector('article').scrollHeight;
+    
+            if (scrollPosition < elementHeight) {
+                // section2.scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo({top: elementHeight, behavior:'smooth'});
+            }
+            else {
+                // section3.scrollIntoView({ behavior: 'smooth' });
+                window.scrollTo({top: elementHeight*2, behavior:'smooth'});
+            }
+
+            // downScroll(scrollPosition);
         }
     }
 
     return (
-        <ScrollArrow direction={direction} onClick={UpScroll} />
+        <ScrollArrow direction={direction} onClick={() => handleScrollMove()} />
     )
 }
 
@@ -26,7 +50,7 @@ const Uparrow = keyframes`
     }
     100% {
     opacity: 0;
-    margin-top: -10px;
+    margin-top: -1.4vh;
     }
 `;
 
@@ -39,27 +63,27 @@ const Downarrow = keyframes`
     }
     100% {
     opacity: 0;
-    margin-top: 10px;
+    margin-top: 1.4vh;
     }
 `;
 
 const ScrollArrow = styled.div`
     position: relative;
 
-    height: 50px;
-    margin-top: 30px;
+    height: 3.3vw;
+    
+    margin-right: 3.3vw;
 
     &::before {
         content: "";
 
         position: absolute;
-        left: 48vw;
 
-        width: 50px;
-        height: 50px;
+        width: 3.3vw;
+        height: 3.3vw;
 
-        border-top: 5px solid white;
-        border-right: 5px solid white;
+        border-top: 0.3vw solid white;
+        border-right: 0.3vw solid white;
 
         transform: rotate(${props => props.direction === "up" ? "-45deg" : "135deg"});
 
