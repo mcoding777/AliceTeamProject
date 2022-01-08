@@ -143,12 +143,12 @@ export default function GenreTable({genreTableData}) {
         <Table sx={{ minWidth: 600 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>장르별 자체 평가 점수</TableCell>
-              <TableCell align="center">Award</TableCell>
-              <TableCell align="center">Global</TableCell>
-              <TableCell align="center">Popularity</TableCell>
-              <TableCell align="center">Score</TableCell>
-              <TableCell align="center">Total</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>장르별 자체 평가 점수</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }} align="center">Award</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }} align="center">Global</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }} align="center">Popularity</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }} align="center">Score</TableCell>
+              <TableCell sx={{ fontWeight: "bold", color: "red" }} align="center">Total</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
