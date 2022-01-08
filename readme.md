@@ -10,8 +10,8 @@ exit로 종료 <Br>
 
 ---
 
-가상 환경 만들기 <Br>
-python -m venv .venv
+- 가상 환경 만들기 <Br>
+  python -m venv .venv
 
-라이브러리 설치 <Br>
-pip install -r requirements
+- 라이브러리 설치 <Br>
+  pip install -r requirements
