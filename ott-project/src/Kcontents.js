@@ -1,10 +1,10 @@
-import Arrow from './Arrow';
-import { Article, Contents } from './AreaTag';
-import Text from './Text';
+import Arrow from './components/Arrow';
+import { Article, Contents } from './components/AreaTag';
+import Text from './components/Text';
+import Button from './components/Button.js';
 import Loading from './Loading';
 import PosterSlider from './PosterSlider';
 import { TotalChart } from './DataChart';
-import Button from './Button.js';
 import cloud_A from './image/cloud_A.png';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';

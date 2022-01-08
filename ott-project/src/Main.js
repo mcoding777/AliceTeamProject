@@ -1,6 +1,6 @@
-import Button from './Button';
-import Arrow from './Arrow';
-import { Article } from './AreaTag';
+import Button from './components/Button';
+import Arrow from './components/Arrow';
+import { Article } from './components/AreaTag';
 import logo from './image/netflix-logo.png';
 import worldmap from './image/world-map-movie.png';
 import { Link } from 'react-router-dom';

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Article, Contents } from './AreaTag';
+import { Article, Contents } from './components/AreaTag';
 
 function ClassCard() {
 

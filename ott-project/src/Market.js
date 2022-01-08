@@ -1,6 +1,6 @@
-import Arrow from './Arrow';
-import { Article, Contents } from './AreaTag';
-import Text from './Text';
+import Arrow from './components/Arrow';
+import { Article, Contents } from './components/AreaTag';
+import Text from './components/Text';
 import Loading from './Loading';
 import GenreTable from './GenreTable';
 import { useEffect, useState } from 'react';
