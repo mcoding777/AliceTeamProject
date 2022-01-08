@@ -64,7 +64,7 @@ function Kcontents() {
             `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
-        setLoading(false); 
+        // setLoading(false); 
     }
 
     function getScoreRender() {
@@ -94,6 +94,12 @@ function Kcontents() {
         setPoster(totalData.poster);
         setImdb(totalData.imdb); 
     }, [totalData]);
+
+    // 로딩중 페이지 1초 지연
+    useEffect(() => { 
+        const timer = setTimeout(() => { setLoading(false); }, 2000);
+        return (() => { clearTimeout(timer); })
+    }, []);
 
     return (
         <Contents>
