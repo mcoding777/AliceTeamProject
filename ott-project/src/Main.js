@@ -1,11 +1,12 @@
-import Button from './Button';
-import Arrow from './Arrow';
-import { Article } from './AreaTag';
-import logo from './image/netflix-logo.png'
+import Button from './components/Button';
+import Arrow from './components/Arrow';
+import { Article } from './components/AreaTag';
+import { CovidChart } from './data/DataChart';
+import logo from './image/netflix-logo.png';
+import worldmap from './image/world-map-movie.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { CovidChart } from './DataChart';
 
 // 첫 메인화면 컴포넌트
 function Main() {
@@ -48,18 +49,13 @@ function Main() {
             </Article>
             <Article id="section3">
                 <Description>
-                    우리 서비스는
-                    <Logo 
-                        src={logo}
-                        alt="넷플릭스 로고" 
-                        position="description" 
-                    />
-                    한국 컨텐츠를 기준으로 분석합니다.<br />
-                    각 나라에서 흥행하는 한국 컨텐츠를 바탕으로<br />
-                    효율적인 벤치마킹을 경험해보십시오.
+                Netflix를 통해 k-contents의 글로벌 영향력 지수를 평가하였습니다.<br />
+                연도별 장르별 릴리즈된 컨텐츠를 확인해 보시고<br />
+                작품성, 글로벌 확장성, 화제성을 바탕으로 평가된 등급을 확인해보세요.<br />
+                세계시장에 대한 새로운 통찰을 드립니다.<br />
                 </Description>
                 <Worldmap 
-                    src="./image/world-map-movie.png" 
+                    src={worldmap}
                     alt="세계지도" />
                 <Link to="/page">
                     <Button text="시작하기" />

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import './css/Loading.css';
+import '../css/Loading.css';
 
 function Loading() {
     return (

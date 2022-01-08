@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Article, Contents } from './AreaTag';
+import { Article, Contents } from './components/AreaTag';
 
 function Page() {
     return (

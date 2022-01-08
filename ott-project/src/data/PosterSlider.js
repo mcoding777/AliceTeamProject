@@ -25,10 +25,9 @@ function CenterSlider({poster, imdb}) {
             <Slider {...settings}>
                 {poster && poster.map((item, index) => {
                         return (
-                            <div>
+                            <div key={index} >
                                 <img src={item} 
                                     alt={"이미지" + index} 
-                                    key={index} 
                                     onClick={() => { 
                                         window.open(imdb[index], '_blank'); }
                                     } 
