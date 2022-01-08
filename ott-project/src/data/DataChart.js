@@ -67,10 +67,10 @@ export function CovidChart({coronas}) {
                 align: 'center',
                 color: 'black',
                 font: {
-                    size: 14,
+                    size: 12,
                     weight: 300,
                 },
-                text: '달러(억)'
+                text: '넷플릭스 코리아 매출액 (억 달러)'
             },
             },
             y1: {
@@ -86,10 +86,10 @@ export function CovidChart({coronas}) {
                 align: 'center',
                 color: 'black',
                 font: {
-                    size: 14,
+                    size: 12,
                     weight: 300,
                 },
-                text: '달러(억)'
+                text: '국내 영화관 매출액 (억 달러)'
             },
             },
         },
