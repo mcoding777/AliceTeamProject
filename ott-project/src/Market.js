@@ -6,6 +6,7 @@ import GenreTable from './GenreTable';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReleaseChart, GenreChart } from './DataChart';
+import styled from 'styled-components';
 
 function Market() {
 
@@ -82,7 +83,7 @@ function Market() {
                             넷플릭스 한국 컨텐츠의 장르 분포도를 확인해보세요.
                         </Text>
                         <GenreChart genreData={genreData} />
-                        <Arrow direction="up" />
+                        <Arrow direction="down" />
                     </Article>
                     <Article>
                         <Text>
@@ -90,7 +91,7 @@ function Market() {
                             어느 장르의 평균 점수가 높은지 확인해보세요.
                         </Text>
                         <GenreTable genreTableData={genreTableData} />
-                        <div>
+                        <DescriptionDiv>
                             <p>
                                 Score : IMDB 평점을 5점 만점 기준으로 환산한 점수입니다.
                             </p>
@@ -106,7 +107,8 @@ function Market() {
                             <p>
                                 Total : 위 4개 점수를 종합하여 평균으로 환산한 점수입니다. 
                             </p>
-                        </div>
+                        </DescriptionDiv>
+                        <Arrow direction="up" />
                     </Article>
                 </> 
             }
@@ -116,3 +118,14 @@ function Market() {
 }
 
 export default Market;
+
+// styled-components
+const DescriptionDiv = styled.div`
+    width: 800px;
+    height: 150px;
+
+    text-align: left;
+
+    opacity: 0.7;
+    font-weight: 300;
+`;

@@ -110,25 +110,25 @@ function Kcontents() {
                         </TotalText>
                         <ScoreContainer>
                             <StarDiv>
-                                <p title="IMDB 평점을 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     SCORE 
                                     <span>
                                         {"★".repeat(score)}
                                     </span>
                                 </p>
-                                <p title="수상 횟수(1점) 및 후보(0.5점) 비율을 합산 후 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     AWARD 
                                     <span>
                                         {"★".repeat(award)}
                                     </span>
                                 </p>
-                                <p title="해당 컨텐츠가 릴리즈된 국가 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     GLOBAL 
                                     <span>
                                         {"★".repeat(global)}
                                     </span>
                                 </p>
-                                <p title="IMDB 평점 참가자 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     POPULARITY 
                                     <span>
                                         {"★".repeat(popularity)}
