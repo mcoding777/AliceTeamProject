@@ -18,6 +18,8 @@ function Kcontents() {
     const category = location.state.category;
     const selectClass = location.pathname.slice(-1) || sessionStorage.getItem("class");
 
+    // console.log(selectClass);
+
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
     const [loading, setLoading] = useState(true);
