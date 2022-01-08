@@ -136,8 +136,6 @@ const NavContainer = styled.div`
 `;
 
 const SelectContainer = styled.div`
-    height: 10vh;
-
     line-height: 1.7em;
     background-color: white;
 
