@@ -8,7 +8,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 from flask_restx import Resource, Api, reqparse
 from six import string_types
-from models import Corona, Contents, db
+from models import Corona, Contents, db, Wordcloud
 import config
 import flask.json
 import re
@@ -94,7 +94,7 @@ def create_app():
             #포스터와 idmb 리스트 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Series", group_name=classname).all()
-            poster_list = [re.sub("http://|https://", "http://", p[0]) for p in posters]
+            poster_list = [p[0] for p in posters]
             imdb_list = [p[1] for p in posters]
             
             #드라마 컨텐츠 숫자, 클래스내 컨텐츠 숫자
@@ -103,7 +103,19 @@ def create_app():
             
             #전체 점수 평균 계산(점수 항목/클래스 콘텐츠 숫자)
             score_list = (db.session.query(func.avg(Contents.score), func.avg(Contents.award), func.avg(Contents.global_score), func.avg(Contents.popularity), func.avg(Contents.total_score)).filter_by(category="Series", group_name=classname)).first()       
-            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
+            
+            #워드 클라우드 단어 받아오기
+            words = db.session.query(Wordcloud.words).filter_by(group_name=classname).first()[0]
+            word_list = words.split(',')
+            # print(word_list)
+            text_list = []
+            value_list = []
+            for i in range(100):
+                if i%2 == 0:
+                    text_list.append(word_list[i])
+                else :
+                    value_list.append(word_list[i])
+            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers, "text_list":text_list, "value_list":value_list})
 
     @api.route('/movie/k-contents/{class}')
     @api.doc(params={"class": "MovieA,MovieB,MovieC,MovieD 중 하나"})
@@ -114,7 +126,7 @@ def create_app():
             #포스터와 imdb 링크 받아오기
             posters = db.session.query(Contents.poster_url, Contents.imdb_url).filter_by(
                 category="Movie", group_name=classname).order_by(func.rand()).all()
-            poster_list = [re.sub("http://|https://", "http://", p[0]) for p in posters]
+            poster_list = [p[0] for p in posters]
             imdb_list = [p[1] for p in posters]
             
             #전체 점수 평균 계산(점수 항목/클래스 콘텐츠 숫자)
@@ -124,10 +136,22 @@ def create_app():
             numbers = db.session.query(Contents).filter_by(category="Movie").count()
             class_numbers =db.session.query(Contents).filter_by(category="Movie", group_name=classname).count()
 
-            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers})
+            #워드 클라우드 단어 받아오기
+            words = db.session.query(Wordcloud.words).filter_by(group_name=classname).first()[0]
+            word_list = words.split(',')
+            # print(word_list)
+            text_list = []
+            value_list = []
+            for i in range(100):
+                if i%2 == 0:
+                    text_list.append(word_list[i])
+                else :
+                    value_list.append(word_list[i])
+            return jsonify({"score": score_list[0], "award": score_list[1], "global": score_list[2], "popularity": score_list[3], "poster": poster_list, "imdb": imdb_list, "total_score":score_list[4], "total_numbers" : 489, "category_numbers":numbers, "class_numbers":class_numbers, "text_list":text_list, "value_list":value_list})
 
     return app
 
 
 if __name__ == "__main__":
-    create_app().run(debug=True)
+    create_app().run(host='0.0.0.0')
+

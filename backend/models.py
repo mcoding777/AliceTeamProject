@@ -43,6 +43,15 @@ class Contents(db.Model):
                 "score": self.score, "award": self.award, "global_score": self.global_score, "popularity": self.popularity, "total_score": self.total_score,
                 "imdb_url": self.imdb_url, "poster_url": self.poster_url}
 
+class Wordcloud(db.Model):
+    __table__name = 'Wordcloud'
+    group_name = db.Column(db.String(10), nullable=False, primary_key=True)
+    words = db.Column(db.String(1000), nullable=False)
+
+
+
+
+
     # class MyJSONEncoder(flask.json.JSONDecoder):
     #     def default(self, obj):
     #         if isinstance(obj, decimal.Decimal):

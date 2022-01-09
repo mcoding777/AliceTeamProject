@@ -54,7 +54,7 @@ function MenuBox() {
                                 name="category" 
                                 value="tv-series" 
                                 onClick={getCategoryValue} 
-                                defaultChecked={category === "tv"}
+                                defaultChecked={category === "tv-series"}
                             /> TV Series
                         </label>
                     </SelectContainer> 
@@ -75,7 +75,7 @@ function MenuBox() {
                                 name="review" 
                                 value="k-contents" 
                                 onClick={getReviewValue} 
-                                defaultChecked={review === "kcontents"}
+                                defaultChecked={review === "k-contents"}
                             /> K-Contents
                         </label>
                     </SelectContainer>
@@ -136,8 +136,6 @@ const NavContainer = styled.div`
 `;
 
 const SelectContainer = styled.div`
-    height: 10vh;
-
     line-height: 1.7em;
     background-color: white;
 

@@ -1,13 +1,13 @@
-import Arrow from './Arrow';
-import { Article, Contents } from './AreaTag';
-import Text from './Text';
-import Loading from './Loading';
-import WordCloud from './WordCloud';
-import PosterSlider from './PosterSlider';
-import { TotalChart } from './DataChart';
-import Button from './Button.js';
+import Arrow from './components/Arrow';
+import { Article, Contents } from './components/AreaTag';
+import Text from './components/Text';
+import Button from './components/Button.js';
+import Loading from './components/Loading';
+import PosterSlider from './data/PosterSlider';
+import { TotalChart } from './data/DataChart';
+import WordCloud from './data/WordCloud';
 import { useEffect, useState } from 'react';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Kcontents() {
@@ -18,27 +18,29 @@ function Kcontents() {
     const category = location.state.category;
     const selectClass = location.pathname.slice(-1);
 
-    console.log(category);
-
     // API 요청해서 받은 데이터
     const [totalData, setTotalData] = useState({});
     const [loading, setLoading] = useState(true);
 
     // 별표 및 종합차트 데이터
-    const score = Math.floor(Number(totalData.score));
-    const award = Math.floor(Number(totalData.award));
-    const global = Math.floor(Number(totalData.global));
-    const popularity = Math.floor(Number(totalData.popularity));
+    const score = Math.round(Number(totalData.score));
+    const award = Math.round(Number(totalData.award));
+    const global = Math.round(Number(totalData.global));
+    const popularity = Math.round(Number(totalData.popularity));
 
     // 포스터 데이터
     const [poster, setPoster] = useState([]);
     const [imdb, setImdb] = useState([]);
 
     // 종합지수(문구) 데이터
-    const totalScore = Math.floor(totalData.total_score);
+    const totalScore = Math.round(totalData.total_score);
     const totalScoreRender = getScoreRender();
-    const totalPercent = Math.floor(totalData.class_numbers / totalData.category_numbers * 100);
+    const totalPercent = Math.round(totalData.class_numbers / totalData.category_numbers * 100);
     const totalContents = totalData.class_numbers;
+
+    // 워드클라우드 데이터
+    const wordCloudTexts = totalData.text_list;
+    const wordCloudValues = totalData.value_list;
 
     // API 오류 뜰 때 사용할 더미 데이터
     // const dummyRelease = {
@@ -64,7 +66,7 @@ function Kcontents() {
             `https://www.sebaschan.shop/${category}/k-contents/{class}?class=${APIclass}`);
         const APIjson = await APItotal.json();
         setTotalData(APIjson);
-        setLoading(false); 
+        // setLoading(false); 
     }
 
     function getScoreRender() {
@@ -95,6 +97,14 @@ function Kcontents() {
         setImdb(totalData.imdb); 
     }, [totalData]);
 
+    // 로딩중 페이지 1초 지연
+    useEffect(() => { 
+        const timer = setTimeout(() => { setLoading(false); }, 2500);
+        return (() => { clearTimeout(timer); })
+    }, []);
+
+    console.log("됐나?");
+
     return (
         <Contents>
             { loading ? 
@@ -110,25 +120,25 @@ function Kcontents() {
                         </TotalText>
                         <ScoreContainer>
                             <StarDiv>
-                                <p title="IMDB 평점을 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     SCORE 
                                     <span>
                                         {"★".repeat(score)}
                                     </span>
                                 </p>
-                                <p title="수상 횟수(1점) 및 후보(0.5점) 비율을 합산 후 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     AWARD 
                                     <span>
                                         {"★".repeat(award)}
                                     </span>
                                 </p>
-                                <p title="해당 컨텐츠가 릴리즈된 국가 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     GLOBAL 
                                     <span>
                                         {"★".repeat(global)}
                                     </span>
                                 </p>
-                                <p title="IMDB 평점 참가자 수를 전체 분포도에 따라 5점 만점 기준으로 환산한 점수입니다.">
+                                <p>
                                     POPULARITY 
                                     <span>
                                         {"★".repeat(popularity)}
@@ -141,16 +151,13 @@ function Kcontents() {
                                 global={global} 
                                 popularity={popularity} />
                         </ScoreContainer>
-                        <ScoreTip>
-                            ※ 각 지표에 마우스를 올리면 설명이 나옵니다.
-                        </ScoreTip>
                         <Arrow />
                     </Article>
                     <Article>
                         <Text>
-                            A class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
+                            {selectClass} class 컨텐츠의 줄거리에서 많이 나온 단어를 확인해보세요!
                         </Text>
-                        <WordCloud />
+                        <WordCloud texts={wordCloudTexts} values={wordCloudValues} />
                         <PrevPage onClick={() => handlePrevPage()}>
                             <Button text="뒤로가기" />
                         </PrevPage>
@@ -179,16 +186,6 @@ const ScoreContainer = styled.div`
 
     margin-top: 5.5vh;
     margin-bottom: 1vh;
-`;
-
-const ScoreTip = styled.p`
-    width: 65.1vw;
-
-    font-size: 1vw;
-
-    text-align: left;
-
-    opacity: 0.7;
 `;
 
 const StarDiv = styled.div`
