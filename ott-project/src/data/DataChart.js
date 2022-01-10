@@ -226,7 +226,7 @@ export function TotalChart({score, award, global, popularity}) {
 
     ChartJS.register( RadialLinearScale, LineElement );
 
-    console.log(score, award, global, popularity);
+    // console.log(score, award, global, popularity);
 
     const data = {
       labels: ['SCORE', 'AWARD', 'GLOBAL', 'POPULARITY'],

@@ -9,7 +9,7 @@ function ClassCard() {
     const navigate = useNavigate();
     const result = location.state;
 
-    console.log("ClassCard에서 선택된 카테고리", result);
+    // console.log("ClassCard에서 선택된 카테고리", result);
 
     // 선택한 클래스 저장하고 페이지 전환하는 함수
     const handleGetClass = (selectClass) => {

@@ -22,7 +22,7 @@ function WordCloud({texts, values}) {
         transitionDuration: 1000
     }
 
-    console.log(texts.length, values.length);
+    // console.log(texts.length, values.length);
 
     const words = texts.map((item, index) => {
       return { text: item, value: Number(values[index]) }
