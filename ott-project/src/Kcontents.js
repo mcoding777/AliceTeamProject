@@ -85,6 +85,12 @@ function Kcontents() {
         navigate(-1, {state: {category:category}});
     }
 
+    // 로딩중 페이지 2.5초 지연
+    useEffect(() => { 
+        const timer = setTimeout(() => { setLoading(false); }, 2500);
+        return (() => { clearTimeout(timer); })
+    }, [setLoading]);
+
     // 이 페이지가 렌더링 될 때 스크롤바는 항상 최상단으로 이동
     // location으로 받은 항목이 달라지면 종합 데이터도 다시 받아오기
     useEffect(() => { 
@@ -96,14 +102,6 @@ function Kcontents() {
         setPoster(totalData.poster);
         setImdb(totalData.imdb); 
     }, [totalData]);
-
-    // 로딩중 페이지 1초 지연
-    useEffect(() => { 
-        const timer = setTimeout(() => { setLoading(false); }, 2500);
-        return (() => { clearTimeout(timer); })
-    }, []);
-
-    console.log("됐나?");
 
     return (
         <Contents>
