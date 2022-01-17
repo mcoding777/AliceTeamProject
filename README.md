@@ -13,13 +13,13 @@
 
 # 기술 스택
 - React
-- React-router-dom
-- Styled-components
-- React-Chartjs-2
-- Chartjs-Plugin-Datalables
+- React Router
+- Styled Components
+- React Chartjs 2
+- Chartjs Plugin Datalables
 - MUI
-- React-Slick
-- React-Wordcloud
+- React Slick
+- React Wordcloud
 
 # 구현한 기능
 - 중첩 라우팅을 통한 네비게이션 바 기능 구현
