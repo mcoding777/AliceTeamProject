@@ -1,5 +1,5 @@
 # 프로젝트명
-너와 흥행까지 생각했어.( K-contens Global Index)
+너와 흥행까지 생각했어 (K-contens Global Index)
 
 # 프로젝트 기간
 2021.12.21 ~ 2022.01.08
@@ -11,7 +11,7 @@
 - 라우터 및 API 데이터 연결 (2021.12.31 ~ 2022.01.01)
 - 피드백 반영, 레이아웃 반응형으로 변경, 기타 기능들 수정, 최적화 작업 (2022.01.02 ~ 2022.01.08)
 
-# 사용한 라이브러리
+# 기술 스택
 - React Router
 - React-Chartjs-2
 - Chartjs-plugin-datalabels
