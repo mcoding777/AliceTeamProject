@@ -30,6 +30,7 @@
 - 모든 데이터를 동일하게 보여줄 수 있도록 Loading Page 에 setTimeout과 clearTimeout 사용
 - 기본 CSS와 로딩 페이지를 제외한 모든 CSS는 styled-components로 구현
 - 각종 라이브러리를 활용한 시각화 (차트, 표)
+- 자체 API 데이터 비동기적(async await) 호출
 - 선택 항목 미체크 시 안내 메시지, 처음으로 버튼, 뒤로가기 버튼과 같은 사용자 UX를 고려한 UI
 
 # 프로젝트 일지
